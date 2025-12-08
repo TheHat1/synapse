@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="1_glv2v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+scroll_offset = Vector2(-586, -274)
+script = ExtResource("1_glv2v")
+
+[connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]
+[connection signal="disconnection_request" from="GraphEdit" to="GraphEdit" method="_on_disconnection_request"]
