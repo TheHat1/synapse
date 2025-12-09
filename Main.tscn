@@ -14,7 +14,17 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 647.0
-scroll_offset = Vector2(-586, -274)
+grid_pattern = 1
+right_disconnects = true
+connection_lines_curvature = 0.8
+connection_lines_thickness = 3.0
+zoom_min = 0.4
+zoom_max = 2.5
+show_menu = false
+show_zoom_label = true
+show_zoom_buttons = false
+show_grid_buttons = false
+show_arrange_button = false
 script = ExtResource("1_glv2v")
 
 [connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]

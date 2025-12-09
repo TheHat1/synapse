@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://be5qy2s28133r"]
+[gd_scene load_steps=8 format=3 uid="uid://be5qy2s28133r"]
 
 [ext_resource type="Script" uid="uid://dskmi3ease83a" path="res://Neuron/neuron.gd" id="1_mms1l"]
+[ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_6rb5x"]
+[ext_resource type="AudioStream" uid="uid://brrywvmbkh7wd" path="res://Assets/sound-15.mp3" id="3_fiuso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gioh7"]
 content_margin_left = 10.0
@@ -44,8 +46,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 
 [node name="Neuron" type="GraphNode"]
-offset_right = 585.0
-offset_bottom = 212.0
+offset_right = 503.0
+offset_bottom = 215.0
 theme_override_constants/separation = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_gioh7")
 theme_override_styles/panel_selected = SubResource("StyleBoxFlat_5m2cd")
@@ -117,6 +119,14 @@ text = "Inhibitory"
 [node name="Control" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Control"]
+position = Vector2(203, 22)
+texture = ExtResource("2_6rb5x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HBoxContainer/Control"]
+position = Vector2(75, 27)
+stream = ExtResource("3_fiuso")
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
