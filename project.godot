@@ -24,5 +24,6 @@ window/size/borderless=true
 
 folder_colors={
 "res://Assets/": "red",
-"res://Neuron/": "teal"
+"res://Neuron/": "teal",
+"res://UI/": "blue"
 }

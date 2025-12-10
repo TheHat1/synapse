@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=3 uid="uid://bograjn0m1dvn"]
+
+[ext_resource type="Script" uid="uid://c52lwgxhgckld" path="res://UI/neuron_container.gd" id="1_fjwt4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_polyq"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.646029, 0.64602906, 0.6460289, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.18000486, 0.18000486, 0.18000486, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjwt4"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.28118682, 0.28118688, 0.28118682, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a42p7"]
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="AddElementsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -895.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 251.0
+offset_bottom = 332.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_polyq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 318.0
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_fjwt4")
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjwt4")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 127.0
+offset_bottom = 33.0
+text = "Add neuron"
+label_settings = SubResource("LabelSettings_a42p7")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjwt4")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 127.0
+offset_bottom = 33.0
+text = "Add pacemaker"
+label_settings = SubResource("LabelSettings_a42p7")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjwt4")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer3/Panel"]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 127.0
+offset_bottom = 33.0
+text = "Add input"
+label_settings = SubResource("LabelSettings_a42p7")
