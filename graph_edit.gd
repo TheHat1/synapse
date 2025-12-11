@@ -15,10 +15,15 @@ func _input(event: InputEvent):
 			isMenuOpen = true
 		else:
 			menu.global_position = event.global_position
-	elif event is InputEventMouseButton and event.is_pressed() and !Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	elif event is InputEventMouseButton and is_instance_valid(menu) and event.is_pressed() and !Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and !$"AddElementsMenu".get_global_rect().has_point(event.position):
 		if is_instance_valid(menu):
 			menu.queue_free()
 		isMenuOpen = false
+
+func close_menu_after_inst():
+	if is_instance_valid(menu):
+		menu.queue_free()
+	isMenuOpen = false
 
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	connect_node(from_node, from_port, to_node, to_port)

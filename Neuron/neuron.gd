@@ -16,7 +16,6 @@ func execute_input(port: int):
 	match port:
 		0:
 			on_inpulse_in()
-			self.position
 		1:
 			on_inhib_in()
 		2:
