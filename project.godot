@@ -25,5 +25,6 @@ window/size/borderless=true
 folder_colors={
 "res://Assets/": "red",
 "res://Neuron/": "teal",
+"res://PaceMaker/": "yellow",
 "res://UI/": "blue"
 }
