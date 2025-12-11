@@ -2,6 +2,7 @@ extends Control
 
 var neuron = load("res://Neuron/neuron.tscn")
 var pacemaker = load("res://PaceMaker/PaceMaker.tscn")
+var input = load("res://Input/Input.tscn")
 
 func _on_button_pressed() -> void:
 	var n = neuron.instantiate()
@@ -18,4 +19,7 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
-	pass # Replace with function body.
+	var i = input.instantiate()
+	i.position_offset = position
+	get_parent().add_child(i)
+	get_parent().close_menu_after_inst()

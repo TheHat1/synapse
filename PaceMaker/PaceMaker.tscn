@@ -1,20 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcgeffgltkwwg"]
+[gd_scene load_steps=6 format=3 uid="uid://bcgeffgltkwwg"]
 
 [ext_resource type="Script" uid="uid://bh4al3hnxc030" path="res://PaceMaker/pace_maker.gd" id="1_uimxc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gioh7"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+border_color = Color(0.11119679, 0.11119687, 0.11119684, 1)
+border_blend = true
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.029506557, 0.029506557, 0.029506557, 0.6)
+shadow_offset = Vector2(5, -5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m2cd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.03137255, 0.03137255, 0.03137255, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rb5x"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.32156864, 0.32156864, 0.32156864, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiuso"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.48717004, 0.18570665, 0.14442256, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
 [node name="PaceMaker" type="GraphNode"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -77.5
-offset_right = 108.0
-offset_bottom = 77.5
-grow_horizontal = 2
-grow_vertical = 2
-title = "Pacemaker"
+offset_right = 285.0
+offset_bottom = 162.0
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_gioh7")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_5m2cd")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_6rb5x")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
+title = "Neuron"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
