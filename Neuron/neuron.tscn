@@ -156,3 +156,10 @@ offset_top = 13.0
 offset_right = 83.0
 offset_bottom = 36.0
 text = "Excitatory "
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 2
+rounded = true

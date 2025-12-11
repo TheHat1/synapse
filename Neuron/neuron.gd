@@ -2,7 +2,12 @@ extends GraphNode
 
 var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
-var temp = 100
+
+var buffer_size = 10.0
+var drain = 0.5
+var buffer= 0.0
+var drain_on_inhib = 1.0
+var add_on_extc = 1.0
 
 func _ready():
 	set_slot(0, true, 0, Color.DARK_GOLDENROD, true, 0, Color.DARK_GOLDENROD)
@@ -23,21 +28,24 @@ func execute_input(port: int):
 		_:
 			print("Unhandled port: ", port)
 
-func _process(_delta):
-	temp += 1
-	if(temp == 101):
-		fire_output(1)
-		temp = 0
-
 func on_inpulse_in():
 	fire_output(0)
-	$HBoxContainer/Control/Sprite2D.texture = led_on
-	$HBoxContainer/Control/AudioStreamPlayer2D.play()
-	await $HBoxContainer/Control/AudioStreamPlayer2D.finished
-	$HBoxContainer/Control/Sprite2D.texture = led_off
+	if buffer >= buffer_size:
+		print(buffer)
+		buffer = 0.0
+		fire_output(1)
+		$HBoxContainer/Control/Sprite2D.texture = led_on
+		$HBoxContainer/Control/AudioStreamPlayer2D.play()
+		await $HBoxContainer/Control/AudioStreamPlayer2D.finished
+		$HBoxContainer/Control/Sprite2D.texture = led_off
+	buffer += 1.5 #in need of input slot for now temp
+	buffer -= drain
 
 func on_inhib_in():
-	pass
+	buffer -= drain_on_inhib
 
 func on_exc_in():
-	pass
+	buffer += add_on_extc
+
+func _process(_delta) -> void:
+	$HBoxContainer3/ProgressBar.value = buffer / buffer_size * 100
