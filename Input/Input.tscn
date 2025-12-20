@@ -51,7 +51,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gioh7")
 theme_override_styles/panel_selected = SubResource("StyleBoxFlat_5m2cd")
 theme_override_styles/titlebar = SubResource("StyleBoxFlat_6rb5x")
 theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
-title = "Neuron"
+title = "Input"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
@@ -74,7 +74,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "1"
+text = "0"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
@@ -87,8 +87,8 @@ layout_mode = 2
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "1"
-placeholder_text = "1"
+text = "0"
+placeholder_text = "0"
 alignment = 2
 max_length = 4
 emoji_menu_enabled = false
@@ -125,13 +125,13 @@ layout_mode = 2
 [node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 0.1
 step = 0.1
 value = 0.1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "    Fluctuation"
+text = "     Increment"
 
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/LineEdit2" to="." method="_on_line_edit_2_text_submitted"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
