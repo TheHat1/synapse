@@ -136,6 +136,9 @@ texture = ExtResource("2_6rb5x")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HBoxContainer/Control"]
 position = Vector2(75, 27)
 stream = ExtResource("3_fiuso")
+max_distance = 1831.0
+attenuation = 1.3660405
+max_polyphony = 2
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 50)

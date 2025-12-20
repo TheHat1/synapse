@@ -14,7 +14,7 @@ var capacitance = 1.0
 var decay = 0.0
 
 func _ready():
-	set_slot(0, true, 2, Color.DARK_GOLDENROD, true, 2, Color.DARK_GOLDENROD)
+	set_slot(0, true, 2, Color.DARK_GOLDENROD, false, 2, Color.DARK_GOLDENROD)
 	set_slot(1, true, 0, Color.FIREBRICK, true, 0, Color.BLUE_VIOLET)
 	set_slot(2, true, 0, Color.FOREST_GREEN, false, 0, Color.FIREBRICK)
 	set_slot(3, true, 1, Color.DARK_CYAN, false, 0, Color.FIREBRICK)
@@ -34,14 +34,11 @@ func execute_input(port: int):
 			print("Unhandled port: ", port)
 
 func on_inpulse_in():
-	fire_output(0)
 	buffer *= decay
 	buffer += (input / capacitance) * (drain_resistor * capacitance) * (1 - decay)
 	if buffer >= treshold:
 		buffer = 0.0
-		print(elapsed)
-		elapsed = 0.0
-		fire_output(1)
+		fire_output(0)
 		$HBoxContainer/Control/Sprite2D.texture = led_on
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()
 		await $HBoxContainer/Control/AudioStreamPlayer2D.finished
@@ -62,13 +59,17 @@ func on_exc_in():
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()
 		await $HBoxContainer/Control/AudioStreamPlayer2D.finished
 		$HBoxContainer/Control/Sprite2D.texture = led_off
-var elapsed = 0.0
-func _process(delta) -> void:
+
+func _process(_delta) -> void:
 	$HBoxContainer4/ProgressBar.value = buffer / treshold * 100
-	elapsed += delta
 
 func _on_value_changed(value):
 	input = value
 
 func _on_deltaT_changed(value):
 		decay = exp(-value/(drain_resistor * capacitance))
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			get_parent().get_parent().get_node("MainMenu").get_ref(self)
