@@ -8,13 +8,13 @@ var input_deleted = 1
 var ref = null
 var ref_title: String
 var ref_capacitance: String
-var ref_treshold: String
+var ref_threshold: String
 var ref_drain: String
 var ref_input: String
 
 func _process(_delta) -> void:
-	$ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
-	$ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
 
 func _on_h_slider_value_changed(value: float) -> void:
 	var db = linear_to_db(value)
@@ -25,40 +25,41 @@ func _on_button_pressed() -> void:
 
 func get_ref(r):
 	ref = r
-	$ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = r.title
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = r.title
+	$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
 	ref_title = r.title
-	$ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(r.capacitance)
+	$VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(r.capacitance)
 	ref_capacitance = str(r.capacitance)
-	$ScrollContainer/VBoxContainer/Treshold/HBoxContainer/LineEdit.text = str(r.treshold)
-	ref_treshold = str(r.treshold)
-	$ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(r.drain_resistor)
+	$VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer/LineEdit.text = str(r.threshold)
+	ref_threshold = str(r.threshold)
+	$VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(r.drain_resistor)
 	ref_drain = str(r.drain_resistor)
-	$ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(r.input)
+	$VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(r.input)
 	ref_input = str(r.input)
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if ref != null and new_text.to_float() > 0:
 		ref.capacitance = new_text.to_float()
-		$ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(ref.capacitance)
+		$VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(ref.capacitance)
 
 func _on_line_edit_text_submitted_treshold(new_text: String) -> void:
 	if ref != null and new_text.to_float() > 0:
-		ref.treshold = new_text.to_float()
-		$ScrollContainer/VBoxContainer/Treshold/HBoxContainer/LineEdit.text = str(ref.treshold)
+		ref.threshold = new_text.to_float()
+		$VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer/LineEdit.text = str(ref.threshold)
 
 func _on_line_edit_text_submitted_drain(new_text: String) -> void:
 	if ref != null:
 		ref.drain_resistor = new_text.to_float()
-		$ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(ref.drain_resistor)
+		$VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(ref.drain_resistor)
 
 func _on_line_edit_text_submitted_input(new_text: String) -> void:
 	if ref != null and new_text.to_float() > 0:
 		ref.input = new_text.to_float()
-		$ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(ref.input)
+		$VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(ref.input)
 
 func _on_line_edit_text_submitted_title(new_text: String) -> void:
 	if ref != null and !new_text.strip_edges().is_empty():
 		ref.title = new_text.strip_edges()
-		$ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = ref.title
+		$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = ref.title
 	else:
-		$ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
+		$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""

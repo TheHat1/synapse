@@ -92,5 +92,33 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
 text = "Add input"
 alignment = 0
 
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Add weight"
+alignment = 0
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Add rate detector"
+alignment = 0
+
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]

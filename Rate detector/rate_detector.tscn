@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdfvhlkwhufvl"]
+
+[ext_resource type="Script" uid="uid://2x6c2gmhb7oj" path="res://Rate detector/rate_detector.gd" id="1_sb65t"]
+[ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_m83os"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gioh7"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+border_color = Color(0.11119679, 0.11119687, 0.11119684, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.029506557, 0.029506557, 0.029506557, 0.6)
+shadow_offset = Vector2(5, -5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m2cd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.03137255, 0.03137255, 0.03137255, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rb5x"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.32156864, 0.32156864, 0.32156864, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiuso"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[node name="RateDetector" type="GraphNode"]
+offset_right = 446.0
+offset_bottom = 215.0
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_gioh7")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_5m2cd")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_6rb5x")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
+title = "Rate detector"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_sb65t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 85.0
+offset_bottom = 36.0
+text = "Inpulse in"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "1"
+placeholder_text = "1"
+alignment = 1
+max_length = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Hz"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fire rate threshold"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Control"]
+position = Vector2(41, 84)
+texture = ExtResource("2_m83os")
+
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7jkp85b2dbkg"]
+
+[ext_resource type="Script" uid="uid://bc2h18aykrcyo" path="res://Synaptic-weight/synaptic_weight.gd" id="1_wsprb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lrug"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhd2a"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsprb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiuso"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[node name="SynapticWeight" type="GraphNode"]
+offset_right = 88.0
+offset_bottom = 111.0
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lrug")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_jhd2a")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_wsprb")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_wsprb")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+text = "1"
+placeholder_text = "1"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="Control" type="Label" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 10
+text = "Input"
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
