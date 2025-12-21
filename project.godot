@@ -26,6 +26,5 @@ folder_colors={
 "res://Assets/": "red",
 "res://Input/": "purple",
 "res://Neuron/": "teal",
-"res://PaceMaker/": "yellow",
 "res://UI/": "blue"
 }

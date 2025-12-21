@@ -21,3 +21,8 @@ func _on_h_slider_value_changed(value: float) -> void:
 	input_value = $VBoxContainer/HBoxContainer2/HSlider.value * (maxI - minI) / 100
 	emit_signal("value_changed",input_value)
 	$VBoxContainer/HBoxContainer/Label.text = String.num(input_value,2)
+
+func _input(event):
+	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
+		get_parent().get_parent().get_node("MainMenu").input_deleted += 1
+		queue_free()

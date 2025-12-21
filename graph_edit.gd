@@ -33,8 +33,6 @@ func close_menu_after_inst():
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	if $".".get_node(NodePath(from_node)).get_output_port_type(from_port) == 1:
 		$".".get_node(NodePath(from_node)).value_changed.connect($".".get_node(NodePath(to_node))._on_value_changed)
-	if $".".get_node(NodePath(from_node)).get_output_port_type(from_port) == 2:
-		$".".get_node(NodePath(from_node)).deltaT_changed.connect($".".get_node(NodePath(to_node))._on_deltaT_changed)
 	connect_node(from_node, from_port, to_node, to_port)
 
 func _on_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
@@ -47,4 +45,4 @@ func trigger_from(from_node: StringName, from_port: int):
 		if connection.from_node == from_node and connection.from_port == from_port:
 			var target := get_node(NodePath(connection.to_node))
 			if target.has_method("execute_input"):
-				target.execute_input(connection.to_port)
+				target.execute_input(connection.to_port, 1.0)

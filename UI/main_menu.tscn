@@ -74,6 +74,7 @@ custom_minimum_size = Vector2(500, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 500.0
+offset_bottom = 221.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p8ccj")
 script = ExtResource("1_p8ccj")
@@ -223,23 +224,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Pacemakers"
-
-[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "0"
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -282,6 +266,31 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Not selected"
+
+[node name="Title" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Title"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Title"
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Capacitance" type="Panel" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -399,6 +408,28 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "mA"
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Last spike:"
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Null"
+
 [connection signal="pressed" from="Panel2/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/Panel/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_title"]
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Treshold/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_treshold"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_drain"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_input"]
