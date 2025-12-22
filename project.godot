@@ -26,6 +26,7 @@ folder_colors={
 "res://Assets/": "red",
 "res://Input/": "purple",
 "res://Neuron/": "teal",
+"res://Production build/": "gray",
 "res://Rate detector/": "yellow",
 "res://Synaptic-weight/": "orange",
 "res://UI/": "blue"

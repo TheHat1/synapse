@@ -3,20 +3,14 @@
 [ext_resource type="Script" uid="uid://2x6c2gmhb7oj" path="res://Rate detector/rate_detector.gd" id="1_sb65t"]
 [ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_m83os"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gioh7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb65t"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
-border_color = Color(0.11119679, 0.11119687, 0.11119684, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0.029506557, 0.029506557, 0.029506557, 0.6)
-shadow_offset = Vector2(5, -5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m2cd"]
 content_margin_left = 10.0
@@ -44,7 +38,7 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0)
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0.9764706)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
@@ -53,7 +47,7 @@ offset_right = 446.0
 offset_bottom = 215.0
 mouse_default_cursor_shape = 2
 theme_override_constants/separation = 6
-theme_override_styles/panel = SubResource("StyleBoxFlat_gioh7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sb65t")
 theme_override_styles/panel_selected = SubResource("StyleBoxFlat_5m2cd")
 theme_override_styles/titlebar = SubResource("StyleBoxFlat_6rb5x")
 theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")

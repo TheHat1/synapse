@@ -25,3 +25,8 @@ func _process(delta):
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	target_hz = new_text.to_float()
+
+func _input(event):
+	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
+		get_parent().get_parent().get_node("MainMenu").rate_detector_deleted += 1
+		queue_free()

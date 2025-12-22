@@ -25,10 +25,13 @@ func _on_button_3_pressed() -> void:
 	var w = synaptic_weight.instantiate()
 	w.position_offset = position
 	get_parent().add_child(w)
+	get_parent().get_parent().get_node("MainMenu").weight_count += 1
 	get_parent().close_menu_after_inst()
 
 func _on_button_4_pressed() -> void:
 	var rd = rate_detector.instantiate()
 	rd.position_offset = position
+	rd.title += " " + str(get_parent().get_parent().get_node("MainMenu").rate_detector_count)
 	get_parent().add_child(rd)
+	get_parent().get_parent().get_node("MainMenu").rate_detector_count += 1
 	get_parent().close_menu_after_inst()

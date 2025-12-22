@@ -116,19 +116,6 @@ max_distance = 1831.0
 attenuation = 1.3660405
 max_polyphony = 2
 
-[node name="Panel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/Panel"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 13.0
-offset_right = 83.0
-offset_bottom = 36.0
-text = "Output"
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 layout_mode = 2
 
@@ -144,6 +131,23 @@ offset_top = 13.0
 offset_right = 83.0
 offset_bottom = 36.0
 text = "Excitatory "
+
+[node name="Control" type="VBoxContainer" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer3/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 83.0
+offset_bottom = 36.0
+text = "Output"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="."]
 layout_mode = 2

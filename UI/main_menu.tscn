@@ -242,6 +242,40 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Weights"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Rate detectors"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
 [node name="Panel5" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -318,6 +352,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "mF"
@@ -347,9 +382,10 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "V   "
+text = "V"
 
 [node name="Drain" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -376,9 +412,10 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Ω   "
+text = "Ω"
 
 [node name="Input" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -405,6 +442,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "mA"

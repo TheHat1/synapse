@@ -62,7 +62,7 @@ func _process(delta):
 		buffer *= decay
 		buffer += (I_total + I_exct_total - I_inhib_total) * (drain_resistor * capacitance) * (1 - decay)
 	if buffer >= threshold:
-		buffer = 0.0
+		buffer -= threshold
 		fire_output(0, 0.0)
 		$HBoxContainer/Control/Sprite2D.texture = led_on
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()

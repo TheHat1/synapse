@@ -2,8 +2,12 @@ extends Panel
 
 var neuron_count = 1
 var input_count = 1
+var weight_count = 1
+var rate_detector_count = 1
 var neuron_deleted = 1
 var input_deleted = 1
+var weight_deleted = 1
+var rate_detector_deleted = 1
 
 var ref = null
 var ref_title: String
@@ -15,6 +19,8 @@ var ref_input: String
 func _process(_delta) -> void:
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5/Label2.text = str(weight_count - weight_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/Label2.text = str(rate_detector_count - rate_detector_deleted)
 
 func _on_h_slider_value_changed(value: float) -> void:
 	var db = linear_to_db(value)
@@ -53,7 +59,7 @@ func _on_line_edit_text_submitted_drain(new_text: String) -> void:
 		$VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(ref.drain_resistor)
 
 func _on_line_edit_text_submitted_input(new_text: String) -> void:
-	if ref != null and new_text.to_float() > 0:
+	if ref != null and new_text.to_float() >= 0:
 		ref.input = new_text.to_float()
 		$VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(ref.input)
 
