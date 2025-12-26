@@ -2,6 +2,7 @@ extends GraphNode
 
 var I_main = 0.0
 @onready var weight = $LineEdit.text.to_float()
+@export var type: String = "SynapticWeight"
 
 func _ready():
 	set_slot(0, true, 2, Color.BLUE_VIOLET, true, 0, Color.GOLDENROD)
@@ -20,5 +21,5 @@ func _on_value_changed(value):
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_node("MainMenu").weight_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").weight_deleted += 1
 		queue_free()

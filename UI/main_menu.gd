@@ -16,6 +16,13 @@ var ref_threshold: String
 var ref_drain: String
 var ref_input: String
 
+var neuron = preload("res://Neuron/neuron.tscn")
+var input = preload("res://Input/Input.tscn")
+var synaptic_weight = preload("res://Synaptic-weight/synaptic-weight.tscn")
+var rate_detector = preload("res://Rate detector/rate_detector.tscn")
+
+var config = ConfigFile.new()
+
 func _process(_delta) -> void:
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
@@ -69,3 +76,72 @@ func _on_line_edit_text_submitted_title(new_text: String) -> void:
 		$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = ref.title
 	else:
 		$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
+
+func _on_save_button_pressed() -> void:
+	$SaveFileDialog.filters = ["*.json ; Graph files"]
+	config.load("res://user_config.cfg")
+	$SaveFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
+	$SaveFileDialog.current_file = "graph_"+ str(config.get_value("files", "files_saved",  "0")) + ".json"
+	$SaveFileDialog.popup_centered()
+
+func _on_save_file_dialog_file_selected(path: String) -> void:
+	serialize_and_export_graph(path)
+	config.set_value("files", "last_saved_to_dir", path.get_base_dir() + "/")
+	config.set_value("files", "files_saved", config.get_value("files", "files_saved") + 1)
+
+func serialize_and_export_graph(path: String):
+	var data := {"nodes": [], "connections": get_parent().get_node("GraphWrapper").get_child(0).get_connection_list()}
+	
+	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
+		if child is GraphNode:
+			data.nodes.append({"title": child.title, "position": child.position_offset, "type": child.type})
+	
+	var json := JSON.stringify(data)
+	
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		push_error("Failed to save file")
+		return
+	
+	file.store_string(json)
+	file.close()
+
+func _on_load_file_dialog_file_selected(path: String) -> void:
+	load_graph_from_file(path)
+
+func _on_load_button_pressed() -> void:
+	$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
+	$LoadFileDialog.popup_centered()
+
+func load_graph_from_file(path: String):
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		push_error("Failed to open file")
+		return
+	
+	var json_text := file.get_as_text()
+	file.close()
+	
+	var json = JSON.new()
+	var _data := json.parse(json_text)
+	var data = json.get_data()
+	
+	for node_data in data.get("nodes", []):
+		var node
+		match (node_data["type"]):
+			"Neuron": node = neuron.instantiate()
+			"GraphNode": node = input.instantiate()
+			"SynapticWeight": node = synaptic_weight.instantiate()
+			"Input": node = input.instantiate()
+			"RateDetector": node = rate_detector.instantiate()
+			_: print("Opaaa   ", node_data)
+		
+		node.title = node_data["title"]
+		var p = node_data.position
+		p = p.replace("(", "").replace(")", "")
+		p = p.split(",") 
+		node.position_offset = Vector2(p[0].to_float(), p[1].to_float())
+		get_parent().get_node("GraphWrapper").get_child(0).add_child(node)
+	
+	for conn in data.get("connections", []):
+		get_parent().get_node("GraphWrapper").get_child(0).connect_node(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])

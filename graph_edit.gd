@@ -5,11 +5,9 @@ var isMenuOpen = false
 
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
-	var main_menu = load("res://UI/main_menu.tscn").instantiate()
-	get_parent().add_child.call_deferred(main_menu)
 
 func  _process(_delta: float) -> void:
-	$"../Label".text = "fps: " + str(Engine.get_frames_per_second())
+	$"../../MarginContainer/HBoxContainer/Label".text = "fps: " + str(Engine.get_frames_per_second())
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):

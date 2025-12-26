@@ -2,6 +2,7 @@ extends GraphNode
 
 var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
+@export var type: String = "RateDetector"
 
 var rate = 0.0
 var target_hz = 1.0

@@ -1,5 +1,7 @@
 extends GraphNode
 
+@export var type: String = "Input"
+
 var input_value = 0.0
 var minI = 0.0
 var maxI = 10.0
