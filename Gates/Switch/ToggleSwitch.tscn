@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlqrs8jra67ya"]
+
+[ext_resource type="Script" uid="uid://hekrdvgtro32" path="res://Gates/Switch/toggle_switch.gd" id="1_gjvva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lrug"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhd2a"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsprb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiuso"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjvva"]
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0.9764706)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqn8v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ToggleSwitch" type="GraphNode"]
+offset_right = 155.0
+offset_bottom = 90.0
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lrug")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_jhd2a")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_wsprb")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_gjvva")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gjvva")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uqn8v")
+toggle_mode = true
+text = "Toggle"
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

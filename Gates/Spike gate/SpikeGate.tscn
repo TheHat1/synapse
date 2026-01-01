@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://whi217pbg3fx"]
+
+[ext_resource type="Script" uid="uid://com6s5wjxkxik" path="res://Gates/Spike gate/spike-gate.gd" id="1_qlsct"]
+[ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_yxe73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lrug"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhd2a"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsprb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiuso"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4862745, 0.18431373, 0.14509805, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[node name="SpikeGate" type="GraphNode"]
+offset_right = 88.0
+offset_bottom = 111.0
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lrug")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_jhd2a")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_wsprb")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_fiuso")
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_qlsct")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control3"]
+position = Vector2(33, 4)
+scale = Vector2(0.33636364, 0.33636364)
+texture = ExtResource("2_yxe73")
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 43.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 13
+text = "Bool in"

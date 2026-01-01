@@ -24,6 +24,7 @@ window/size/borderless=true
 
 folder_colors={
 "res://Assets/": "red",
+"res://Gates/": "green",
 "res://Input/": "purple",
 "res://Neuron/": "teal",
 "res://Production build/": "gray",

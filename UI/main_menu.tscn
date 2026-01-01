@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ch5qa4sj66vf7"]
+[gd_scene load_steps=20 format=3 uid="uid://ch5qa4sj66vf7"]
 
 [ext_resource type="Script" uid="uid://vmaybmg4gidj" path="res://UI/main_menu.gd" id="1_p8ccj"]
 [ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="2_tk8dj"]
@@ -68,10 +68,16 @@ shadow_color = Color(0.19215687, 0.19215687, 0.19215687, 0.6)
 shadow_size = 3
 shadow_offset = Vector2(1.17, 0.69)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev3b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ctay"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 3
 border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0a0m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="InputEventKey" id="InputEventKey_d8nwk"]
 device = -1
@@ -82,6 +88,9 @@ keycode = 4194312
 [sub_resource type="Shortcut" id="Shortcut_4cwpn"]
 events = [SubResource("InputEventKey_d8nwk")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mudq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="InputEventKey" id="InputEventKey_4cwpn"]
 device = -1
 ctrl_pressed = true
@@ -89,6 +98,9 @@ keycode = 76
 
 [sub_resource type="Shortcut" id="Shortcut_f40uw"]
 events = [SubResource("InputEventKey_4cwpn")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cafmx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="InputEventKey" id="InputEventKey_8ctay"]
 device = -1
@@ -173,6 +185,7 @@ theme_override_constants/icon_max_width = 25
 theme_override_icons/icon = ExtResource("2_tk8dj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4cwpn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f40uw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ev3b6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -258,6 +271,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxFlat_k0a0m")
 shortcut = SubResource("Shortcut_4cwpn")
 text = "Clear"
 alignment = 0
@@ -291,6 +305,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxFlat_2mudq")
 shortcut = SubResource("Shortcut_f40uw")
 text = "File"
 icon = ExtResource("3_d8nwk")
@@ -325,6 +340,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxFlat_cafmx")
 shortcut = SubResource("Shortcut_ev3b6")
 text = "Save"
 alignment = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bograjn0m1dvn"]
+[gd_scene load_steps=6 format=3 uid="uid://bograjn0m1dvn"]
 
 [ext_resource type="Script" uid="uid://bvao2svf1ii12" path="res://UI/add_elements_menu.gd" id="1_fjwt4"]
 
@@ -7,7 +7,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0.646029, 0.64602906, 0.6460289, 1)
+bg_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -16,18 +16,24 @@ shadow_color = Color(0.18000486, 0.18000486, 0.18000486, 0.6)
 shadow_size = 3
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjwt4"]
+bg_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a42p7"]
 content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0.26657522, 0.2665752, 0.2665752, 0.6)
+bg_color = Color(0.2159017, 0.21590173, 0.21590161, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.19076231, 0.19076234, 0.19076231, 0.6)
 shadow_size = 3
-shadow_offset = Vector2(3, 3)
+shadow_offset = Vector2(0.5, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebqmt"]
 content_margin_left = 5.0
@@ -35,10 +41,10 @@ content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
 bg_color = Color(0.18359044, 0.18359047, 0.18359038, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="AddElementsMenu" type="Control"]
 layout_mode = 3
@@ -55,70 +61,176 @@ script = ExtResource("1_fjwt4")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 251.0
-offset_bottom = 332.0
+offset_bottom = 307.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_polyq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 10.0
-offset_right = 240.0
-offset_bottom = 318.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjwt4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Add element"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
-theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_color = Color(0.4467768, 0.446777, 0.44677794, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Add neuron"
+text = "Neuron"
 alignment = 0
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button2" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
-theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Add input"
+text = "Input"
 alignment = 0
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="Button3" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
-theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Weight"
+alignment = 0
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Rate detector"
+alignment = 0
+
+[node name="Button5" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Gates                                >"
+alignment = 0
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 254.0
+offset_top = 247.0
+offset_right = 505.0
+offset_bottom = 412.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_polyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SpikeGateButton" type="Button" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.4467768, 0.446777, 0.44677794, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Add weight"
+text = "Spike gate"
 alignment = 0
 
-[node name="Button4" type="Button" parent="Panel/VBoxContainer"]
+[node name="ToggleSwitchButton" type="Button" parent="Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
-theme_override_colors/font_hover_color = Color(0.13682568, 0.13682568, 0.1368261, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Add rate detector"
+text = "Toggle switch"
 alignment = 0
 
-[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[node name="Button3" type="Button" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Button
+"
+alignment = 0
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Panel2/MarginContainer/VBoxContainer/SpikeGateButton" to="." method="_on_spike_gate_button_pressed"]
+[connection signal="pressed" from="Panel2/MarginContainer/VBoxContainer/ToggleSwitchButton" to="." method="_on_toggle_switch_button_pressed"]
