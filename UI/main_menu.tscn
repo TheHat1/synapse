@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch5qa4sj66vf7"]
+[gd_scene load_steps=16 format=3 uid="uid://ch5qa4sj66vf7"]
 
 [ext_resource type="Script" uid="uid://vmaybmg4gidj" path="res://UI/main_menu.gd" id="1_p8ccj"]
 [ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="2_tk8dj"]
@@ -73,6 +73,31 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 3
 border_blend = true
 
+[sub_resource type="InputEventKey" id="InputEventKey_d8nwk"]
+device = -1
+shift_pressed = true
+ctrl_pressed = true
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_4cwpn"]
+events = [SubResource("InputEventKey_d8nwk")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4cwpn"]
+device = -1
+ctrl_pressed = true
+keycode = 76
+
+[sub_resource type="Shortcut" id="Shortcut_f40uw"]
+events = [SubResource("InputEventKey_4cwpn")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8ctay"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_ev3b6"]
+events = [SubResource("InputEventKey_8ctay")]
+
 [node name="MainMenu" type="Panel"]
 custom_minimum_size = Vector2(500, 0)
 anchors_preset = 9
@@ -105,28 +130,42 @@ offset_bottom = 50.0
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 
-[node name="Panel2" type="Panel" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel2"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 9.0
-offset_right = 484.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -15.5
+offset_right = 39.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Panel2/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Exit"
 
-[node name="Control" type="Control" parent="VBoxContainer/Panel2/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/Panel2/HBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -191,6 +230,39 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
+[node name="Panel7" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Clear graph"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClearButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 29
+theme_override_font_sizes/font_size = 17
+shortcut = SubResource("Shortcut_4cwpn")
+text = "Clear"
+alignment = 0
+icon_alignment = 2
+
 [node name="Panel2" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
@@ -219,6 +291,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_font_sizes/font_size = 17
+shortcut = SubResource("Shortcut_f40uw")
 text = "File"
 icon = ExtResource("3_d8nwk")
 alignment = 0
@@ -252,6 +325,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_font_sizes/font_size = 17
+shortcut = SubResource("Shortcut_ev3b6")
 text = "Save"
 alignment = 0
 icon_alignment = 2
@@ -525,8 +599,19 @@ oversampling_override = 1.0
 access = 2
 use_native_dialog = true
 
-[connection signal="pressed" from="VBoxContainer/Panel2/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="ConfirmLoadDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Load File"
+size = Vector2i(365, 106)
+unresizable = true
+unfocusable = true
+popup_wm_hint = true
+dialog_text = "Loading a file will discard your current graph.
+Do you want to continue?"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/Panel2/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/ScrollContainer/VBoxContainer/Panel/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer/ClearButton" to="." method="_on_clear_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="text_submitted" from="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_title"]
@@ -536,3 +621,4 @@ use_native_dialog = true
 [connection signal="text_submitted" from="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_input"]
 [connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
 [connection signal="file_selected" from="SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
+[connection signal="confirmed" from="ConfirmLoadDialog" to="." method="_on_confirm_load_dialog_confirmed"]

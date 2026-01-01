@@ -2,7 +2,7 @@ extends GraphNode
 
 var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
-@export var type: String = "Neuron"
+var type: String = "Neuron"
 
 var threshold = 1.0
 var drain_resistor = -1
@@ -23,6 +23,8 @@ func _ready():
 	
 	clamp(decay, 0.0, 0.999999)
 	clamp(buffer, 0, threshold)
+	
+	name = name.replace("@", "_")
 
 func fire_output(port: int, weight: float):
 	get_parent().trigger_from(name, port, weight)

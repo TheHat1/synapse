@@ -90,13 +90,51 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 	config.set_value("files", "files_saved", config.get_value("files", "files_saved") + 1)
 
 func serialize_and_export_graph(path: String):
-	var data := {"nodes": [], "connections": get_parent().get_node("GraphWrapper").get_child(0).get_connection_list()}
+	var data := {
+		"nodes": [], 
+		"connections": get_parent().get_node("GraphWrapper").get_child(0).get_connection_list()
+		}
 	
 	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
 		if child is GraphNode:
-			data.nodes.append({"title": child.title, "position": child.position_offset, "type": child.type})
-	
-	var json := JSON.stringify(data)
+			match (child.type):
+				"Neuron": 
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"capacitance": child.capacitance,
+						"threshold": child.threshold,
+						"drain_resistor": child.drain_resistor
+					})
+				"SynapticWeight": 
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"weight": child.weight
+					})
+				"Input": 
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"minI": child.minI,
+						"maxI": child.maxI
+					})
+				"RateDetector": 
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"target_hz": child.target_hz
+					})
+				_: print("Opaaa   ", child)
+	var json := JSON.stringify(data, '\n')
 	
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -110,8 +148,7 @@ func _on_load_file_dialog_file_selected(path: String) -> void:
 	load_graph_from_file(path)
 
 func _on_load_button_pressed() -> void:
-	$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
-	$LoadFileDialog.popup_centered()
+	$ConfirmLoadDialog.popup_centered()
 
 func load_graph_from_file(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -129,19 +166,74 @@ func load_graph_from_file(path: String):
 	for node_data in data.get("nodes", []):
 		var node
 		match (node_data["type"]):
-			"Neuron": node = neuron.instantiate()
-			"GraphNode": node = input.instantiate()
-			"SynapticWeight": node = synaptic_weight.instantiate()
-			"Input": node = input.instantiate()
-			"RateDetector": node = rate_detector.instantiate()
+			"Neuron": 
+				node = neuron.instantiate()
+				node.capacitance = node_data["capacitance"]
+				node.threshold = node_data["threshold"]
+				node.drain_resistor = node_data["drain_resistor"]
+				neuron_count +=1
+			"SynapticWeight": 
+				node = synaptic_weight.instantiate()
+				node.weight = node_data["weight"]
+				weight_count += 1
+			"Input": 
+				node = input.instantiate()
+				node.minI = node_data["minI"]
+				node.maxI = node_data["maxI"]
+				input_count += 1
+			"RateDetector": 
+				node = rate_detector.instantiate()
+				node.target_hz = node_data["target_hz"]
+				rate_detector_count += 1
 			_: print("Opaaa   ", node_data)
 		
+		node.name = node_data["name"]
 		node.title = node_data["title"]
+		
 		var p = node_data.position
 		p = p.replace("(", "").replace(")", "")
 		p = p.split(",") 
+		
 		node.position_offset = Vector2(p[0].to_float(), p[1].to_float())
+		
 		get_parent().get_node("GraphWrapper").get_child(0).add_child(node)
 	
 	for conn in data.get("connections", []):
 		get_parent().get_node("GraphWrapper").get_child(0).connect_node(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
+
+func _on_confirm_load_dialog_confirmed() -> void:
+	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()
+	
+	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
+		if child is GraphNode:
+			child.queue_free()
+	
+	neuron_count = 1
+	input_count = 1
+	rate_detector_count = 1
+	weight_count = 1
+	
+	neuron_deleted = 1
+	input_deleted = 1
+	rate_detector_deleted = 1
+	weight_deleted = 1
+	
+	$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
+	$LoadFileDialog.popup_centered()
+
+func _on_clear_button_pressed() -> void:
+	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()
+	
+	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
+		if child is GraphNode:
+			child.queue_free()
+	
+	neuron_count = 1
+	input_count = 1
+	rate_detector_count = 1
+	weight_count = 1
+	
+	neuron_deleted = 1
+	input_deleted = 1
+	rate_detector_deleted = 1
+	weight_deleted = 1

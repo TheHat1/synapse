@@ -2,12 +2,15 @@ extends GraphNode
 
 var I_main = 0.0
 @onready var weight = $LineEdit.text.to_float()
-@export var type: String = "SynapticWeight"
+var type: String = "SynapticWeight"
 
 func _ready():
 	set_slot(0, true, 2, Color.BLUE_VIOLET, true, 0, Color.GOLDENROD)
 	set_slot(1, true, 1, Color.DARK_CYAN, false, 0, Color.GOLDENROD)
+	
 	clamp(weight, 0, 1)
+	
+	name = name.replace("@", "_")
 
 func execute_input(port: int, _weight: float):
 	if port == 0:

@@ -2,7 +2,7 @@ extends GraphNode
 
 var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
-@export var type: String = "RateDetector"
+var type: String = "RateDetector"
 
 var rate = 0.0
 var target_hz = 1.0
@@ -10,6 +10,8 @@ var output_on = false
 
 func _ready():
 	set_slot(0, true, 2, Color.BLUE_VIOLET, false, 0, Color.GOLDENROD)
+	
+	name = name.replace("@", "_")
 
 func execute_input(port: int, _weight: float):
 	if port == 0:
@@ -29,5 +31,5 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_node("MainMenu").rate_detector_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").rate_detector_deleted += 1
 		queue_free()
