@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://4pqund3nukl7"]
+[gd_scene load_steps=9 format=3 uid="uid://4pqund3nukl7"]
 
 [ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dkh1h3r4kcftg" path="res://main.gd" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://bgufflynit8i7" path="res://UI/DatasetPanel.tscn" id="3_fos0i"]
 [ext_resource type="Texture2D" uid="uid://d2g5tb6hlt3kj" path="res://Assets/setting.png" id="3_r0du0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0du0"]
@@ -58,6 +59,11 @@ show_grid_buttons = false
 show_arrange_button = false
 script = ExtResource("1_glv2v")
 
+[node name="DatasetPanel" parent="GraphWrapper" instance=ExtResource("3_fos0i")]
+layout_mode = 1
+offset_right = -125.0
+offset_bottom = 611.0
+
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
@@ -93,11 +99,22 @@ layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+[node name="GraphButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
 text = "Graph"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="DatasetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
+text = "Dataset"
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -115,4 +132,6 @@ stretch_mode = 5
 
 [connection signal="connection_request" from="GraphWrapper/GraphEdit" to="GraphWrapper/GraphEdit" method="_on_connection_request"]
 [connection signal="disconnection_request" from="GraphWrapper/GraphEdit" to="GraphWrapper/GraphEdit" method="_on_disconnection_request"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer/GraphButton" to="." method="_on_graph_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/DatasetButton" to="." method="_on_dataset_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

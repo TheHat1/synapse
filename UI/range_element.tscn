@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4r7lgiro2h56"]
+
+[ext_resource type="Script" uid="uid://d3s6v8epqw7uf" path="res://UI/range_element.gd" id="1_5yrcg"]
+[ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="2_tps81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvr58"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_me35n"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.28235295, 0.28235295, 0.28235295, 0.90588236)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.19076231, 0.19076234, 0.19076225, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1.17, 0.69)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1g5p"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.47843137, 0.18431373, 0.14509805, 0.90588236)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.19215687, 0.19215687, 0.19215687, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1.17, 0.69)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbi4l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Range" type="Panel"]
+custom_minimum_size = Vector2(0, 55)
+offset_right = 619.0
+offset_bottom = 55.0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+script = ExtResource("1_5yrcg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Range "
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Min: "
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "0"
+placeholder_text = "0"
+caret_blink = true
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Max: "
+
+[node name="TextEdit2" type="TextEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "10"
+placeholder_text = "10"
+caret_blink = true
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 25
+theme_override_icons/icon = ExtResource("2_tps81")
+theme_override_styles/normal = SubResource("StyleBoxFlat_me35n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r1g5p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lbi4l")
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

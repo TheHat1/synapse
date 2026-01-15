@@ -1,0 +1,263 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgufflynit8i7"]
+
+[ext_resource type="Script" uid="uid://by08gaj4vrn62" path="res://UI/dataset_panel.gd" id="1_cxifj"]
+[ext_resource type="PackedScene" uid="uid://b4r7lgiro2h56" path="res://UI/range_element.tscn" id="2_pfyhj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfyhj"]
+bg_color = Color(0.16924527, 0.1692453, 0.16924521, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxifj"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k3ys"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvr58"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45th3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="InputEventKey" id="InputEventKey_d8nwk"]
+device = -1
+shift_pressed = true
+ctrl_pressed = true
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_4k3ys"]
+events = [SubResource("InputEventKey_d8nwk")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wadu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29219002, 0.29219005, 0.29218993, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufqdb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb7q5"]
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.099985994, 0.099985994, 0.099985994, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1.63, 1.93)
+
+[node name="DatasetPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cxifj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfyhj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="OptionsBox" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(270, 55)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxifj")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 3.0
+offset_right = 245.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 33
+text = "Dataset creation"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Input ranges" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Input ranges"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 440.0
+offset_bottom = 46.0
+theme_override_constants/separation = 139
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Input ranges/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Input ranges"
+
+[node name="DataNorm" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/DataNorm"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Data normalization"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DataNormButton" type="CheckButton" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 29
+theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
+shortcut = SubResource("Shortcut_4k3ys")
+icon_alignment = 2
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Ranges" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+layout_mode = 2
+
+[node name="Range" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Ranges" instance=ExtResource("2_pfyhj")]
+layout_mode = 2
+
+[node name="AddRange" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/AddRange"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
+text = "+"
+
+[node name="line" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
+
+[node name="Generate" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Generate"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
+text = "Generate"
+
+[node name="Panel2" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mb7q5")
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer/Button" to="." method="_on_button_pressed"]
