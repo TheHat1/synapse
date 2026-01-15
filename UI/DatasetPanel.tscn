@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgufflynit8i7"]
+[gd_scene load_steps=14 format=3 uid="uid://bgufflynit8i7"]
 
 [ext_resource type="Script" uid="uid://by08gaj4vrn62" path="res://UI/dataset_panel.gd" id="1_cxifj"]
 [ext_resource type="PackedScene" uid="uid://b4r7lgiro2h56" path="res://UI/range_element.tscn" id="2_pfyhj"]
@@ -11,7 +11,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 0.0
-bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+bg_color = Color(0.3529412, 0.13725491, 0.32156864, 1)
 border_width_right = 3
 border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
 border_blend = true
@@ -69,6 +69,22 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufqdb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyq0f"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3529412, 0.13725491, 0.32156864, 1)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb7q5"]
 corner_radius_top_left = 3
@@ -258,7 +274,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyq0f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate"]
 layout_mode = 0

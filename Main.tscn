@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4pqund3nukl7"]
+[gd_scene load_steps=13 format=3 uid="uid://4pqund3nukl7"]
 
 [ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dkh1h3r4kcftg" path="res://main.gd" id="1_uu6xs"]
@@ -21,6 +21,34 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgr22"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
+content_margin_left = 25.0
+content_margin_top = 5.0
+content_margin_right = 25.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3525325, 0.13710275, 0.32301584, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dxm6"]
+content_margin_left = 25.0
+content_margin_top = 5.0
+content_margin_right = 25.0
+content_margin_bottom = 5.0
+bg_color = Color(0.54100114, 0.23421839, 0.4956501, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trn2v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="InputEventKey" id="InputEventKey_cm0pq"]
 keycode = 4194305
@@ -105,6 +133,7 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 text = "Graph"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
@@ -117,7 +146,9 @@ custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fos0i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3dxm6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_trn2v")
 text = "Dataset"
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer"]

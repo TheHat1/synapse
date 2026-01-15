@@ -15,6 +15,8 @@ var decay = 0.0
 var drain_resistor_old = -1
 var delta_old = 0.0
 var capacitance_old = 0.0
+var elapsed = 0.0
+var is_led_on = false
 
 func _ready():
 	set_slot(0, true, 0, Color.FIREBRICK, false, 0, Color.BLUE_VIOLET)
@@ -45,6 +47,13 @@ func on_exc_in(weight):
 	I_exct_total += weight
 
 func _process(delta):
+	if is_led_on:
+		elapsed += delta
+		if elapsed >= 0.1:
+			is_led_on = false
+			$HBoxContainer/Control/Sprite2D.texture = led_off
+			elapsed = 0.0
+	
 	$HBoxContainer4/ProgressBar.value = buffer / threshold * 100
 	
 	if buffer < 0:
@@ -77,8 +86,8 @@ func _process(delta):
 		buffer -= threshold
 		fire_output(0, 0.0)
 		$HBoxContainer/Control/Sprite2D.texture = led_on
+		is_led_on = true
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()
-		$HBoxContainer/Control/Sprite2D.texture = led_off
 	
 	I_exct_total = 0.0
 	I_inhib_total = 0.0

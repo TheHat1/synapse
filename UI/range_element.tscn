@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://d3s6v8epqw7uf" path="res://UI/range_element.gd" id="1_5yrcg"]
 [ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="2_tps81"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvr58"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yrcg"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 0.0
-bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+bg_color = Color(0.50534433, 0.505344, 0.5053441, 0.5058824)
 border_width_right = 3
 border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
 border_blend = true
@@ -55,7 +55,7 @@ custom_minimum_size = Vector2(0, 55)
 offset_right = 619.0
 offset_bottom = 55.0
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5yrcg")
 script = ExtResource("1_5yrcg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -64,6 +64,7 @@ offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
+theme_override_constants/separation = 7
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -106,6 +107,11 @@ caret_blink = true
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -118,4 +124,5 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_lbi4l")
 
 [connection signal="text_submitted" from="HBoxContainer/min" to="." method="_on_min_text_submitted"]
 [connection signal="text_submitted" from="HBoxContainer/max" to="." method="_on_max_text_submitted"]
+[connection signal="color_changed" from="HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
