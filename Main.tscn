@@ -100,8 +100,10 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
 [node name="GraphButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
 text = "Graph"
 
@@ -111,8 +113,10 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
 [node name="DatasetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
 text = "Dataset"
 

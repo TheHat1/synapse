@@ -79,11 +79,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Min: "
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+[node name="min" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "0"
 placeholder_text = "0"
+alignment = 1
+virtual_keyboard_type = 2
 caret_blink = true
 
 [node name="Label3" type="Label" parent="HBoxContainer"]
@@ -91,11 +93,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Max: "
 
-[node name="TextEdit2" type="TextEdit" parent="HBoxContainer"]
+[node name="max" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "10"
 placeholder_text = "10"
+alignment = 1
+virtual_keyboard_type = 2
 caret_blink = true
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
@@ -112,4 +116,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_me35n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r1g5p")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lbi4l")
 
+[connection signal="text_submitted" from="HBoxContainer/min" to="." method="_on_min_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/max" to="." method="_on_max_text_submitted"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

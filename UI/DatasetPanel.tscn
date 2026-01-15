@@ -185,6 +185,38 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
 shortcut = SubResource("Shortcut_4k3ys")
 icon_alignment = 2
 
+[node name="SplitN" type="Panel" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/SplitN"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Split step"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DataNormButton" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
+text = "10"
+placeholder_text = "10"
+alignment = 1
+virtual_keyboard_type = 2
+caret_blink = true
+
 [node name="Control2" type="Control" parent="Panel/MarginContainer/HBoxContainer/OptionsBox"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -244,7 +276,8 @@ text = "Generate"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+[node name="GenerateButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
@@ -261,3 +294,4 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer/GenerateButton" to="." method="_on_generate_button_pressed"]
