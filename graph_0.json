@@ -1,0 +1,2382 @@
+{
+
+"connections": [
+
+
+{
+
+
+
+"from_node": "Neuron",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "SynapticWeight",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "Neuron",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_359",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "Neuron",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_403",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "Neuron",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_382",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_300",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_427",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_300",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_469",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_300",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_637",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_300",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_658",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_303",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_595",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_303",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_532",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_303",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_616",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_303",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_448",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_306",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_574",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_306",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_553",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_306",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_511",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_306",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_490",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_382",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "SynapticWeight",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_359",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_403",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_427",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_469",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_637",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_658",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_595",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_532",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_616",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_574",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_448",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_553",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_511",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "Input",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_490",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_763",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "Neuron",
+
+
+
+"to_port": 2
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_880",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_300",
+
+
+
+"to_port": 2
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_841",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_303",
+
+
+
+"to_port": 2
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_802",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_306",
+
+
+
+"to_port": 2
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_309",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_895",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_318",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_889",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_315",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_892",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_382",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_309",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "SynapticWeight",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_312",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_427",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_309",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_469",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_312",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_637",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_315",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_595",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_312",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_532",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_309",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_658",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_318",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_359",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_315",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_616",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_315",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_448",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_318",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_574",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_318",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_553",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_318",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_511",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_315",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_490",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_312",
+
+
+
+"to_port": 1
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_403",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_309",
+
+
+
+"to_port": 1
+
+
+}
+
+],
+
+"nodes": [
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "Neuron",
+
+
+
+"position": "(760.0, 200.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 1",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_300",
+
+
+
+"position": "(760.0, 420.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 2",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_303",
+
+
+
+"position": "(760.0, 640.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 3",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_306",
+
+
+
+"position": "(760.0, 860.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 4",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_312",
+
+
+
+"position": "(1540.0, 420.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 6",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_315",
+
+
+
+"position": "(1540.0, 640.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 7",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_318",
+
+
+
+"position": "(1540.0, 860.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 8",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_359",
+
+
+
+"position": "(1300.0, 320.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_382",
+
+
+
+"position": "(1300.0, 120.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_403",
+
+
+
+"position": "(1300.0, 420.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "SynapticWeight",
+
+
+
+"position": "(1300.0, 220.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_427",
+
+
+
+"position": "(1420.0, 320.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_469",
+
+
+
+"position": "(1420.0, 420.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_637",
+
+
+
+"position": "(1420.0, 520.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"drain_resistor": -1,
+
+
+
+"name": "_GraphNode_309",
+
+
+
+"position": "(1540.0, 200.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Neuron 5",
+
+
+
+"type": "Neuron"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_658",
+
+
+
+"position": "(1420.0, 620.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_448",
+
+
+
+"position": "(1300.0, 860.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_595",
+
+
+
+"position": "(1300.0, 560.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_511",
+
+
+
+"position": "(1420.0, 960.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_490",
+
+
+
+"position": "(1420.0, 1060.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_553",
+
+
+
+"position": "(1420.0, 860.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"maxI": 10.0,
+
+
+
+"minI": 0.0,
+
+
+
+"name": "Input",
+
+
+
+"position": "(920.0, -40.0)",
+
+
+
+"title": "Input 1",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"maxI": 10.0,
+
+
+
+"minI": 0.0,
+
+
+
+"name": "_GraphNode_763",
+
+
+
+"position": "(380.0, 200.0)",
+
+
+
+"title": "Input 2",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"maxI": 10.0,
+
+
+
+"minI": 0.0,
+
+
+
+"name": "_GraphNode_880",
+
+
+
+"position": "(380.0, 420.0)",
+
+
+
+"title": "Input 5",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"maxI": 10.0,
+
+
+
+"minI": 0.0,
+
+
+
+"name": "_GraphNode_841",
+
+
+
+"position": "(380.0, 640.0)",
+
+
+
+"title": "Input 4",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"maxI": 10.0,
+
+
+
+"minI": 0.0,
+
+
+
+"name": "_GraphNode_802",
+
+
+
+"position": "(380.0, 860.0)",
+
+
+
+"title": "Input 3",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_895",
+
+
+
+"position": "(2080.0, 200.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 4",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "RateDetector",
+
+
+
+"position": "(2080.0, 420.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 1",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_892",
+
+
+
+"position": "(2080.0, 640.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 3",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_889",
+
+
+
+"position": "(2080.0, 860.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 2",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_616",
+
+
+
+"position": "(1300.0, 760.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_532",
+
+
+
+"position": "(1300.0, 660.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_574",
+
+
+
+"position": "(1420.0, 760.0)",
+
+
+
+"title": "",
+
+
+
+"type": "SynapticWeight",
+
+
+
+"weight": 1.0
+
+
+}
+
+]
+}
