@@ -31,3 +31,9 @@ func _on_dataset_button_pressed() -> void:
 
 func _on_graph_button_pressed() -> void:
 	show_panel($GraphWrapper/GraphEdit)
+
+func _on_optimizer_button_pressed() -> void:
+	show_panel($GraphWrapper/OptimizerPanel)
+
+func _on_telemetry_button_pressed() -> void:
+	show_panel($GraphWrapper/TelemetryPanel)

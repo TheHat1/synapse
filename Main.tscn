@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://4pqund3nukl7"]
+[gd_scene load_steps=19 format=3 uid="uid://4pqund3nukl7"]
 
 [ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dkh1h3r4kcftg" path="res://main.gd" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://bgufflynit8i7" path="res://UI/DatasetPanel.tscn" id="3_fos0i"]
 [ext_resource type="Texture2D" uid="uid://d2g5tb6hlt3kj" path="res://Assets/setting.png" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://bgw04wwhrlms7" path="res://UI/OptimizerPanel.tscn" id="4_fos0i"]
+[ext_resource type="PackedScene" uid="uid://dtwr3rhloxt7c" path="res://UI/TelemetryPanel.tscn" id="5_3dxm6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0du0"]
 bg_color = Color(0.11858138, 0.11858139, 0.11858132, 1)
@@ -26,9 +28,9 @@ corner_radius_bottom_left = 3
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
-content_margin_left = 25.0
+content_margin_left = 10.0
 content_margin_top = 5.0
-content_margin_right = 25.0
+content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(0.3525325, 0.13710275, 0.32301584, 1)
 corner_radius_top_left = 3
@@ -49,6 +51,50 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trn2v"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03owx"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.5360174, 0.37995812, 0.12261566, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkp8b"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.69190526, 0.49558192, 0.17378774, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20pc6"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(6.497651e-07, 0.35831687, 0.17282513, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vvyt"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(2.4065375e-08, 0.45132434, 0.22473791, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="InputEventKey" id="InputEventKey_cm0pq"]
 keycode = 4194305
@@ -91,6 +137,16 @@ script = ExtResource("1_glv2v")
 layout_mode = 1
 offset_right = -125.0
 offset_bottom = 611.0
+
+[node name="OptimizerPanel" parent="GraphWrapper" instance=ExtResource("4_fos0i")]
+layout_mode = 1
+offset_right = -126.0
+offset_bottom = 607.0
+
+[node name="TelemetryPanel" parent="GraphWrapper" instance=ExtResource("5_3dxm6")]
+layout_mode = 1
+offset_right = -110.0
+offset_bottom = 608.0
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 60)
@@ -151,6 +207,36 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3dxm6")
 theme_override_styles/focus = SubResource("StyleBoxFlat_trn2v")
 text = "Dataset"
 
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="OptimizerButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_03owx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wkp8b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+text = "Optimizer"
+
+[node name="MarginContainer4" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TelemetryButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_20pc6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5vvyt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+text = "Telemetry"
+
 [node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -169,4 +255,6 @@ stretch_mode = 5
 [connection signal="disconnection_request" from="GraphWrapper/GraphEdit" to="GraphWrapper/GraphEdit" method="_on_disconnection_request"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer/GraphButton" to="." method="_on_graph_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/DatasetButton" to="." method="_on_dataset_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer3/OptimizerButton" to="." method="_on_optimizer_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer4/TelemetryButton" to="." method="_on_telemetry_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
