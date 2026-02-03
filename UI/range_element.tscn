@@ -54,16 +54,23 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 custom_minimum_size = Vector2(0, 55)
 offset_right = 619.0
 offset_bottom = 55.0
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_5yrcg")
 script = ExtResource("1_5yrcg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 586.0
-offset_bottom = 44.0
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -15.5
+offset_right = -10.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 7
 
 [node name="Label" type="Label" parent="HBoxContainer"]

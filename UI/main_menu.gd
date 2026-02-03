@@ -88,6 +88,7 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 	serialize_and_export_graph(path)
 	config.set_value("files", "last_saved_to_dir", path.get_base_dir() + "/")
 	config.set_value("files", "files_saved", config.get_value("files", "files_saved") + 1)
+	config.save("res://user_config.cfg")
 
 func serialize_and_export_graph(path: String):
 	var data := {
