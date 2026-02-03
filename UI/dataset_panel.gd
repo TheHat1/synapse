@@ -14,6 +14,16 @@ func _on_generate_button_pressed() -> void:
 	var range_elements = $Panel/MarginContainer/HBoxContainer/OptionsBox/Ranges.get_children()
 	var normaliza = $Panel/MarginContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer/DataNormButton.button_pressed
 	var N = $Panel/MarginContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/DataNormButton.text.to_int()
-	for r in range_elements:
-		ranges.append({"min": r.minimal,"max": r.maximum})
+	var rng = RandomNumberGenerator.new()
 	
+	for r in range_elements:
+		
+		var range_steps = []
+		var delta = (r.maximum - r.minimal)/N
+		
+		for i in range(1, N+1):
+			range_steps.append(r.minimal + (i-rng.randf()) * delta)
+		ranges.append(range_steps)
+		range_steps = []
+		
+	print(ranges)
