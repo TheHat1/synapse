@@ -11,6 +11,7 @@ func pass_hypercube(h,c):
 
 func pass_steps(s):
 	steps = s
+	hypercube = []
 	queue_redraw()
 
 func _draw() -> void:
@@ -33,14 +34,13 @@ func _draw() -> void:
 	for line in hypercube:
 		var line_color = colours[br]
 		br += 1
-		var min_v = line.min()
-		var max_v = line.max()
+		var max_v = hypercube.max().max() + 0.5
 		for i in line.size() - 1:
 			var x1 = i * size.x / (line.size() - 1)
 			var x2 = (i + 1) * size.x / (line.size() - 1)
 			
-			var y1 = size.y * (1.0 - (line[i] - min_v) / (max_v - min_v))
-			var y2 = size.y * (1.0 - (line[i + 1] - min_v) / (max_v - min_v))
+			var y1 = size.y * (1.0 - (line[i]) / max_v)
+			var y2 = size.y * (1.0 - (line[i + 1]) / max_v)
 			
 			draw_line(Vector2(x1, y1), Vector2(x2, y2), line_color, 2.0, true)
 

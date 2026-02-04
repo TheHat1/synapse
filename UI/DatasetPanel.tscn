@@ -440,6 +440,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Output ranges"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 20
+text = "Index of step : Wanted activation (Hz)
+
+Please make sure to have at least a value at index 0 and at the amount of split steps (Default is 10, e.g. 0:0, 10:10)"
+fit_content = true
+
 [node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
