@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgufflynit8i7"]
+[gd_scene load_steps=17 format=3 uid="uid://bgufflynit8i7"]
 
 [ext_resource type="Script" uid="uid://by08gaj4vrn62" path="res://UI/dataset_panel.gd" id="1_cxifj"]
 [ext_resource type="PackedScene" uid="uid://b4r7lgiro2h56" path="res://UI/range_element.tscn" id="2_pfyhj"]
 [ext_resource type="Script" uid="uid://b74xx0p3p7ps7" path="res://UI/graph_draw.gd" id="3_mb7q5"]
+[ext_resource type="PackedScene" uid="uid://dam3sdw47yb8h" path="res://UI/OutputRange.tscn" id="4_vvr58"]
+[ext_resource type="Script" uid="uid://dkcrhgpuowcmu" path="res://UI/draw_output.gd" id="5_45th3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfyhj"]
 bg_color = Color(0.16924527, 0.1692453, 0.16924521, 1)
@@ -110,7 +112,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 326.0
-offset_bottom = 179.0
+offset_bottom = 1243.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxifj")
@@ -438,39 +440,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Output ranges"
 
-[node name="SplitN" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
-custom_minimum_size = Vector2(0, 55)
-layout_mode = 2
-size_flags_vertical = 4
-tooltip_text = "The amount of ranges in which all input ranges will be split. (Integer >= Input ranges)"
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/SplitN"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 586.0
-offset_bottom = 44.0
-
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/SplitN/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Split step"
-
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/SplitN/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DataNormButton" type="LineEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/SplitN/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
-text = "10"
-placeholder_text = "10"
-alignment = 1
-virtual_keyboard_type = 2
-caret_blink = true
-
 [node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -486,9 +455,9 @@ horizontal_scroll_mode = 0
 [node name="Ranges" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
+size_flags_vertical = 3
 
-[node name="Range" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges" instance=ExtResource("2_pfyhj")]
+[node name="OutputRange" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges" instance=ExtResource("4_vvr58")]
 layout_mode = 2
 
 [node name="AddRange" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
@@ -505,7 +474,7 @@ offset_right = 586.0
 offset_bottom = 44.0
 alignment = 1
 
-[node name="Button" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange/HBoxContainer"]
+[node name="AddORButton" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -582,8 +551,10 @@ theme_override_constants/margin_bottom = 25
 
 [node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer"]
 layout_mode = 2
-script = ExtResource("3_mb7q5")
+script = ExtResource("5_45th3")
 
+[connection signal="text_submitted" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep" to="." method="_on_split_step_text_submitted"]
 [connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer/GenerateButton" to="." method="_on_generate_button_pressed"]
+[connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange/HBoxContainer/AddORButton" to="." method="_on_add_or_button_pressed"]
 [connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer/GenerateButtonOR" to="." method="_on_generate_button_or_pressed"]
