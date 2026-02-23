@@ -30,5 +30,9 @@ folder_colors={
 "res://Production build/": "gray",
 "res://Rate detector/": "yellow",
 "res://Synaptic-weight/": "orange",
-"res://UI/": "blue"
+"res://UI/": "blue",
+"res://UI/Dataset/": "purple",
+"res://UI/Optimizer/": "yellow",
+"res://UI/Telemetry/": "green",
+"res://UI/Telemetry/Misc/": "gray"
 }

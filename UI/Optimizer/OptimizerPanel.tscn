@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgw04wwhrlms7"]
 
-[ext_resource type="Script" uid="uid://bjhsyr6dxb4bs" path="res://UI/optimizer_panel.gd" id="1_n5m0p"]
+[ext_resource type="Script" uid="uid://bjhsyr6dxb4bs" path="res://UI/Optimizer/optimizer_panel.gd" id="1_n5m0p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rub4"]
 bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)

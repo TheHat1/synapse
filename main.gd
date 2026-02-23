@@ -2,7 +2,7 @@ extends Control
 
 var menu_open = true
 var tween: Tween
-var main_menu = load("res://UI/main_menu.tscn").instantiate()
+var main_menu = load("res://UI/Menus/main_menu.tscn").instantiate()
 @onready var panels := $GraphWrapper.get_children()
 
 func _ready() -> void:
