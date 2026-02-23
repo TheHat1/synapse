@@ -6,14 +6,10 @@ var synaptic_weight = load("res://Synaptic-weight/synaptic-weight.tscn")
 var rate_detector = load("res://Rate detector/rate_detector.tscn")
 var spike_gate = load("res://Gates/Spike gate/SpikeGate.tscn")
 var tbutton = load("res://Gates/Switch/ToggleSwitch.tscn")
+var input_neuron = load("res://Neuron/input_neuron.tscn")
 
 func _on_button_pressed() -> void:
-	var n = neuron.instantiate()
-	n.position_offset = position
-	n.title += " " + str(get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count)
-	get_parent().add_child(n)
-	get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count += 1
-	get_parent().close_menu_after_inst()
+	$Panel3.visible = !$Panel3.visible
 
 func _on_button_2_pressed() -> void:
 	var i = input.instantiate()
@@ -55,4 +51,20 @@ func _on_toggle_switch_button_pressed() -> void:
 	tb.position_offset = position
 	get_parent().add_child(tb)
 	#get_parent().get_parent().get_parent().get_node("MainMenu").rate_detector_count += 1
+	get_parent().close_menu_after_inst()
+
+func _on_neuron_button_pressed() -> void:
+	var n = neuron.instantiate()
+	n.position_offset = position
+	n.title += " " + str(get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count)
+	get_parent().add_child(n)
+	get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count += 1
+	get_parent().close_menu_after_inst()
+
+func _on_input_neuron_button_pressed() -> void:
+	var i_n = input_neuron.instantiate()
+	i_n.position_offset = position
+	i_n.title += " " + str(get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count)
+	get_parent().add_child(i_n)
+	get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count += 1
 	get_parent().close_menu_after_inst()

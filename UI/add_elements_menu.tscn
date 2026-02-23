@@ -114,7 +114,7 @@ theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Neuron"
+text = "Neurons                          >"
 alignment = 0
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -227,6 +227,56 @@ text = "Button
 "
 alignment = 0
 
+[node name="Panel3" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_top = 42.0
+offset_right = 507.0
+offset_bottom = 158.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_polyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NeuronButton" type="Button" parent="Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.4467768, 0.446777, 0.44677794, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Neuron"
+alignment = 0
+
+[node name="InputNeuronButton" type="Button" parent="Panel3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Input neuron"
+alignment = 0
+
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
@@ -234,3 +284,5 @@ alignment = 0
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="Panel2/MarginContainer/VBoxContainer/SpikeGateButton" to="." method="_on_spike_gate_button_pressed"]
 [connection signal="pressed" from="Panel2/MarginContainer/VBoxContainer/ToggleSwitchButton" to="." method="_on_toggle_switch_button_pressed"]
+[connection signal="pressed" from="Panel3/MarginContainer/VBoxContainer/NeuronButton" to="." method="_on_neuron_button_pressed"]
+[connection signal="pressed" from="Panel3/MarginContainer/VBoxContainer/InputNeuronButton" to="." method="_on_input_neuron_button_pressed"]
