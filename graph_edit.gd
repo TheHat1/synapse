@@ -6,9 +6,6 @@ var isMenuOpen = false
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
 
-func  _process(_delta: float) -> void:
-	$"../../Panel/MarginContainer/HBoxContainer/Label".text = "fps: " + str(Engine.get_frames_per_second())
-
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if !isMenuOpen:

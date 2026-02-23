@@ -237,11 +237,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5vvyt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 text = "Telemetry"
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-
 [node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2

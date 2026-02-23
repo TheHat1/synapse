@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtwr3rhloxt7c"]
+[gd_scene load_steps=9 format=3 uid="uid://dtwr3rhloxt7c"]
 
 [ext_resource type="Script" uid="uid://5hw3vo8thatk" path="res://UI/telemetry_panel.gd" id="1_6tsrf"]
+[ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="2_4ts4w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk04e"]
 bg_color = Color(0.16924527, 0.1692453, 0.16924521, 1)
@@ -21,6 +22,33 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
 shadow_size = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayqkj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ts4w"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iyfu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uan40"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="TelemetryPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -35,35 +63,42 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tk04e")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(600, 0)
+[node name="Panel" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 55)
 layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(270, 55)
-layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6tsrf")
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/Panel"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 3.0
@@ -71,3 +106,144 @@ offset_right = 245.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 33
 text = "Telemetry"
+
+[node name="Neuron chains" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ayqkj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/Neuron chains"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 440.0
+offset_bottom = 46.0
+theme_override_constants/separation = 139
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/Neuron chains/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Neuron chains display"
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Fade time: 0.1ms, Activations per second: 0, Clock speed: 0Hz"
+
+[node name="TelemetryGraphEdit" type="GraphEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+size_flags_vertical = 3
+scroll_offset = Vector2(-551, -800)
+grid_pattern = 1
+right_disconnects = true
+connection_lines_curvature = 0.0
+connection_lines_thickness = 3.0
+zoom_min = 0.4
+zoom_max = 2.5
+show_menu = false
+show_zoom_label = true
+show_zoom_buttons = false
+show_grid_buttons = false
+show_arrange_button = false
+script = ExtResource("2_4ts4w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ShowPolarity" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Toogles if the connections have a colour representing its polarity."
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ts4w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 487.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Show connection polarity"
+
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 29
+theme_override_styles/focus = SubResource("StyleBoxFlat_1iyfu")
+icon_alignment = 2
+
+[node name="FadeTime" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "The time it takes for the elements to fade back to 0."
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ts4w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime"]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 483.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Fade time"
+
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 1000.0
+step = 0.1
+value = 500.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Separator" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uan40")
+
+[node name="Neuron chains2" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ayqkj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/Neuron chains2"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 440.0
+offset_bottom = 46.0
+theme_override_constants/separation = 139
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/Neuron chains2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Activations per second plot"
+
+[node name="GraphDisplay" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 950)
+layout_mode = 2
+size_flags_vertical = 0
+
+[connection signal="connection_request" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" to="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" method="_on_connection_request"]
+[connection signal="disconnection_request" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" to="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" method="_on_disconnection_request"]
+[connection signal="value_changed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
