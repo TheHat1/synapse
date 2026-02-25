@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://lxu3byk83sg2"]
+
+[ext_resource type="Script" uid="uid://btv7drcupfehk" path="res://UI/Telemetry/Misc/synaptic_weight_representer.gd" id="1_8m7e1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxxq"]
+bg_color = Color(0.16470589, 0.41960785, 0.21960784, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_763wx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0efy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8sh8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmu7t"]
+
+[node name="SynapticWeightRepresenter" type="GraphNode"]
+custom_minimum_size = Vector2(50, 75)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ojxxq")
+theme_override_styles/panel_selected = SubResource("StyleBoxEmpty_763wx")
+theme_override_styles/panel_focus = SubResource("StyleBoxEmpty_y0efy")
+theme_override_styles/titlebar = SubResource("StyleBoxEmpty_s8sh8")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxEmpty_kmu7t")
+draggable = false
+selectable = false
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_8m7e1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3

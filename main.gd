@@ -37,3 +37,4 @@ func _on_optimizer_button_pressed() -> void:
 
 func _on_telemetry_button_pressed() -> void:
 	show_panel($GraphWrapper/TelemetryPanel)
+	$GraphWrapper/TelemetryPanel.display_network()

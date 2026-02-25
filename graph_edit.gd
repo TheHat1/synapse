@@ -9,7 +9,7 @@ func _ready() -> void:
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if !isMenuOpen:
-			menu = load("res://UI/Menus/add_elements_menu.gd").instantiate()
+			menu = load("res://UI/Menus/add_elements_menu.tscn").instantiate()
 			menu.global_position = event.global_position
 			add_child(menu)
 			isMenuOpen = true
