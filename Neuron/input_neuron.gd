@@ -16,6 +16,9 @@ var drain_resistor_old = -1
 var drain_resistor = -1
 var decay = 0.0
 
+signal current_buffer_value(value: float)
+signal pass_activation_treshold(value: float)
+
 func _ready():
 	set_slot(0, false, 0, Color.FIREBRICK, false, 0, Color.BLUE_VIOLET)
 	set_slot(1, true, 1, Color.DARK_CYAN, true, 2, Color.BLUE_VIOLET)
@@ -76,3 +79,6 @@ func _process(delta):
 		$HBoxContainer4/Control/Sprite2D.texture = led_on
 		is_led_on = true
 		$HBoxContainer4/Control/AudioStreamPlayer2D.play()
+	
+	emit_signal("current_buffer_value", buffer)
+	emit_signal("pass_activation_treshold", threshold)

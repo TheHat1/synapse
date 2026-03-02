@@ -3,6 +3,8 @@ extends GraphEdit
 var menu 
 var isMenuOpen = false
 
+signal spike()
+
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
 
@@ -40,6 +42,8 @@ func _on_disconnection_request(from_node: StringName, from_port: int, to_node: S
 	disconnect_node(from_node, from_port, to_node, to_port)
 
 func trigger_from(from_node: StringName, from_port: int, weight: float):
+	if weight == 0.0:
+		emit_signal("spike")
 	for connection in get_connection_list():
 		if connection.from_node == from_node and connection.from_port == from_port:
 			var target := get_node(NodePath(connection.to_node))

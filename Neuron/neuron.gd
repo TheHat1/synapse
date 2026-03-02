@@ -18,6 +18,9 @@ var capacitance_old = 0.0
 var elapsed = 0.0
 var is_led_on = false
 
+signal current_buffer_value(value: float)
+signal pass_activation_treshold(value: float)
+
 func _ready():
 	set_slot(0, true, 0, Color.FIREBRICK, false, 0, Color.BLUE_VIOLET)
 	set_slot(1, true, 0, Color.FOREST_GREEN, true, 2, Color.BLUE_VIOLET)
@@ -91,6 +94,9 @@ func _process(delta):
 	
 	I_exct_total = 0.0
 	I_inhib_total = 0.0
+	
+	emit_signal("current_buffer_value", buffer)
+	emit_signal("pass_activation_treshold", threshold)
 
 func _on_value_changed(value):
 	input = value

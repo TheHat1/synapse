@@ -4,6 +4,8 @@ var I_main = 0.0
 @onready var weight = $LineEdit.text.to_float()
 var type: String = "SynapticWeight"
 
+signal emit_spike()
+
 func _ready():
 	set_slot(0, true, 2, Color.BLUE_VIOLET, true, 0, Color.GOLDENROD)
 	set_slot(1, true, 1, Color.DARK_CYAN, false, 0, Color.GOLDENROD)
@@ -15,6 +17,7 @@ func _ready():
 func execute_input(port: int, _weight: float):
 	if port == 0:
 		get_parent().trigger_from(name, 0, I_main * weight)
+		emit_signal("emit_spike")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	weight = new_text.to_float()
