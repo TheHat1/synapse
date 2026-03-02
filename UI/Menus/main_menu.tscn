@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ch5qa4sj66vf7"]
+[gd_scene format=3 uid="uid://ch5qa4sj66vf7"]
 
 [ext_resource type="Script" uid="uid://vmaybmg4gidj" path="res://UI/Menus/main_menu.gd" id="1_p8ccj"]
 [ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="2_tk8dj"]
@@ -110,7 +110,7 @@ keycode = 83
 [sub_resource type="Shortcut" id="Shortcut_ev3b6"]
 events = [SubResource("InputEventKey_8ctay")]
 
-[node name="MainMenu" type="Panel"]
+[node name="MainMenu" type="Panel" unique_id=1255620468]
 custom_minimum_size = Vector2(500, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -120,7 +120,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p8ccj")
 script = ExtResource("1_p8ccj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2106182692]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,12 +128,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=1407327851]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tk8dj")
 
-[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="VBoxContainer/Panel" unique_id=1217831681]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 2.0
@@ -142,19 +142,19 @@ offset_bottom = 50.0
 theme_override_font_sizes/font_size = 30
 text = "Settings"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=375411908]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=466814336]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Panel2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Panel2" unique_id=736964425]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -168,16 +168,16 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer" unique_id=1208141324]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Exit"
 
-[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer" unique_id=682983409]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/Panel2/HBoxContainer" unique_id=1089218406]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -187,23 +187,23 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4cwpn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f40uw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ev3b6")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=336259541]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=1209337491]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Panel3" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel3" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2005435993]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ctay")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel3" unique_id=967153164]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -211,17 +211,17 @@ offset_right = 440.0
 offset_bottom = 46.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel3/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel3/HBoxContainer" unique_id=1713677735]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "General"
 
-[node name="Panel" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=692137307]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel" unique_id=1271690796]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
@@ -229,12 +229,12 @@ offset_right = 441.0
 offset_bottom = 40.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel/HBoxContainer" unique_id=1034338365]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Volume"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel/HBoxContainer" unique_id=374641384]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -243,29 +243,29 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Panel7" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel7" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=823069109]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7" unique_id=1416612977]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer" unique_id=1184601194]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Clear graph"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer" unique_id=1522430546]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ClearButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer"]
+[node name="ClearButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel7/HBoxContainer" unique_id=32991478]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -277,29 +277,29 @@ text = "Clear"
 alignment = 0
 icon_alignment = 2
 
-[node name="Panel2" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1856262913]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2" unique_id=2136973941]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer" unique_id=671824240]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Load file"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer" unique_id=1190373832]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LoadButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer"]
+[node name="LoadButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel2/HBoxContainer" unique_id=832668490]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -312,29 +312,29 @@ icon = ExtResource("3_d8nwk")
 alignment = 0
 icon_alignment = 2
 
-[node name="Panel6" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel6" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=142367756]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6" unique_id=508942428]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer" unique_id=1768567058]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Save file"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer" unique_id=571415357]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SaveButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel6/HBoxContainer" unique_id=1598034746]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -346,12 +346,12 @@ text = "Save"
 alignment = 0
 icon_alignment = 2
 
-[node name="Panel4" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel4" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1804386214]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ctay")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel4" unique_id=965272798]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -359,85 +359,85 @@ offset_right = 440.0
 offset_bottom = 46.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel4/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel4/HBoxContainer" unique_id=596774882]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Stats"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1368441973]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1284804411]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Neurons"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1177975800]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1653386535]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1856487452]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=711328924]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Inputs"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=658869971]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=88086466]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=605239075]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1043206911]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Weights"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1243937821]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=90025342]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1624984997]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1891487326]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Rate detectors"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1456814883]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1459433359]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
 
-[node name="Panel5" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Panel5" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2001172731]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ctay")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel5" unique_id=1716670466]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -445,180 +445,180 @@ offset_right = 440.0
 offset_bottom = 46.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer" unique_id=529556234]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Neuron settings"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=82454699]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1885865897]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Not selected"
 
-[node name="Title" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Title" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1141798923]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title" unique_id=1356012305]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer" unique_id=998816349]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Title"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer" unique_id=441900499]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer" unique_id=1977897071]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Capacitance" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Capacitance" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1472145574]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance" unique_id=605625757]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1340051177]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Capacitance"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1574487125]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=781772315]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=249927261]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "mF"
 
-[node name="Threshold" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Threshold" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1342971570]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold" unique_id=837986289]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1771858969]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Threshold"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1697029940]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1145205310]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1335952366]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "V"
 
-[node name="Drain" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Drain" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=68526814]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain" unique_id=705008256]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer" unique_id=489187846]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Drain"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer" unique_id=305624219]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer" unique_id=1683902304]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer" unique_id=304177292]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Ω"
 
-[node name="Input" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Input" type="Panel" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=807305218]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8nwk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input" unique_id=1129102243]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 9.0
 offset_right = 441.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer" unique_id=1352215447]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Input"
 
-[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer" unique_id=608048626]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer" unique_id=150477709]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer" unique_id=1414540659]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "mA"
 
-[node name="LoadFileDialog" type="FileDialog" parent="."]
+[node name="LoadFileDialog" type="FileDialog" parent="." unique_id=1649268885]
 oversampling_override = 1.0
 title = "Open a File"
 file_mode = 0
 access = 2
 use_native_dialog = true
 
-[node name="SaveFileDialog" type="FileDialog" parent="."]
+[node name="SaveFileDialog" type="FileDialog" parent="." unique_id=954295501]
 oversampling_override = 1.0
 access = 2
 use_native_dialog = true
 
-[node name="ConfirmLoadDialog" type="ConfirmationDialog" parent="."]
+[node name="ConfirmLoadDialog" type="ConfirmationDialog" parent="." unique_id=1405869162]
 oversampling_override = 1.0
 title = "Load File"
-size = Vector2i(365, 106)
+size = Vector2i(400, 120)
 unresizable = true
 unfocusable = true
 popup_wm_hint = true

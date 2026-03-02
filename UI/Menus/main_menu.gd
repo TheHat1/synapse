@@ -17,6 +17,7 @@ var ref_drain: String
 var ref_input: String
 
 var neuron = preload("res://Neuron/neuron.tscn")
+var input_neuron = preload("res://Neuron/input_neuron.tscn")
 var input = preload("res://Input/Input.tscn")
 var synaptic_weight = preload("res://Synaptic-weight/synaptic-weight.tscn")
 var rate_detector = preload("res://Rate detector/rate_detector.tscn")
@@ -78,7 +79,7 @@ func _on_line_edit_text_submitted_title(new_text: String) -> void:
 		$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
 
 func _on_save_button_pressed() -> void:
-	$SaveFileDialog.filters = ["*.json ; Graph files"]
+	$SaveFileDialog.filters = ["*.json"]
 	config.load("res://user_config.cfg")
 	$SaveFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
 	$SaveFileDialog.current_file = "graph_"+ str(config.get_value("files", "files_saved",  "0")) + ".json"
@@ -100,6 +101,16 @@ func serialize_and_export_graph(path: String):
 		if child is GraphNode:
 			match (child.type):
 				"Neuron": 
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"capacitance": child.capacitance,
+						"threshold": child.threshold,
+						"drain_resistor": child.drain_resistor
+					})
+				"InputNeuron":
 					data.nodes.append({
 						"name": child.name,
 						"title": child.title, 
@@ -149,7 +160,15 @@ func _on_load_file_dialog_file_selected(path: String) -> void:
 	load_graph_from_file(path)
 
 func _on_load_button_pressed() -> void:
-	$ConfirmLoadDialog.popup_centered()
+	if get_parent().get_node("GraphWrapper").get_child(0).get_children().size() > 1:
+		$ConfirmLoadDialog.popup_centered()
+	else:
+		$LoadFileDialog.filters = ["*.json"]
+		config.load("res://user_config.cfg")
+		$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
+		$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
+		$LoadFileDialog.popup_centered()
+		$LoadFileDialog.get_ok_button().grab_focus()
 
 func load_graph_from_file(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -169,6 +188,12 @@ func load_graph_from_file(path: String):
 		match (node_data["type"]):
 			"Neuron": 
 				node = neuron.instantiate()
+				node.capacitance = node_data["capacitance"]
+				node.threshold = node_data["threshold"]
+				node.drain_resistor = node_data["drain_resistor"]
+				neuron_count +=1
+			"InputNeuron":
+				node = input_neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
 				node.drain_resistor = node_data["drain_resistor"]
@@ -201,6 +226,7 @@ func load_graph_from_file(path: String):
 	
 	for conn in data.get("connections", []):
 		get_parent().get_node("GraphWrapper").get_child(0).connect_node(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
+		get_parent().get_node("GraphWrapper").get_child(0)._wire_connection(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
 
 func _on_confirm_load_dialog_confirmed() -> void:
 	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()

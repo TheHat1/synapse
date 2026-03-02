@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://be5qy2s28133r"]
+[gd_scene format=3 uid="uid://be5qy2s28133r"]
 
 [ext_resource type="Script" uid="uid://dskmi3ease83a" path="res://Neuron/neuron.gd" id="1_mms1l"]
 [ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_6rb5x"]
-[ext_resource type="AudioStream" uid="uid://brrywvmbkh7wd" path="res://Assets/sound-15.mp3" id="3_fiuso"]
+[ext_resource type="AudioStream" uid="uid://dcnx4jrfqlfhr" path="res://Assets/sound-2.mp3" id="3_6rb5x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gioh7"]
 content_margin_left = 10.0
@@ -45,7 +45,7 @@ bg_color = Color(0.48717004, 0.18570665, 0.14442256, 0.9764706)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
-[node name="Neuron" type="GraphNode"]
+[node name="Neuron" type="GraphNode" unique_id=1877785903]
 offset_right = 503.0
 offset_bottom = 215.0
 mouse_default_cursor_shape = 2
@@ -84,16 +84,16 @@ slot/2/right_icon = null
 slot/2/draw_stylebox = true
 script = ExtResource("1_mms1l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=204574445]
 layout_mode = 2
 alignment = 1
 
-[node name="Panel2" type="Panel" parent="HBoxContainer"]
+[node name="Panel2" type="Panel" parent="HBoxContainer" unique_id=64752384]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/Panel2"]
+[node name="Label" type="Label" parent="HBoxContainer/Panel2" unique_id=1031141317]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 13.0
@@ -101,30 +101,30 @@ offset_right = 83.0
 offset_bottom = 36.0
 text = "Inhibitory"
 
-[node name="Control" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Control" type="VBoxContainer" parent="HBoxContainer" unique_id=1305323297]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/Control" unique_id=1208243005]
 position = Vector2(202, 57)
 texture = ExtResource("2_6rb5x")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HBoxContainer/Control"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HBoxContainer/Control" unique_id=788186363]
 position = Vector2(75, 27)
-stream = ExtResource("3_fiuso")
+stream = ExtResource("3_6rb5x")
 max_distance = 1831.0
 attenuation = 1.3660405
 max_polyphony = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=1046137407]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="HBoxContainer3"]
+[node name="Panel2" type="Panel" parent="HBoxContainer3" unique_id=1954574784]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="HBoxContainer3/Panel2"]
+[node name="Label" type="Label" parent="HBoxContainer3/Panel2" unique_id=2105935171]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 13.0
@@ -132,16 +132,16 @@ offset_right = 83.0
 offset_bottom = 36.0
 text = "Excitatory "
 
-[node name="Control" type="VBoxContainer" parent="HBoxContainer3"]
+[node name="Control" type="VBoxContainer" parent="HBoxContainer3" unique_id=6094591]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="HBoxContainer3"]
+[node name="Panel" type="Panel" parent="HBoxContainer3" unique_id=1396375853]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="HBoxContainer3/Panel"]
+[node name="Label" type="Label" parent="HBoxContainer3/Panel" unique_id=1217424555]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 13.0
@@ -149,15 +149,15 @@ offset_right = 83.0
 offset_bottom = 36.0
 text = "Output"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+[node name="HBoxContainer4" type="HBoxContainer" parent="." unique_id=570401291]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="HBoxContainer4"]
+[node name="Panel2" type="Panel" parent="HBoxContainer4" unique_id=2135313724]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="HBoxContainer4/Panel2"]
+[node name="Label" type="Label" parent="HBoxContainer4/Panel2" unique_id=2032352993]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 13.0
@@ -165,7 +165,7 @@ offset_right = 83.0
 offset_bottom = 36.0
 text = "Input"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer4"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer4" unique_id=363391409]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 1

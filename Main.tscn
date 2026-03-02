@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4pqund3nukl7"]
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
 
 [ext_resource type="Script" uid="uid://nhwo0h4xgufb" path="res://graph_edit.gd" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://dkh1h3r4kcftg" path="res://main.gd" id="1_uu6xs"]
@@ -102,7 +102,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_fos0i"]
 events = [SubResource("InputEventKey_cm0pq")]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1179764073]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,12 +111,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uu6xs")
 
-[node name="GraphWrapper" type="Control" parent="."]
+[node name="GraphWrapper" type="Control" parent="." unique_id=1380507860]
 anchors_preset = 0
 offset_right = 1278.0
 offset_bottom = 40.0
 
-[node name="GraphEdit" type="GraphEdit" parent="GraphWrapper"]
+[node name="GraphEdit" type="GraphEdit" parent="GraphWrapper" unique_id=1920718608]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 647.0
@@ -133,22 +133,22 @@ show_grid_buttons = false
 show_arrange_button = false
 script = ExtResource("1_glv2v")
 
-[node name="DatasetPanel" parent="GraphWrapper" instance=ExtResource("3_fos0i")]
+[node name="DatasetPanel" parent="GraphWrapper" unique_id=499481639 instance=ExtResource("3_fos0i")]
 layout_mode = 1
 offset_right = -125.0
 offset_bottom = 611.0
 
-[node name="OptimizerPanel" parent="GraphWrapper" instance=ExtResource("4_fos0i")]
+[node name="OptimizerPanel" parent="GraphWrapper" unique_id=943385380 instance=ExtResource("4_fos0i")]
 layout_mode = 1
 offset_right = -126.0
 offset_bottom = 607.0
 
-[node name="TelemetryPanel" parent="GraphWrapper" instance=ExtResource("5_3dxm6")]
+[node name="TelemetryPanel" parent="GraphWrapper" unique_id=1095049342 instance=ExtResource("5_3dxm6")]
 layout_mode = 1
 offset_right = -110.0
 offset_bottom = 608.0
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=940546505]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 10
@@ -156,7 +156,7 @@ anchor_right = 1.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r0du0")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=134796836]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,21 +169,21 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=1419467773]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=1365885788]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1413075339]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="GraphButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+[node name="GraphButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer" unique_id=1146980779]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -192,12 +192,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 text = "Graph"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=324305639]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="DatasetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2"]
+[node name="DatasetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2" unique_id=859568509]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -207,12 +207,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3dxm6")
 theme_override_styles/focus = SubResource("StyleBoxFlat_trn2v")
 text = "Dataset"
 
-[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=277691991]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="OptimizerButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer3"]
+[node name="OptimizerButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer3" unique_id=266857174]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -222,12 +222,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wkp8b")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 text = "Optimizer"
 
-[node name="MarginContainer4" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=652195237]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="TelemetryButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer4"]
+[node name="TelemetryButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer4" unique_id=77301916]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -237,7 +237,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5vvyt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 text = "Telemetry"
 
-[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer" unique_id=891734752]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 mouse_default_cursor_shape = 2
