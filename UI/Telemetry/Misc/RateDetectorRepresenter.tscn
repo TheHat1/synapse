@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bshi67ofi0etu"]
+
+[ext_resource type="Script" uid="uid://c670ysi5qidtt" path="res://UI/Telemetry/Misc/rate_detector_representer.gd" id="1_oxch2"]
+[ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_i4qhm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk4ki"]
+bg_color = Color(0.18717614, 0.18717614, 0.18717614, 0.9764706)
+border_width_right = 3
+border_color = Color(0.5014065, 0.50140655, 0.50140643, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.17641911, 0.17641908, 0.17641908, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1.165, 0.735)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfb35"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fbl6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0nj7g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvr3u"]
+
+[node name="RateDetectorRepresenter" type="GraphNode" unique_id=293700333]
+offset_right = 271.0
+offset_bottom = 122.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rk4ki")
+theme_override_styles/panel_selected = SubResource("StyleBoxEmpty_kfb35")
+theme_override_styles/panel_focus = SubResource("StyleBoxEmpty_3fbl6")
+theme_override_styles/titlebar = SubResource("StyleBoxEmpty_0nj7g")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxEmpty_gvr3u")
+draggable = false
+selectable = false
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_oxch2")
+
+[node name="Control" type="Control" parent="." unique_id=1249818601]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1649065451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer" unique_id=962890207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0.00 Hz"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/HBoxContainer" unique_id=1829871319]
+position = Vector2(209, 50)
+scale = Vector2(0.5181818, 0.5181818)
+texture = ExtResource("2_i4qhm")

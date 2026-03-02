@@ -49,7 +49,7 @@ func _on_disconnection_request(from_node: StringName, from_port: int, to_node: S
 	disconnect_node(from_node, from_port, to_node, to_port)
 
 func trigger_from(from_node: StringName, from_port: int, weight: float):
-	if weight == 0.0:
+	if get_node(NodePath(from_node)).type == "Neuron" or get_node(NodePath(from_node)).type == "InputNeuron":
 		emit_signal("spike")
 	for connection in get_connection_list():
 		if connection.from_node == from_node and connection.from_port == from_port:

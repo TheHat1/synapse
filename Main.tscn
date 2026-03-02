@@ -24,8 +24,28 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6i3y"]
+bg_color = Color(0.49747366, 0.49747372, 0.49747354, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgr22"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="InputEventKey" id="InputEventKey_3dxm6"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_lgr22"]
+device = -1
+keycode = 4194439
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_trn2v"]
+events = [SubResource("InputEventKey_3dxm6"), SubResource("InputEventKey_lgr22")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
 content_margin_left = 10.0
@@ -33,6 +53,13 @@ content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(0.3525325, 0.13710275, 0.32301584, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2ibq"]
+bg_color = Color(0.5411765, 0.23529412, 0.49411765, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -52,12 +79,32 @@ corner_radius_bottom_left = 3
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trn2v"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="InputEventKey" id="InputEventKey_03owx"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_wkp8b"]
+device = -1
+keycode = 4194440
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_20pc6"]
+events = [SubResource("InputEventKey_03owx"), SubResource("InputEventKey_wkp8b")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03owx"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(0.5360174, 0.37995812, 0.12261566, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4qnp"]
+bg_color = Color(0.6901961, 0.49411765, 0.17254902, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -74,12 +121,32 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="InputEventKey" id="InputEventKey_5vvyt"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_c6i3y"]
+device = -1
+keycode = 4194441
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_c2ibq"]
+events = [SubResource("InputEventKey_5vvyt"), SubResource("InputEventKey_c6i3y")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20pc6"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
 bg_color = Color(6.497651e-07, 0.35831687, 0.17282513, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpfj3"]
+bg_color = Color(0, 0.4509804, 0.22352941, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -95,6 +162,19 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="InputEventKey" id="InputEventKey_j4qnp"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="InputEventKey" id="InputEventKey_fpfj3"]
+device = -1
+keycode = 4194442
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_sc1dx"]
+events = [SubResource("InputEventKey_j4qnp"), SubResource("InputEventKey_fpfj3")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_cm0pq"]
 keycode = 4194305
@@ -189,7 +269,9 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm0pq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6i3y")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+shortcut = SubResource("Shortcut_trn2v")
 text = "Graph"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=324305639]
@@ -203,8 +285,10 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_fos0i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c2ibq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3dxm6")
 theme_override_styles/focus = SubResource("StyleBoxFlat_trn2v")
+shortcut = SubResource("Shortcut_20pc6")
 text = "Dataset"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=277691991]
@@ -218,8 +302,10 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_03owx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j4qnp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wkp8b")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+shortcut = SubResource("Shortcut_c2ibq")
 text = "Optimizer"
 
 [node name="MarginContainer4" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=652195237]
@@ -233,8 +319,10 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_20pc6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fpfj3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5vvyt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+shortcut = SubResource("Shortcut_sc1dx")
 text = "Telemetry"
 
 [node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer" unique_id=891734752]

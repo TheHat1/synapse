@@ -2,6 +2,7 @@ extends Control
 
 var neuron_representer = load("res://UI/Telemetry/Misc/NeuronRepresenter.tscn")
 var weight_representer = load("res://UI/Telemetry/Misc/SynapticWeightRepresenter.tscn")
+var rate_detector_representer = load("res://UI/Telemetry/Misc/RateDetectorRepresenter.tscn")
 
 var fadeTime: float = 500.0
 var activationsPerSecond: float
@@ -52,16 +53,21 @@ func display_network():
 					nd = weight_representer.instantiate()
 					offset = Vector2(0, 0)
 					node.emit_spike.connect(nd._on_spike)
+				"RateDetector":
+					nd = rate_detector_representer.instantiate()
+					offset = Vector2(60, 0)
+					node.current_rate.connect(nd._current_rate)
 			if nd is GraphNode:
 				nd.name = node.name
 				nodes_selected.append(node.name)
 				
 				nd.position_offset = node.position_offset * Vector2(0.5,0.7) + offset - visible_center
 				
-				self.fade_time_changed.connect(nd._on_fade_time_changed)
+				if node.type != "RateDetector":
+					self.fade_time_changed.connect(nd._on_fade_time_changed)
 				
-				var base_style : StyleBoxFlat = nd.get_theme_stylebox("panel").duplicate()
-				nd.add_theme_stylebox_override("panel", base_style)
+					var base_style : StyleBoxFlat = nd.get_theme_stylebox("panel").duplicate()
+					nd.add_theme_stylebox_override("panel", base_style)
 				
 				telemetryGraphEditRef.add_child(nd)
 	

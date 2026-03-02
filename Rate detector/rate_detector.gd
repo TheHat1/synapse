@@ -8,6 +8,8 @@ var rate = 0.0
 var target_hz = 1.0
 var output_on = false
 
+signal current_rate(value: float, value2: bool)
+
 func _ready():
 	set_slot(0, true, 2, Color.BLUE_VIOLET, false, 0, Color.GOLDENROD)
 	
@@ -25,6 +27,7 @@ func _process(delta):
 		$HBoxContainer/Control/Sprite2D.texture = led_on
 	else :
 		$HBoxContainer/Control/Sprite2D.texture = led_off
+	emit_signal("current_rate", snappedf(rate, 0.01), output_on)
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	target_hz = new_text.to_float()
