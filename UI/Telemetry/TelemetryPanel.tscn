@@ -53,6 +53,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6tsrf")
@@ -134,6 +135,7 @@ custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_force_pass_scroll_events = false
+theme_override_colors/activity = Color(0.4026969, 0, 0.029763984, 1)
 grid_pattern = 1
 snapping_enabled = false
 connection_lines_curvature = 0.0
@@ -173,7 +175,7 @@ text = "Show connection polarity"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer" unique_id=19309430]
+[node name="ShowPolarityButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer" unique_id=19309430]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
@@ -252,4 +254,5 @@ grow_vertical = 2
 
 [connection signal="connection_request" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" to="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" method="_on_connection_request"]
 [connection signal="disconnection_request" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" to="Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit" method="_on_disconnection_request"]
+[connection signal="toggled" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/ShowPolarity/HBoxContainer/ShowPolarityButton" to="." method="_on_show_polarity_button_toggled"]
 [connection signal="value_changed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

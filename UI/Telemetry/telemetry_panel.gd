@@ -9,12 +9,16 @@ var activationsPerSecond: float
 @onready var visible_center = $Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit.size * Vector2(0.065,0.5)
 @onready var graphEditRef = get_parent().get_node('GraphEdit')
 @onready var telemetryGraphEditRef = $Panel/ScrollContainer/MarginContainer/VBoxContainer/TelemetryGraphEdit
+var show_polarity: bool = false
+
+var inhibitory_connections := []
 
 signal fade_time_changed(value: float)
 
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
 	graphEditRef.spike.connect(_on_spike)
+
 
 func _process(delta: float) -> void:
 	activationsPerSecond -= activationsPerSecond * delta
@@ -25,11 +29,15 @@ func _on_h_slider_value_changed(value: float) -> void:
 	emit_signal("fade_time_changed", value / 1000)
 
 func display_network():
+	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/FadeTime/HBoxContainer/HSlider.value = 500.0
 	var representer_nodes = telemetryGraphEditRef.get_children()
 	for node in representer_nodes:
 		if node is GraphNode:
-			node.queue_free()
+			telemetryGraphEditRef.remove_child(node)
+			node.free()
 	telemetryGraphEditRef.clear_connections()
+	
+	await get_tree().process_frame
 	
 	var nodes = graphEditRef.get_children()
 	var all_connections = graphEditRef.get_connection_list()
@@ -75,6 +83,24 @@ func display_network():
 		for connection in all_connections:
 			if connection["from_node"] == node:
 				telemetryGraphEditRef.connect_node(connection["from_node"], 0, connection["to_node"], 0)
+				if graphEditRef.get_node(NodePath(connection["to_node"])).type == "Neuron" :
+					if connection["to_port"] == 0:
+						inhibitory_connections.append(connection)
+	
+	if show_polarity:
+		set_connection_polarity_color(show_polarity)
 
 func _on_spike():
 	activationsPerSecond += 1
+
+func _on_show_polarity_button_toggled(toggled_on: bool) -> void:
+	show_polarity = toggled_on
+	set_connection_polarity_color(show_polarity)
+
+func set_connection_polarity_color(val: bool):
+	if val:
+		for connection in inhibitory_connections:
+			telemetryGraphEditRef.set_connection_activity(connection["from_node"], connection["from_port"], connection["to_node"], connection["to_port"], 1)
+	else:
+		for connection in inhibitory_connections:
+			telemetryGraphEditRef.set_connection_activity(connection["from_node"], connection["from_port"], connection["to_node"], connection["to_port"], 0)

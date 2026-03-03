@@ -4,7 +4,7 @@ var intensity:= 0.0
 var buffer = 0.0
 var current_buffer = 0.0
 var activation_treshold = 1.0
-var fade_time = 0.5
+var fade_time: float
 var elapsed = 0.0
 
 @onready var panel_style = self.get_theme_stylebox("panel")
