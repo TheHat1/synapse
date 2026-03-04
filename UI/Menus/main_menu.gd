@@ -187,14 +187,14 @@ func load_graph_from_file(path: String):
 				node = neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
-				node.discharge_resistor = node_data["drain_resistor"]
+				node.discharge_resistor = node_data["discharge_resistor"]
 				node.charge_resistor = node_data["charge_resistor"]
 				neuron_count +=1
 			"InputNeuron":
 				node = input_neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
-				node.discharge_resistor = node_data["drain_resistor"]
+				node.discharge_resistor = node_data["discharge_resistor"]
 				node.charge_resistor = node_data["charge_resistor"]
 				neuron_count +=1
 			"SynapticWeight": 

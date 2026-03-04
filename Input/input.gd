@@ -2,20 +2,22 @@ extends GraphNode
 
 var type: String = "Input"
 
-var input_value = 0.0
-var minV = 0.0
+var input_value: = 0.0
+var minV: = 0.0
 var maxV = 10.0
 
 signal v_src_changed(value: float)
 
 func  _ready() -> void:
 	set_slot(0, false, 0, Color.FIREBRICK, true, 4, Color.LIGHT_BLUE)
+	$VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/LineEdit2.text = str(maxV)
+	$VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/LineEdit.text = str(minV)
 	
 	name = name.replace("@", "_")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	minV = new_text.to_float()
-	$VBoxContainer/HBoxContainer2/HSlider.value = minV.to_float()
+	$VBoxContainer/HBoxContainer2/HSlider.value = minV
 
 func _on_line_edit_2_text_submitted(new_text: String) -> void:
 	maxV = new_text.to_float()
