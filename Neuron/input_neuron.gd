@@ -5,11 +5,9 @@ var led_on = load("res://Assets/neuron_led_lit.png")
 var type: String = "InputNeuron"
 
 var threshold = 1.0
-var discharge_resitor = 0.02
-var charge_resitor = 1.0
+var discharge_resistor = 0.02
+var charge_resistor = 0.02
 var buffer = 0.0
-var inhib_time = 0.0
-var exct_time = 0.0
 var V_src = 0.0
 var capacitance = 1.0
 var discharge_percent = 0.01
@@ -31,8 +29,9 @@ func _input(event):
 		get_parent().get_parent().get_parent().get_node("MainMenu").neuron_deleted += 1
 		queue_free()
 
-func _on_value_changed(value):
+func _on_value_changed(value, value2):
 	V_src = value
+	charge_resistor = value2
 
 func fire_output(port: int, weight: float):
 	get_parent().trigger_from(name, port, weight)
@@ -52,11 +51,12 @@ func _process(delta):
 	$HBoxContainer6/ProgressBar.value = buffer / threshold * 100
 	
 	if state == "CHARGING":
-		var I_total = (V_src - buffer) / charge_resitor
+			var I_total = (V_src - buffer) / charge_resistor
+			buffer += (I_total / capacitance) * delta
 		
-		buffer += I_total * delta
 	elif state == "DISCHARGING":
-		buffer *= (1 - (delta / (discharge_resitor * capacitance)))
+		var tau = discharge_resistor * capacitance
+		buffer *= exp(-delta / tau)
 		
 		if buffer < discharge_percent:
 			state = "CHARGING"
@@ -70,3 +70,6 @@ func _process(delta):
 	
 	emit_signal("current_buffer_value", buffer)
 	emit_signal("pass_activation_treshold", threshold)
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	discharge_resistor = new_text.to_float()

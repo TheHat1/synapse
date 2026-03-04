@@ -7,9 +7,11 @@ var rate_detector = load("res://Rate detector/rate_detector.tscn")
 var spike_gate = load("res://Gates/Spike gate/SpikeGate.tscn")
 var tbutton = load("res://Gates/Switch/ToggleSwitch.tscn")
 var input_neuron = load("res://Neuron/input_neuron.tscn")
+var resistor = load("res://Resistor/Resistor.tscn")
 
 func _on_button_pressed() -> void:
-	$Panel3.visible = !$Panel3.visible
+	$Neurons.visible = !$Neurons.visible
+	$Gates.visible = false
 
 func _on_button_2_pressed() -> void:
 	var i = input.instantiate()
@@ -36,7 +38,8 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_button_5_pressed() -> void:
-	$Panel2.visible = !$Panel2.visible
+	$Gates.visible = !$Gates.visible
+	$Neurons.visible = false
 
 func _on_spike_gate_button_pressed() -> void:
 	var sg = spike_gate.instantiate()
@@ -67,4 +70,12 @@ func _on_input_neuron_button_pressed() -> void:
 	i_n.title += " " + str(get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count)
 	get_parent().add_child(i_n)
 	get_parent().get_parent().get_parent().get_node("MainMenu").neuron_count += 1
+	get_parent().close_menu_after_inst()
+
+
+func _on_button_6_pressed() -> void:
+	var r = resistor.instantiate()
+	r.position_offset = (get_parent().get_local_mouse_position() + get_parent().scroll_offset) / get_parent().zoom - r.size / Vector2(2,2)
+	get_parent().add_child(r)
+	#get_parent().get_parent().get_parent().get_node("MainMenu").rate_detector_count += 1
 	get_parent().close_menu_after_inst()

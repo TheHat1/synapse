@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pcebqfbytrc8"]
+[gd_scene format=3 uid="uid://pcebqfbytrc8"]
 
 [ext_resource type="Script" uid="uid://3m6myyp5iquk" path="res://Input/input.gd" id="1_wekdd"]
 
@@ -43,7 +43,7 @@ bg_color = Color(0.48717004, 0.18570665, 0.14442256, 0.9764706)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
-[node name="Input" type="GraphNode"]
+[node name="Input" type="GraphNode" unique_id=588360935]
 offset_right = 328.0
 offset_bottom = 205.0
 mouse_default_cursor_shape = 2
@@ -64,28 +64,35 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_wekdd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1701603887]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1350857373]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1539688617]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1337383210]
+custom_minimum_size = Vector2(33.715, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "V"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=196674660]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=309274139]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=312757838]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "0"
@@ -93,18 +100,18 @@ placeholder_text = "0"
 alignment = 2
 max_length = 4
 emoji_menu_enabled = false
-virtual_keyboard_type = 3
 clear_button_enabled = true
+virtual_keyboard_type = 3
 caret_blink = true
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1616676896]
 layout_mode = 2
 text = "Min"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=441044034]
 layout_mode = 2
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=463657474]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "10"
@@ -112,24 +119,24 @@ placeholder_text = "10"
 alignment = 2
 max_length = 4
 emoji_menu_enabled = false
-virtual_keyboard_type = 3
 clear_button_enabled = true
+virtual_keyboard_type = 3
 caret_blink = true
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1386351169]
 layout_mode = 2
 text = "Max"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=904522357]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2" unique_id=1913384449]
 layout_mode = 2
 size_flags_horizontal = 3
 step = 0.1
 value = 0.1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=619242932]
 layout_mode = 2
 text = "     Increment"
 

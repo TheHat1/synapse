@@ -108,7 +108,8 @@ func serialize_and_export_graph(path: String):
 						"type": child.type,
 						"capacitance": child.capacitance,
 						"threshold": child.threshold,
-						"drain_resistor": child.drain_resistor
+						"discharge_resistor": child.discharge_resistor,
+						"charge_resistor": child.charge_resistor
 					})
 				"InputNeuron":
 					data.nodes.append({
@@ -118,7 +119,8 @@ func serialize_and_export_graph(path: String):
 						"type": child.type,
 						"capacitance": child.capacitance,
 						"threshold": child.threshold,
-						"drain_resistor": child.drain_resistor
+						"discharge_resistor": child.discharge_resistor,
+						"charge_resistor": child.charge_resistor
 					})
 				"SynapticWeight": 
 					data.nodes.append({
@@ -134,8 +136,8 @@ func serialize_and_export_graph(path: String):
 						"title": child.title, 
 						"position": child.position_offset, 
 						"type": child.type,
-						"minI": child.minI,
-						"maxI": child.maxI
+						"minV": child.minV,
+						"maxV": child.maxV
 					})
 				"RateDetector": 
 					data.nodes.append({
@@ -190,13 +192,15 @@ func load_graph_from_file(path: String):
 				node = neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
-				node.drain_resistor = node_data["drain_resistor"]
+				node.discharge_resistor = node_data["drain_resistor"]
+				node.charge_resitor = node_data["charge_resistor"]
 				neuron_count +=1
 			"InputNeuron":
 				node = input_neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
-				node.drain_resistor = node_data["drain_resistor"]
+				node.discharge_resistor = node_data["drain_resistor"]
+				node.charge_resitor = node_data["charge_resistor"]
 				neuron_count +=1
 			"SynapticWeight": 
 				node = synaptic_weight.instantiate()
@@ -204,8 +208,8 @@ func load_graph_from_file(path: String):
 				weight_count += 1
 			"Input": 
 				node = input.instantiate()
-				node.minI = node_data["minI"]
-				node.maxI = node_data["maxI"]
+				node.minV = node_data["minV"]
+				node.maxV = node_data["maxV"]
 				input_count += 1
 			"RateDetector": 
 				node = rate_detector.instantiate()

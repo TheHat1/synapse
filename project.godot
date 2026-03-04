@@ -33,6 +33,7 @@ folder_colors={
 "res://Neuron/": "teal",
 "res://Production build/": "gray",
 "res://Rate detector/": "yellow",
+"res://Resistor/": "pink",
 "res://Synaptic-weight/": "orange",
 "res://UI/": "blue",
 "res://UI/Dataset/": "purple",

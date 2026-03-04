@@ -33,9 +33,11 @@ func _wire_connection(from_node: StringName, from_port: int, to_node: StringName
 	
 	match from.get_output_port_type(from_port):
 		1:
-			from.value_changed.connect(to._on_value_changed)
+			from.value_changed_resistor.connect(to._on_value_changed)
 		3:
 			from.status_changed.connect(to._on_gate_status_change)
+		4:
+			from.v_src_changed.connect(to._on_v_src_changed)
 
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	_wire_connection(from_node, from_port, to_node, to_port)

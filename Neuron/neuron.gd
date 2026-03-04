@@ -5,8 +5,8 @@ var led_on = load("res://Assets/neuron_led_lit.png")
 var type: String = "Neuron"
 
 var threshold = 1.0
-var discharge_resitor = 0.02
-var charge_resitor = 1.0
+var discharge_resistor = 0.02
+var charge_resistor = 0.02
 var buffer = 0.0
 var inhib_time = 0.0
 var exct_time = 0.0
@@ -25,6 +25,9 @@ func _ready():
 	set_slot(1, true, 0, Color.FOREST_GREEN, true, 2, Color.BLUE_VIOLET)
 	set_slot(2, true, 1, Color.DARK_CYAN, false, 0, Color.FIREBRICK)
 	
+	clamp(inhib_time, 0.0, 1000.0)
+	clamp(exct_time, 0.0, 1000.0)
+	
 	name = name.replace("@", "_")
 
 func fire_output(port: int, weight: float):
@@ -40,10 +43,10 @@ func execute_input(port: int, weight: float):
 			print("Unhandled port: ", port)
 
 func on_inhib_in(weight):
-	inhib_time += weight
+	inhib_time = weight
 
 func on_exc_in(weight):
-	exct_time += weight
+	exct_time = weight
 
 func _process(delta):
 	if is_led_on:
@@ -56,11 +59,20 @@ func _process(delta):
 	$HBoxContainer4/ProgressBar.value = buffer / threshold * 100
 	
 	if state == "CHARGING":
-		var I_total = (V_src - buffer) / charge_resitor
+		if exct_time > 0.0:
+			var I_total = (V_src - buffer) / charge_resistor
+			buffer += (I_total / capacitance) * exct_time
+			exct_time -= delta
+			exct_time  = clamp(exct_time, 0.0, 1000.0)
+		if inhib_time > 0.0:
+			var tau = discharge_resistor * capacitance
+			buffer *= exp(-inhib_time / tau)
+			inhib_time -= delta
+			inhib_time = clamp(inhib_time, 0.0, 1000.0)
 		
-		buffer += I_total * delta
 	elif state == "DISCHARGING":
-		buffer *= (1 - (delta / (discharge_resitor * capacitance)))
+		var tau = discharge_resistor * capacitance
+		buffer *= exp(-delta / tau)
 		
 		if buffer < discharge_percent:
 			state = "CHARGING"
@@ -72,14 +84,12 @@ func _process(delta):
 		is_led_on = true
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()
 	
-	exct_time = 0.0
-	inhib_time = 0.0
-	
 	emit_signal("current_buffer_value", buffer)
 	emit_signal("pass_activation_treshold", threshold)
 
-func _on_value_changed(value):
+func _on_value_changed(value, value2):
 	V_src = value
+	charge_resistor = value2
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.double_click:
@@ -89,3 +99,6 @@ func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
 		get_parent().get_parent().get_parent().get_node("MainMenu").neuron_deleted += 1
 		queue_free()
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	discharge_resistor = new_text.to_float()

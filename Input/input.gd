@@ -3,27 +3,27 @@ extends GraphNode
 var type: String = "Input"
 
 var input_value = 0.0
-var minI = 0.0
-var maxI = 10.0
+var minV = 0.0
+var maxV = 10.0
 
-signal value_changed(value: float)
+signal v_src_changed(value: float)
 
 func  _ready() -> void:
-	set_slot(0, false, 0, Color.FIREBRICK, true, 1, Color.DARK_CYAN)
+	set_slot(0, false, 0, Color.FIREBRICK, true, 4, Color.LIGHT_BLUE)
 	
 	name = name.replace("@", "_")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
-	minI = new_text.to_float()
-	$VBoxContainer/HBoxContainer2/HSlider.value = 0
+	minV = new_text.to_float()
+	$VBoxContainer/HBoxContainer2/HSlider.value = minV.to_float()
 
 func _on_line_edit_2_text_submitted(new_text: String) -> void:
-	maxI = new_text.to_float()
+	maxV = new_text.to_float()
 	$VBoxContainer/HBoxContainer2/HSlider.value = 0
 
 func _on_h_slider_value_changed(value: float) -> void:
-	input_value = $VBoxContainer/HBoxContainer2/HSlider.value * (maxI - minI) / 100
-	emit_signal("value_changed",input_value)
+	input_value = $VBoxContainer/HBoxContainer2/HSlider.value * (maxV - minV) / 100
+	emit_signal("v_src_changed", input_value)
 	$VBoxContainer/HBoxContainer/Label.text = String.num(input_value,2)
 
 func _input(event):
