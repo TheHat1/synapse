@@ -21,6 +21,7 @@ var input_neuron = preload("res://Neuron/input_neuron.tscn")
 var input = preload("res://Input/Input.tscn")
 var synaptic_weight = preload("res://Synaptic-weight/synaptic-weight.tscn")
 var rate_detector = preload("res://Rate detector/rate_detector.tscn")
+var resistor = preload("res://Resistor/Resistor.tscn")
 
 var config = ConfigFile.new()
 
@@ -36,20 +37,6 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().quit()
-
-func get_ref(r):
-	ref = r
-	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = r.title
-	$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
-	ref_title = r.title
-	$VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(r.capacitance)
-	ref_capacitance = str(r.capacitance)
-	$VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer/LineEdit.text = str(r.threshold)
-	ref_threshold = str(r.threshold)
-	$VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(r.drain_resistor)
-	ref_drain = str(r.drain_resistor)
-	$VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(r.input)
-	ref_input = str(r.input)
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if ref != null and new_text.to_float() > 0:
@@ -147,6 +134,14 @@ func serialize_and_export_graph(path: String):
 						"type": child.type,
 						"target_hz": child.target_hz
 					})
+				"Resistor":
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title, 
+						"position": child.position_offset, 
+						"type": child.type,
+						"resistance": child.resistance
+					})
 				_: print("Opaaa   ", child)
 	var json := JSON.stringify(data, '\n')
 	
@@ -193,14 +188,14 @@ func load_graph_from_file(path: String):
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
 				node.discharge_resistor = node_data["drain_resistor"]
-				node.charge_resitor = node_data["charge_resistor"]
+				node.charge_resistor = node_data["charge_resistor"]
 				neuron_count +=1
 			"InputNeuron":
 				node = input_neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
 				node.discharge_resistor = node_data["drain_resistor"]
-				node.charge_resitor = node_data["charge_resistor"]
+				node.charge_resistor = node_data["charge_resistor"]
 				neuron_count +=1
 			"SynapticWeight": 
 				node = synaptic_weight.instantiate()
@@ -215,6 +210,9 @@ func load_graph_from_file(path: String):
 				node = rate_detector.instantiate()
 				node.target_hz = node_data["target_hz"]
 				rate_detector_count += 1
+			"Resistor":
+				node = resistor.instantiate()
+				node.resistance = node_data["resistance"]
 			_: print("Opaaa   ", node_data)
 		
 		node.name = node_data["name"]

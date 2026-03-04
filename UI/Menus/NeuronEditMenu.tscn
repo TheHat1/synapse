@@ -1,0 +1,277 @@
+[gd_scene format=3 uid="uid://dy28710g1ptnc"]
+
+[ext_resource type="Script" uid="uid://cwwr1143e1j4q" path="res://UI/Menus/neuron_edit_menu.gd" id="1_mkpsp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veor4"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.18000486, 0.18000486, 0.18000486, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iokix"]
+bg_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_345cf"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[node name="NeuronEditMenu" type="Control" unique_id=1665152374]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -678.0
+offset_bottom = -290.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mkpsp")
+
+[node name="Panel" type="Panel" parent="." unique_id=1856645385]
+layout_mode = 0
+offset_right = 471.0
+offset_bottom = 356.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_veor4")
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=1234905416]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 0
+offset_right = 471.0
+offset_bottom = 40.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iokix")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel" unique_id=1281211013]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Title" type="Label" parent="Panel/Panel/MarginContainer" unique_id=86701138]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=433650275]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=464744214]
+layout_mode = 2
+
+[node name="Title" type="Panel" parent="Panel/MarginContainer/VBoxContainer" unique_id=792234397]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_345cf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Title" unique_id=549179155]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer" unique_id=747350024]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Title"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer" unique_id=2085915254]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer" unique_id=1187747871]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Capacitance" type="Panel" parent="Panel/MarginContainer/VBoxContainer" unique_id=243421577]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_345cf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Capacitance" unique_id=1461465988]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1419469281]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Capacitance"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=850442537]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1043187992]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=671027983]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "F"
+horizontal_alignment = 1
+
+[node name="Threshold" type="Panel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1232717217]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_345cf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Threshold" unique_id=68609100]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1203645948]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Threshold"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1950097987]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=501094147]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1080450082]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "V"
+horizontal_alignment = 1
+
+[node name="Vsrc" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=283064766]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Vsrc" unique_id=223039246]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Vsrc/HBoxContainer" unique_id=1013221949]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "V_src:"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/Vsrc/HBoxContainer" unique_id=1652226848]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Vsrc/HBoxContainer" unique_id=90983187]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/Vsrc/HBoxContainer" unique_id=386422989]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "V"
+
+[node name="DischargeR" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1094206839]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/DischargeR" unique_id=927591798]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/DischargeR/HBoxContainer" unique_id=723916966]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "Discharge resistor:"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/DischargeR/HBoxContainer" unique_id=875994317]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/DischargeR/HBoxContainer" unique_id=328965975]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/DischargeR/HBoxContainer" unique_id=470313981]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "Ohms"
+
+[node name="ChargeR" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1697545850]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ChargeR" unique_id=75515968]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChargeR/HBoxContainer" unique_id=945178969]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "Charge resistor:"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ChargeR/HBoxContainer" unique_id=164725963]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChargeR/HBoxContainer" unique_id=677551577]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChargeR/HBoxContainer" unique_id=142429190]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "Ohms"

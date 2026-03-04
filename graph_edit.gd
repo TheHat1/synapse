@@ -2,13 +2,15 @@ extends GraphEdit
 
 var menu 
 var isMenuOpen = false
+var neuron_menu
+var isNeuronMenuOpen = false
 
 signal spike()
 
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
 
-func _input(event: InputEvent):
+func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if !isMenuOpen:
 			menu = load("res://UI/Menus/add_elements_menu.tscn").instantiate()
@@ -58,3 +60,22 @@ func trigger_from(from_node: StringName, from_port: int, weight: float):
 			var target := get_node(NodePath(connection.to_node))
 			if target.has_method("execute_input"):
 				target.execute_input(connection.to_port, weight)
+
+func open_neuron_edit_menu(postion: Vector2, ref: GraphNode):
+	if !is_instance_valid(menu):
+		if !isMenuOpen:
+			neuron_menu = load("res://UI/Menus/NeuronEditMenu.tscn").instantiate()
+			neuron_menu.global_position = position
+			neuron_menu.ref = ref
+			add_child(neuron_menu)
+			isNeuronMenuOpen = true
+		else:
+			neuron_menu.global_position = position
+	elif is_instance_valid(menu) and !$"NeuronEditMenu".get_global_rect().has_point(get_global_mouse_position()):
+		menu.queue_free()
+		isMenuOpen = false
+
+func close_neuron_edit_menu():
+	if is_instance_valid(menu):
+		menu.queue_free()
+	isNeuronMenuOpen = false
