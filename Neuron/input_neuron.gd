@@ -4,17 +4,18 @@ var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
 var type: String = "InputNeuron"
 
-var input: float
+var threshold = 1.0
+var discharge_resitor = 0.02
+var charge_resitor = 1.0
+var buffer = 0.0
+var inhib_time = 0.0
+var exct_time = 0.0
+var V_src = 0.0
+var capacitance = 1.0
+var discharge_percent = 0.01
+var state = "CHARGING"
 var elapsed = 0.0
 var is_led_on = false
-var threshold = 1.0
-var buffer = 0.0
-var capacitance = 1.0
-var delta_old = 0.0
-var capacitance_old = 0.0
-var drain_resistor_old = -1
-var drain_resistor = -1
-var decay = 0.0
 
 signal current_buffer_value(value: float)
 signal pass_activation_treshold(value: float)
@@ -31,7 +32,7 @@ func _input(event):
 		queue_free()
 
 func _on_value_changed(value):
-	input = value
+	V_src = value
 
 func fire_output(port: int, weight: float):
 	get_parent().trigger_from(name, port, weight)
@@ -50,31 +51,18 @@ func _process(delta):
 	
 	$HBoxContainer6/ProgressBar.value = buffer / threshold * 100
 	
-	if buffer < 0:
-		buffer = 0.0
+	if state == "CHARGING":
+		var I_total = (V_src - buffer) / charge_resitor
 		
-	var I_total = input / capacitance 
-	
-	if drain_resistor != drain_resistor_old:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		drain_resistor_old = drain_resistor
-	
-	if delta != delta_old and drain_resistor > 0:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		delta_old = delta
-	
-	if capacitance != capacitance_old:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		capacitance_old = capacitance
-	
-	if drain_resistor <= 0:
-		buffer += (I_total) * delta
-	else:
-		buffer *= decay
-		buffer += (I_total) * (drain_resistor * capacitance) * (1 - decay)
+		buffer += I_total * delta
+	elif state == "DISCHARGING":
+		buffer *= (1 - (delta / (discharge_resitor * capacitance)))
+		
+		if buffer < discharge_percent:
+			state = "CHARGING"
 	
 	if buffer >= threshold:
-		buffer -= threshold
+		state = "DISCHARGING"
 		fire_output(0, 0.0)
 		$HBoxContainer4/Control/Sprite2D.texture = led_on
 		is_led_on = true

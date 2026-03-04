@@ -5,16 +5,15 @@ var led_on = load("res://Assets/neuron_led_lit.png")
 var type: String = "Neuron"
 
 var threshold = 1.0
-var drain_resistor = -1
+var discharge_resitor = 0.02
+var charge_resitor = 1.0
 var buffer = 0.0
-var I_inhib_total = 0.0
-var I_exct_total = 0.0
-var input = 0.0
+var inhib_time = 0.0
+var exct_time = 0.0
+var V_src = 0.0
 var capacitance = 1.0
-var decay = 0.0
-var drain_resistor_old = -1
-var delta_old = 0.0
-var capacitance_old = 0.0
+var discharge_percent = 0.01
+var state = "CHARGING"
 var elapsed = 0.0
 var is_led_on = false
 
@@ -25,9 +24,6 @@ func _ready():
 	set_slot(0, true, 0, Color.FIREBRICK, false, 0, Color.BLUE_VIOLET)
 	set_slot(1, true, 0, Color.FOREST_GREEN, true, 2, Color.BLUE_VIOLET)
 	set_slot(2, true, 1, Color.DARK_CYAN, false, 0, Color.FIREBRICK)
-	
-	clamp(decay, 0.0, 0.999999)
-	clamp(buffer, 0, threshold)
 	
 	name = name.replace("@", "_")
 
@@ -44,10 +40,10 @@ func execute_input(port: int, weight: float):
 			print("Unhandled port: ", port)
 
 func on_inhib_in(weight):
-	I_inhib_total += weight
+	inhib_time += weight
 
 func on_exc_in(weight):
-	I_exct_total += weight
+	exct_time += weight
 
 func _process(delta):
 	if is_led_on:
@@ -59,47 +55,31 @@ func _process(delta):
 	
 	$HBoxContainer4/ProgressBar.value = buffer / threshold * 100
 	
-	if buffer < 0:
-		buffer = 0.0
+	if state == "CHARGING":
+		var I_total = (V_src - buffer) / charge_resitor
 		
-	var I_total = input / capacitance 
-	
-	I_inhib_total /= capacitance
-	I_exct_total /= capacitance
-	
-	if drain_resistor != drain_resistor_old:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		drain_resistor_old = drain_resistor
-	
-	if delta != delta_old and drain_resistor > 0:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		delta_old = delta
-	
-	if capacitance != capacitance_old:
-		decay = exp(-delta/(drain_resistor * capacitance))
-		capacitance_old = capacitance
-	
-	if drain_resistor <= 0:
-		buffer += (I_total + I_exct_total - I_inhib_total) * delta
-	else:
-		buffer *= decay
-		buffer += (I_total + I_exct_total - I_inhib_total) * (drain_resistor * capacitance) * (1 - decay)
+		buffer += I_total * delta
+	elif state == "DISCHARGING":
+		buffer *= (1 - (delta / (discharge_resitor * capacitance)))
+		
+		if buffer < discharge_percent:
+			state = "CHARGING"
 	
 	if buffer >= threshold:
-		buffer -= threshold
+		state = "DISCHARGING"
 		fire_output(0, 0.0)
 		$HBoxContainer/Control/Sprite2D.texture = led_on
 		is_led_on = true
 		$HBoxContainer/Control/AudioStreamPlayer2D.play()
 	
-	I_exct_total = 0.0
-	I_inhib_total = 0.0
+	exct_time = 0.0
+	inhib_time = 0.0
 	
 	emit_signal("current_buffer_value", buffer)
 	emit_signal("pass_activation_treshold", threshold)
 
 func _on_value_changed(value):
-	input = value
+	V_src = value
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.double_click:
