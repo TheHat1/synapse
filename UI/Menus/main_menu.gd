@@ -25,6 +25,9 @@ var resistor = preload("res://Resistor/Resistor.tscn")
 
 var config = ConfigFile.new()
 
+func _ready() -> void:
+	$VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer/OptionButton.set_item_text(0, "Current (" + str(round(DisplayServer.screen_get_refresh_rate())).remove_chars(".0") + " fps)")
+
 func _process(_delta) -> void:
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
 	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
@@ -37,33 +40,6 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().quit()
-
-func _on_line_edit_text_submitted(new_text: String) -> void:
-	if ref != null and new_text.to_float() > 0:
-		ref.capacitance = new_text.to_float()
-		$VBoxContainer/ScrollContainer/VBoxContainer/Capacitance/HBoxContainer/LineEdit.text = str(ref.capacitance)
-
-func _on_line_edit_text_submitted_treshold(new_text: String) -> void:
-	if ref != null and new_text.to_float() > 0:
-		ref.threshold = new_text.to_float()
-		$VBoxContainer/ScrollContainer/VBoxContainer/Threshold/HBoxContainer/LineEdit.text = str(ref.threshold)
-
-func _on_line_edit_text_submitted_drain(new_text: String) -> void:
-	if ref != null:
-		ref.drain_resistor = new_text.to_float()
-		$VBoxContainer/ScrollContainer/VBoxContainer/Drain/HBoxContainer/LineEdit.text = str(ref.drain_resistor)
-
-func _on_line_edit_text_submitted_input(new_text: String) -> void:
-	if ref != null and new_text.to_float() >= 0:
-		ref.input = new_text.to_float()
-		$VBoxContainer/ScrollContainer/VBoxContainer/Input/HBoxContainer/LineEdit.text = str(ref.input)
-
-func _on_line_edit_text_submitted_title(new_text: String) -> void:
-	if ref != null and !new_text.strip_edges().is_empty():
-		ref.title = new_text.strip_edges()
-		$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label.text = ref.title
-	else:
-		$VBoxContainer/ScrollContainer/VBoxContainer/Title/HBoxContainer/LineEdit.text = ""
 
 func _on_save_button_pressed() -> void:
 	$SaveFileDialog.filters = ["*.json"]
@@ -247,6 +223,7 @@ func _on_confirm_load_dialog_confirmed() -> void:
 	rate_detector_deleted = 1
 	weight_deleted = 1
 	
+	$LoadFileDialog.filters = ["*.json"]
 	$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
 	$LoadFileDialog.popup_centered()
 
@@ -266,3 +243,30 @@ func _on_clear_button_pressed() -> void:
 	input_deleted = 1
 	rate_detector_deleted = 1
 	weight_deleted = 1
+
+func _on_option_button_item_selected(index: int) -> void:
+	match index:
+		0:
+			Engine.max_fps = int(floor(DisplayServer.screen_get_refresh_rate()))
+		1:
+			Engine.max_fps = 60
+		2:
+			Engine.max_fps = 144
+		3:
+			Engine.max_fps = 228
+		4:
+			Engine.max_fps = 0
+
+func _on_sound_option_button_item_selected(index: int) -> void:
+	var path: String
+	match index:
+		0:
+			path = "res://Assets/Sounds/sound-2.mp3"
+		1: 
+			path = "res://Assets/Sounds/sound-1.mp3"
+		2:
+			path = "res://Assets/Sounds/augghh.mp3"
+		3: 
+			path = "res://Assets/Sounds/pufferfish.mp3"
+	
+	get_parent().get_node("GraphWrapper").get_child(0).change_activation_sound(path)

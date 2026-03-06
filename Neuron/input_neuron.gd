@@ -4,6 +4,9 @@ var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
 var type: String = "InputNeuron"
 
+var edit_menu = load("res://UI/Menus/NeuronEditMenu.tscn")
+var isMenuOpen: bool = false
+
 var threshold = 1.0
 var discharge_resistor = 0.02
 var charge_resistor = 0.02
@@ -73,3 +76,16 @@ func _process(delta):
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	discharge_resistor = new_text.to_float()
+
+func _on_texture_button_pressed() -> void:
+	if !isMenuOpen:
+		edit_menu = load("res://UI/Menus/NeuronEditMenu.tscn").instantiate()
+		edit_menu.ref = self
+		add_child(edit_menu)
+		isMenuOpen = true
+	else:
+		edit_menu.queue_free()
+		isMenuOpen = false
+
+func change_sound(path: String):
+	$HBoxContainer4/Control/AudioStreamPlayer2D.stream = load(path)

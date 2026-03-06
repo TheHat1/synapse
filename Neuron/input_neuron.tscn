@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://iqupjasr5c8w" path="res://Neuron/input_neuron.gd" id="1_ejxq2"]
 [ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="1_fnk6g"]
-[ext_resource type="AudioStream" uid="uid://dcnx4jrfqlfhr" path="res://Assets/sound-2.mp3" id="3_ejxq2"]
+[ext_resource type="AudioStream" uid="uid://dcnx4jrfqlfhr" path="res://Assets/Sounds/sound-2.mp3" id="3_ejxq2"]
+[ext_resource type="Texture2D" uid="uid://cyqecggms4byo" path="res://Assets/edit.png" id="4_4uvmw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spy8t"]
 content_margin_left = 10.0
@@ -119,7 +120,7 @@ script = ExtResource("1_ejxq2")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Control" type="VBoxContainer" parent="HBoxContainer4" unique_id=1989373729]
+[node name="Control" type="Control" parent="HBoxContainer4" unique_id=876426693]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -133,6 +134,19 @@ stream = ExtResource("3_ejxq2")
 max_distance = 1831.0
 attenuation = 1.3660405
 max_polyphony = 2
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer4/Control" unique_id=1571531387]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 1.0
+offset_right = 337.0
+offset_bottom = 33.0
+size_flags_horizontal = 4
+tooltip_text = "Edit values"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_4uvmw")
+texture_pressed = ExtResource("4_4uvmw")
+texture_hover = ExtResource("4_4uvmw")
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="." unique_id=436597046]
 layout_mode = 2
@@ -183,6 +197,7 @@ theme_override_constants/outline_size = 2
 rounded = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=873545009]
+custom_minimum_size = Vector2(0, 57)
 layout_mode = 2
 alignment = 2
 
@@ -226,4 +241,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Ohms"
 
+[connection signal="pressed" from="HBoxContainer4/Control/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="text_submitted" from="HBoxContainer/Panel2/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

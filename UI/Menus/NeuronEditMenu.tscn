@@ -42,16 +42,19 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -678.0
-offset_bottom = -290.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -677.0
+offset_bottom = -268.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mkpsp")
 
 [node name="Panel" type="Panel" parent="." unique_id=1856645385]
 layout_mode = 0
+offset_top = 24.0
 offset_right = 471.0
-offset_bottom = 356.0
+offset_bottom = 380.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_veor4")
 
 [node name="Panel" type="Panel" parent="Panel" unique_id=1234905416]
@@ -76,6 +79,7 @@ theme_override_constants/margin_bottom = 10
 [node name="Title" type="Label" parent="Panel/Panel/MarginContainer" unique_id=86701138]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
+text = "Edit neuron properties"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=433650275]
 layout_mode = 1
@@ -114,7 +118,7 @@ text = "Title"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer" unique_id=1187747871]
+[node name="LineEditTitle" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer" unique_id=1187747871]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -139,7 +143,7 @@ text = "Capacitance"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1043187992]
+[node name="LineEditCap" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=1043187992]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer" unique_id=671027983]
@@ -170,7 +174,7 @@ text = "Threshold"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=501094147]
+[node name="LineEditThreshold" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=501094147]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer" unique_id=1080450082]
@@ -275,3 +279,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 22
 text = "Ohms"
+
+[connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer/LineEditTitle" to="." method="_on_line_edit_title_text_submitted"]
+[connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer/LineEditCap" to="." method="_on_line_edit_cap_text_submitted"]
+[connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer/LineEditThreshold" to="." method="_on_line_edit_threshold_text_submitted"]
