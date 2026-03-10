@@ -28,6 +28,8 @@ func show_panel(target: Control) -> void:
 
 func _on_dataset_button_pressed() -> void:
 	show_panel($GraphWrapper/DatasetPanel)
+	$GraphWrapper/DatasetPanel.get_inputs()
+	$GraphWrapper/DatasetPanel.get_outputs()
 
 func _on_graph_button_pressed() -> void:
 	show_panel($GraphWrapper/GraphEdit)

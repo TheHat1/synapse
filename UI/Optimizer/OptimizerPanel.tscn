@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgw04wwhrlms7"]
+[gd_scene format=3 uid="uid://bgw04wwhrlms7"]
 
 [ext_resource type="Script" uid="uid://bjhsyr6dxb4bs" path="res://UI/Optimizer/optimizer_panel.gd" id="1_n5m0p"]
 
@@ -21,7 +21,75 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
 shadow_size = 3
 
-[node name="OptimizerPanel" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugx6r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rja1n"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx4ky"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.19434938, 0.19434923, 0.19434926, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frbuy"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0c67"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rldl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29219002, 0.29219005, 0.29218993, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbfv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="OptimizerPanel" type="Control" unique_id=2042552954]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n5m0p")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=754872892]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1rub4")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=733305687]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,19 +119,19 @@ theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=651686120]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=2097221590]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1277787475]
 custom_minimum_size = Vector2(270, 55)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n5m0p")
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Panel"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Panel" unique_id=1159182765]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 3.0
@@ -71,3 +139,134 @@ offset_right = 245.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 33
 text = "Optimizer"
+
+[node name="Options" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=544304663]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugx6r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Options" unique_id=1398690043]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 440.0
+offset_bottom = 46.0
+theme_override_constants/separation = 139
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Options/HBoxContainer" unique_id=1138223051]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Options"
+
+[node name="Loss functions options" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1503825846]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rja1n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options" unique_id=653710183]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 589.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer" unique_id=1130542656]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Loss function"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer" unique_id=1827463273]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer" unique_id=1042433007]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_lx4ky")
+item_count = 6
+popup/item_0/text = "Value prediction"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "MSE"
+popup/item_1/id = 1
+popup/item_2/text = "MAE"
+popup/item_2/id = 2
+popup/item_3/text = "Classification"
+popup/item_3/id = 3
+popup/item_3/separator = true
+popup/item_4/text = "Cross-entropy"
+popup/item_4/id = 4
+popup/item_5/text = "Binary-Cross-entropy  "
+popup/item_5/id = 5
+
+[node name="Epochs" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=418125511]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs" unique_id=334482028]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer" unique_id=946152302]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Epochs"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer" unique_id=1893842865]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer" unique_id=1695908729]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "10"
+placeholder_text = "10"
+alignment = 1
+max_length = 3
+emoji_menu_enabled = false
+clear_button_enabled = true
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="line" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=903964618]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n0c67")
+
+[node name="Generate" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1976782209]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5m0p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate" unique_id=2012397659]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer" unique_id=2141484289]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Start optimizer"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer" unique_id=4101874]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StartButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer" unique_id=984637087]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rldl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hfbfv")
+text = "Start"
+
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

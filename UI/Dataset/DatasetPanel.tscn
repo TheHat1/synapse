@@ -1,9 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgufflynit8i7"]
+[gd_scene format=3 uid="uid://bgufflynit8i7"]
 
 [ext_resource type="Script" uid="uid://by08gaj4vrn62" path="res://UI/Dataset/dataset_panel.gd" id="1_cxifj"]
-[ext_resource type="PackedScene" uid="uid://b4r7lgiro2h56" path="res://UI/range_element.tscn" id="2_pfyhj"]
 [ext_resource type="Script" uid="uid://b74xx0p3p7ps7" path="res://UI/Dataset/graph_draw.gd" id="3_mb7q5"]
-[ext_resource type="PackedScene" uid="uid://dam3sdw47yb8h" path="res://UI/OutputRange.tscn" id="4_vvr58"]
 [ext_resource type="Script" uid="uid://dkcrhgpuowcmu" path="res://UI/Dataset/draw_output.gd" id="5_45th3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfyhj"]
@@ -60,21 +58,6 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wadu"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.29219002, 0.29219005, 0.29218993, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufqdb"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyq0f"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -91,6 +74,21 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
 shadow_size = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wadu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29219002, 0.29219005, 0.29218993, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufqdb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb7q5"]
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -106,7 +104,7 @@ content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 10.0
 
-[node name="DatasetPanel" type="Control"]
+[node name="DatasetPanel" type="Control" unique_id=1875885990]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxifj")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=40785721]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pfyhj")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1857095623]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,7 +133,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer" unique_id=478617986]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -143,26 +141,26 @@ theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer" unique_id=544930388]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2023957315]
 custom_minimum_size = Vector2(0, 950)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="OptionsBox" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OptionsBox" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1066953726]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Panel" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="Panel" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=914177848]
 custom_minimum_size = Vector2(270, 55)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cxifj")
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Panel"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Panel" unique_id=1067629773]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 3.0
@@ -171,11 +169,11 @@ offset_bottom = 42.0
 theme_override_font_sizes/font_size = 33
 text = "Dataset creation"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=174017258]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="DataNormButton" type="LineEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Control"]
+[node name="DataNormButton" type="LineEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Control" unique_id=120442806]
 layout_mode = 0
 offset_left = 518.0
 offset_top = 220.0
@@ -189,12 +187,12 @@ alignment = 1
 virtual_keyboard_type = 2
 caret_blink = true
 
-[node name="Input ranges" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="Input ranges" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=191514961]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Input ranges"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Input ranges" unique_id=664653605]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -202,94 +200,94 @@ offset_right = 440.0
 offset_bottom = 46.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Input ranges/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Input ranges/HBoxContainer" unique_id=474184484]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Input ranges"
 
-[node name="DataNorm" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="DataNorm" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=812125779]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm" unique_id=444760618]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer" unique_id=920751023]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Data normalization"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer" unique_id=1706560515]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer"]
+[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DataNorm/HBoxContainer" unique_id=685451602]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 29
 theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
 icon_alignment = 2
 
-[node name="DDS" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="DDS" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=162874516]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "When toggled, the samples will be taken from the middle of the N-th range in all input ranges. Otherwise it will be a stohastic sampling."
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS" unique_id=1306711453]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer" unique_id=1783042953]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Deterministic data sampling"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer" unique_id=409663187]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer"]
+[node name="DataNormButton" type="CheckButton" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/DDS/HBoxContainer" unique_id=157362084]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
 alignment = 1
 
-[node name="SplitN" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="SplitN" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=538550483]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "The amount of ranges in which all input ranges will be split. (Integer >= Input ranges)"
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN" unique_id=358617315]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer" unique_id=1784912897]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Split step"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer" unique_id=2065854041]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SplitStep" type="LineEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer"]
+[node name="SplitStep" type="LineEdit" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer" unique_id=614510529]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_45th3")
@@ -299,11 +297,11 @@ alignment = 1
 virtual_keyboard_type = 2
 caret_blink = true
 
-[node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=1297809643]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=1649392304]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 3
@@ -311,64 +309,40 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sr5hk")
 scroll_vertical_custom_step = 0.1
 horizontal_scroll_mode = 0
 
-[node name="Ranges" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer"]
+[node name="Ranges" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer" unique_id=363183552]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="Range" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges" instance=ExtResource("2_pfyhj")]
-layout_mode = 2
-
-[node name="AddRange" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
-custom_minimum_size = Vector2(0, 55)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/AddRange"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 586.0
-offset_bottom = 44.0
-alignment = 1
-
-[node name="Button" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
-text = "+"
-
-[node name="line" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="line" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=568209823]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
 
-[node name="Generate" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox"]
+[node name="Generate" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox" unique_id=1395346980]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_eyq0f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate" unique_id=1072943199]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer" unique_id=1806973869]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Generate IR"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer" unique_id=1768555160]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GenerateButton" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer"]
+[node name="GenerateButton" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer" unique_id=1118449001]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -376,16 +350,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
 text = "Generate"
 
-[node name="Panel2" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Panel2" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1631074574]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mb7q5")
 
-[node name="GraphDisplay" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="GraphDisplay" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=438140534]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay" unique_id=1190348502]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -395,7 +369,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mb7q5")
 text = "Input ranges' 2D hypercube representation: split_steps: 10, data_norm: false, dds: false"
 autowrap_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay" unique_id=1319149598]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -408,26 +382,26 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer" unique_id=111042643]
 layout_mode = 2
 script = ExtResource("3_mb7q5")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer" unique_id=576747289]
 custom_minimum_size = Vector2(0, 950)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="OptionsBox" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="OptionsBox" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=287302040]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Output ranges" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="Output ranges" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=812612818]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Output ranges"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Output ranges" unique_id=1985805556]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -435,12 +409,12 @@ offset_right = 440.0
 offset_bottom = 46.0
 theme_override_constants/separation = 139
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Output ranges/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Output ranges/HBoxContainer" unique_id=2002336397]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Output ranges"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=67479884]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 18
 theme_override_font_sizes/bold_font_size = 20
@@ -449,11 +423,11 @@ text = "Index of step : Wanted activation (Hz)
 Please make sure to have at least a value at index 0 and at the amount of split steps (Default is 10, e.g. 0:0, 10:10)"
 fit_content = true
 
-[node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="Control2" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=2137251907]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=487634920]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 3
@@ -461,64 +435,40 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sr5hk")
 scroll_vertical_custom_step = 0.1
 horizontal_scroll_mode = 0
 
-[node name="Ranges" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer"]
+[node name="Ranges" type="VBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer" unique_id=2044124678]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 
-[node name="OutputRange" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges" instance=ExtResource("4_vvr58")]
-layout_mode = 2
-
-[node name="AddRange" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
-custom_minimum_size = Vector2(0, 55)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_vvr58")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 586.0
-offset_bottom = 44.0
-alignment = 1
-
-[node name="AddORButton" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange/HBoxContainer"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
-text = "+"
-
-[node name="line" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="line" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=1278943915]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4k3ys")
 
-[node name="Generate" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox"]
+[node name="Generate" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox" unique_id=717934106]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_eyq0f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate" unique_id=2013499322]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer" unique_id=483685089]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Generate OR"
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer" unique_id=709140269]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GenerateButtonOR" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer"]
+[node name="GenerateButtonOR" type="Button" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer" unique_id=1231188099]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -526,16 +476,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3wadu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ufqdb")
 text = "Generate"
 
-[node name="Panel2" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Panel2" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1855359044]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mb7q5")
 
-[node name="GraphDisplay" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="GraphDisplay" type="Panel" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2099176661]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay" unique_id=255129420]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -545,7 +495,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mb7q5")
 text = "Output ranges' 2D hypercube representation"
 autowrap_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay" unique_id=924256619]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -558,12 +508,10 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer"]
+[node name="Control" type="Control" parent="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer" unique_id=596211228]
 layout_mode = 2
 script = ExtResource("5_45th3")
 
 [connection signal="text_submitted" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep" to="." method="_on_split_step_text_submitted"]
-[connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/AddRange/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/Generate/HBoxContainer/GenerateButton" to="." method="_on_generate_button_pressed"]
-[connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/AddRange/HBoxContainer/AddORButton" to="." method="_on_add_or_button_pressed"]
 [connection signal="pressed" from="Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/Generate/HBoxContainer/GenerateButtonOR" to="." method="_on_generate_button_or_pressed"]

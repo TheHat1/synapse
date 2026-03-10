@@ -127,6 +127,19 @@ caret_blink = true
 layout_mode = 2
 text = "Max"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=661424373]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=389294849]
+layout_mode = 2
+text = "Constant"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=915064998]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=904522357]
 layout_mode = 2
 
@@ -142,4 +155,5 @@ text = "     Increment"
 
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/LineEdit2" to="." method="_on_line_edit_2_text_submitted"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]

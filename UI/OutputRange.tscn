@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dam3sdw47yb8h"]
+[gd_scene format=3 uid="uid://dam3sdw47yb8h"]
 
-[ext_resource type="Texture2D" uid="uid://p5ss1eg03uuv" path="res://Assets/close.png" id="1_7nx3b"]
 [ext_resource type="Script" uid="uid://bemwym1tngyd6" path="res://UI/output_range.gd" id="1_nhgdn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yrcg"]
@@ -19,87 +18,79 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhgdn"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.28235295, 0.28235295, 0.28235295, 0.90588236)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0.19076231, 0.19076234, 0.19076225, 0.6)
-shadow_size = 3
-shadow_offset = Vector2(1.17, 0.69)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nx3b"]
+bg_color = Color(0.3529412, 0.13725491, 0.32156864, 0.77254903)
+border_width_right = 3
+border_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5p7s"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.47843137, 0.18431373, 0.14509805, 0.90588236)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0.19215687, 0.19215687, 0.19215687, 0.6)
-shadow_size = 3
-shadow_offset = Vector2(1.17, 0.69)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rui1p"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[node name="OutputRange" type="Panel"]
-custom_minimum_size = Vector2(0, 55)
+[node name="OutputRange" type="Panel" unique_id=363279648]
+custom_minimum_size = Vector2(0, 71)
 offset_right = 619.0
-offset_bottom = 55.0
+offset_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_5yrcg")
 script = ExtResource("1_nhgdn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1550570623]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = -15.5
-offset_right = -14.0
-offset_bottom = 15.5
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7nx3b")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1066314013]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="Panel/MarginContainer" unique_id=1464928565]
+layout_mode = 2
+text = "Rate detector"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1286278625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=867190114]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1520246259]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Range"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer" unique_id=1544349178]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "0:0, 1:2, 2:5, 3:12, ... n:m"
 emoji_menu_enabled = false
 caret_blink = true
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/HBoxContainer" unique_id=1033123426]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-color = Color(1, 1, 1, 1)
+color = Color(0.34901962, 0.18431373, 0.3254902, 1)
 
-[node name="Button" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_constants/icon_max_width = 25
-theme_override_icons/icon = ExtResource("1_7nx3b")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nhgdn")
-theme_override_styles/hover = SubResource("StyleBoxFlat_j5p7s")
-theme_override_styles/focus = SubResource("StyleBoxFlat_rui1p")
-
-[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="color_changed" from="HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
-[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="text_submitted" from="MarginContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="color_changed" from="MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

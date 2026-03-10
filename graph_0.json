@@ -1957,6 +1957,10 @@
 
 
 
+"isConstant": false,
+
+
+
 "maxV": 1.5,
 
 
@@ -1984,6 +1988,10 @@
 
 
 {
+
+
+
+"isConstant": false,
 
 
 
@@ -2017,6 +2025,10 @@
 
 
 
+"isConstant": false,
+
+
+
 "maxV": 1.5,
 
 
@@ -2044,6 +2056,10 @@
 
 
 {
+
+
+
+"isConstant": false,
 
 
 
@@ -2356,6 +2372,10 @@
 
 
 {
+
+
+
+"isConstant": true,
 
 
 

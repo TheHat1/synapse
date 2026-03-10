@@ -9,9 +9,6 @@ var hypercubeOR:= []
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
 
-func _on_button_pressed() -> void:
-	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.add_child(range_element.instantiate())
-
 func _on_generate_button_pressed() -> void:
 	hypercubeIR = []
 	var range_elements = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.get_children()
@@ -20,9 +17,11 @@ func _on_generate_button_pressed() -> void:
 	N = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text.to_int()
 	var rng = RandomNumberGenerator.new()
 	var colors = []
+	var nodes_names = []
 	
 	for r in range_elements:
 		colors.append(r.color)
+		nodes_names.append(r.node_name)
 	
 	for r in range_elements:
 		
@@ -49,14 +48,17 @@ func _on_generate_button_pressed() -> void:
 				hypercubeIR[i].append(value_start)
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer/Control.pass_hypercube(hypercubeIR, colors)
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/Label.text = "Input ranges' 2D hypercube representation: split_steps: "+ str(N) +", data_norm: "+ str(normalize) +", dds: " + str(dds)
+	get_parent().get_node("OptimizerPanel").pass_dataset(hypercubeIR, nodes_names, N)
 
 func _on_generate_button_or_pressed() -> void:
 	hypercubeOR = []
 	var range_elements = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.get_children()
 	var colors = []
+	var nodes_names = []
 	
 	for r in range_elements:
 		colors.append(r.color)
+		nodes_names.append(r.node_name)
 	
 	for r in range_elements:
 		
@@ -71,11 +73,39 @@ func _on_generate_button_or_pressed() -> void:
 		hypercubeOR.append(range_places)
 		range_places = []
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_hypercube(hypercubeOR, colors)
-
-func _on_add_or_button_pressed() -> void:
-	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.add_child(output_range_element.instantiate())
+	get_parent().get_node("OptimizerPanel").pass_output_dataset(hypercubeOR, nodes_names)
 
 func _on_split_step_text_submitted(new_text: String) -> void:
 	N = new_text.to_int()
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_steps(N)
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer/Control.pass_steps(N)
+
+func get_inputs():
+	for n in $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.get_children():
+		n.queue_free()
+	
+	var nodes = get_parent().get_child(0).get_children()
+	for node in nodes:
+		if node is GraphNode:
+			if node.type == "Input":
+				if !node.is_constant:
+					var r = range_element.instantiate()
+					r.node_name = node.name
+					r.node_title = node.title
+					r.minimal = node.minV
+					r.maximum = node.maxV
+					$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.add_child(r)
+
+func get_outputs():
+	for n in $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.get_children():
+		n.queue_free()
+	
+	var nodes = get_parent().get_child(0).get_children()
+	for node in nodes:
+		if node is GraphNode:
+			if node.type == "RateDetector":
+				#if !node.is_constant:
+					var r = output_range_element.instantiate()
+					r.node_name = node.name
+					r.node_title = node.title
+					$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.add_child(r)

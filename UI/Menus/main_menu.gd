@@ -57,7 +57,8 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 func serialize_and_export_graph(path: String):
 	var data := {
 		"nodes": [], 
-		"connections": get_parent().get_node("GraphWrapper").get_child(0).get_connection_list()
+		"connections": get_parent().get_node("GraphWrapper").get_child(0).get_connection_list(),
+		"dataset_output_points": []
 		}
 	
 	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
@@ -100,7 +101,8 @@ func serialize_and_export_graph(path: String):
 						"position": child.position_offset, 
 						"type": child.type,
 						"minV": child.minV,
-						"maxV": child.maxV
+						"maxV": child.maxV,
+						"isConstant": child.is_constant
 					})
 				"RateDetector": 
 					data.nodes.append({
@@ -119,6 +121,10 @@ func serialize_and_export_graph(path: String):
 						"resistance": child.resistance
 					})
 				_: print("Opaaa   ", child)
+	var ranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
+	for r in ranges:
+		data.dataset_output_points.append({"text": r.text})
+	
 	var json := JSON.stringify(data, '\n')
 	
 	var file := FileAccess.open(path, FileAccess.WRITE)
@@ -181,6 +187,7 @@ func load_graph_from_file(path: String):
 				node = input.instantiate()
 				node.minV = node_data["minV"]
 				node.maxV = node_data["maxV"]
+				node.is_constant = node_data["isConstant"]
 				input_count += 1
 			"RateDetector": 
 				node = rate_detector.instantiate()
@@ -205,6 +212,8 @@ func load_graph_from_file(path: String):
 	for conn in data.get("connections", []):
 		get_parent().get_node("GraphWrapper").get_child(0).connect_node(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
 		get_parent().get_node("GraphWrapper").get_child(0)._wire_connection(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
+	
+	
 
 func _on_confirm_load_dialog_confirmed() -> void:
 	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()
