@@ -63,3 +63,9 @@ func change_activation_sound(path: String):
 	for node in get_children():
 		if node.has_method("change_sound"):
 			node.change_sound(path)
+
+func on_rate_detector_delete(node_name: String):
+	get_parent().get_child(1).remove_output_node(node_name)
+
+func on_input_delete(node_name: String):
+	get_parent().get_child(1).remove_input_node(node_name)

@@ -267,6 +267,7 @@ size_flags_horizontal = 3
 [node name="SoundOptionButton" type="OptionButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel8/HBoxContainer" unique_id=1111064137]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 selected = 0
 item_count = 4
 popup/item_0/text = "Default"
@@ -302,6 +303,7 @@ size_flags_horizontal = 3
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer" unique_id=1190172890]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 selected = 0
 item_count = 5
 popup/item_0/text = "Current"

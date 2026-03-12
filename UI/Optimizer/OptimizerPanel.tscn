@@ -69,6 +69,17 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
 shadow_size = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vva2m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.19076243, 0.19076231, 0.19076231, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0c67"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 3
@@ -89,11 +100,21 @@ corner_detail = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbfv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgd6d"]
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.099985994, 0.099985994, 0.099985994, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1.63, 1.93)
+
 [node name="OptimizerPanel" type="Control" unique_id=2042552954]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n5m0p")
@@ -121,6 +142,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=651686120]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=2097221590]
 custom_minimum_size = Vector2(600, 0)
@@ -234,6 +256,106 @@ clear_button_enabled = true
 virtual_keyboard_type = 2
 caret_blink = true
 
+[node name="Learning rate" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=698989429]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate" unique_id=1336481088]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer" unique_id=1917252669]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Learning rate"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer" unique_id=1131888543]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LearningRateLineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer" unique_id=300244497]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "0.01"
+placeholder_text = "0.01"
+alignment = 1
+max_length = 4
+emoji_menu_enabled = false
+clear_button_enabled = true
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="Wait time" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1674752684]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time" unique_id=1421046498]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer" unique_id=1742444572]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Wait time (s)"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer" unique_id=1766748524]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WaitTimeLineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer" unique_id=1174770294]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "0.5"
+placeholder_text = "0.5"
+alignment = 1
+max_length = 4
+emoji_menu_enabled = false
+clear_button_enabled = true
+virtual_keyboard_type = 2
+caret_blink = true
+
+[node name="Reset" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1501557224]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset" unique_id=1154712515]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=420729590]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Reset weights"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=1415858258]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=1330697641]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_vva2m")
+text = "Reset"
+
 [node name="line" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=903964618]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -269,4 +391,125 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7rldl")
 theme_override_styles/focus = SubResource("StyleBoxFlat_hfbfv")
 text = "Start"
 
+[node name="Panel2" type="Panel" parent="Panel/MarginContainer/HBoxContainer" unique_id=838184424]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cgd6d")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=86262919]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Epochs" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1411587318]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rja1n")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs" unique_id=424628903]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer" unique_id=1676359975]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer" unique_id=781228966]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Epoch: 1"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer" unique_id=821924347]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer" unique_id=1042763058]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Explored" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1440792708]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rja1n")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored" unique_id=1918153576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer" unique_id=1165969718]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer" unique_id=1873578163]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Steps explored"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer" unique_id=403440191]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer" unique_id=1117632934]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Loss" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=29974606]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss" unique_id=419229698]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer" unique_id=166703129]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Loss: "
+
+[node name="Gradient" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=2027347943]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient" unique_id=1942210500]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer" unique_id=1712990865]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Gradient: "
+
+[connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit" to="." method="_on_learning_rate_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit" to="." method="_on_wait_time_line_edit_text_submitted"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

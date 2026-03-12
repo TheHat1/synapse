@@ -9,6 +9,7 @@ func pass_hypercube(h,c):
 	var value_bank = []
 	var lerped = []
 	hypercube = []
+	
 	for element in h:
 		for param in element:
 			steps_bank.append(param[0].to_int())
@@ -29,6 +30,7 @@ func pass_hypercube(h,c):
 	hypercube = lerped
 	colours = c
 	queue_redraw()
+	return hypercube
 
 func pass_steps(s):
 	steps = s

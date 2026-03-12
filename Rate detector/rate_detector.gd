@@ -35,4 +35,5 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
 		get_parent().get_parent().get_parent().get_node("MainMenu").rate_detector_deleted += 1
+		get_parent().on_rate_detector_delete(name)
 		queue_free()

@@ -123,7 +123,12 @@ func serialize_and_export_graph(path: String):
 				_: print("Opaaa   ", child)
 	var ranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
 	for r in ranges:
-		data.dataset_output_points.append({"text": r.text})
+		data.dataset_output_points.append({
+			"nodeName": r.node_name,
+			"nodeTitle": r.node_title,
+			"text": r.text,
+			"color": r.color
+			})
 	
 	var json := JSON.stringify(data, '\n')
 	
@@ -181,7 +186,7 @@ func load_graph_from_file(path: String):
 				neuron_count +=1
 			"SynapticWeight": 
 				node = synaptic_weight.instantiate()
-				node.weight = node_data["weight"]
+				node.set_weight(node_data["weight"])
 				weight_count += 1
 			"Input": 
 				node = input.instantiate()
@@ -213,7 +218,14 @@ func load_graph_from_file(path: String):
 		get_parent().get_node("GraphWrapper").get_child(0).connect_node(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
 		get_parent().get_node("GraphWrapper").get_child(0)._wire_connection(conn["from_node"], conn["from_port"], conn["to_node"], conn["to_port"])
 	
+	get_parent().get_node("GraphWrapper").get_child(1).get_outputs()
+	var ranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
 	
+	for range_data in data.get("dataset_output_points", []):
+		for r in ranges:
+			if r.node_name == range_data["nodeName"]:
+				r.set_text_on_load(range_data["text"])
+				r.set_color_on_load(range_data["color"])
 
 func _on_confirm_load_dialog_confirmed() -> void:
 	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()
@@ -221,6 +233,17 @@ func _on_confirm_load_dialog_confirmed() -> void:
 	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
 		if child is GraphNode:
 			child.queue_free()
+	
+	var oranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
+	var iranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges").get_children()
+	
+	get_parent().get_node("GraphWrapper").get_child(1).current_output_nodes = [""]
+	get_parent().get_node("GraphWrapper").get_child(1).current_input_nodes = [["",0.0,0.0]]
+	
+	for o in oranges:
+		o.queue_free()
+	for i in iranges:
+		i.queue_free()
 	
 	neuron_count = 1
 	input_count = 1
@@ -242,6 +265,17 @@ func _on_clear_button_pressed() -> void:
 	for child in get_parent().get_node("GraphWrapper").get_child(0).get_children():
 		if child is GraphNode:
 			child.queue_free()
+	
+	var oranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
+	var iranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges").get_children()
+	
+	get_parent().get_node("GraphWrapper").get_child(1).current_output_nodes = [""]
+	get_parent().get_node("GraphWrapper").get_child(1).current_input_nodes = [["",0.0,0.0]]
+	
+	for o in oranges:
+		o.queue_free()
+	for i in iranges:
+		i.queue_free()
 	
 	neuron_count = 1
 	input_count = 1

@@ -21,3 +21,9 @@ func _on_button_pressed() -> void:
 func _on_color_picker_button_color_changed(c: Color) -> void:
 	$Panel.get_theme_stylebox("panel").bg_color = c
 	color = c
+
+func on_node_params_changed(min1: float, max1: float):
+	minimal = min1
+	maximum = max1
+	$MarginContainer/HBoxContainer/min.text = str(minimal, 2)
+	$MarginContainer/HBoxContainer/max.text = str(maximum, 2)

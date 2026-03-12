@@ -60,9 +60,16 @@ func _on_generate_button_or_pressed() -> void:
 		colors.append(r.color)
 		nodes_names.append(r.node_name)
 	
+	var regex := RegEx.new()
+	regex.compile("^-?\\d+:-?\\d+(?:\\.\\d+)?(?:,\\s*-?\\d+:-?\\d+(?:\\.\\d+)?)*$")
+	
 	for r in range_elements:
 		
 		var range_places = []
+		
+		if !regex.search(r.text):
+			print("inccorrect text")
+			return
 		
 		var text = r.text.replace(" ", "")
 		var text_arr = text.split(",")
@@ -72,40 +79,68 @@ func _on_generate_button_or_pressed() -> void:
 		
 		hypercubeOR.append(range_places)
 		range_places = []
-	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_hypercube(hypercubeOR, colors)
-	get_parent().get_node("OptimizerPanel").pass_output_dataset(hypercubeOR, nodes_names)
+	var cube = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_hypercube(hypercubeOR, colors)
+	get_parent().get_node("OptimizerPanel").pass_output_dataset(cube, nodes_names)
 
 func _on_split_step_text_submitted(new_text: String) -> void:
 	N = new_text.to_int()
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_steps(N)
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer/Control.pass_steps(N)
 
+var current_input_nodes = [["",0.0,0.0]]
+
 func get_inputs():
-	for n in $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.get_children():
-		n.queue_free()
-	
 	var nodes = get_parent().get_child(0).get_children()
 	for node in nodes:
 		if node is GraphNode:
 			if node.type == "Input":
 				if !node.is_constant:
-					var r = range_element.instantiate()
-					r.node_name = node.name
-					r.node_title = node.title
-					r.minimal = node.minV
-					r.maximum = node.maxV
-					$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.add_child(r)
+					check_if_node_has_changed(current_input_nodes, node)
+
+
+func remove_input_node(node_name: String):
+	current_input_nodes.erase(node_name)
+	var nodes = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.get_children()
+	for node in nodes:
+		if node.node_name == node_name:
+			node.queue_free()
+
+var current_output_nodes = [""]
 
 func get_outputs():
-	for n in $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.get_children():
-		n.queue_free()
-	
 	var nodes = get_parent().get_child(0).get_children()
 	for node in nodes:
 		if node is GraphNode:
 			if node.type == "RateDetector":
-				#if !node.is_constant:
+				if !current_output_nodes.has(node.name):
+					current_output_nodes.append(node.name)
 					var r = output_range_element.instantiate()
 					r.node_name = node.name
 					r.node_title = node.title
 					$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.add_child(r)
+
+func remove_output_node(node_name: String):
+	current_output_nodes.erase(node_name)
+	var nodes = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges.get_children()
+	for node in nodes:
+		if node.node_name == node_name:
+			node.queue_free()
+
+func check_if_node_has_changed(arr, node):
+	var exists: bool = false
+	for i in range(arr.size()):
+		if arr[i][0] == node.name:
+			exists = true
+			var ranges = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.get_children()
+			for r in ranges:
+				if r.node_name == node.name:
+					if r.minimal != node.minV or r.maximum != node.maxV:
+						r.on_node_params_changed(node.minV , node.maxV )
+	if !exists:
+		arr.append([node.name, node.minV, node.maxV])
+		var r = range_element.instantiate()
+		r.node_name = node.name
+		r.node_title = node.title
+		r.minimal = node.minV
+		r.maximum = node.maxV
+		$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/ScrollContainer/Ranges.add_child(r)
