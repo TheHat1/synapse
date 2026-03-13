@@ -104,8 +104,12 @@ func train_network():
 			
 			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: " + str(gradient)
 			
+			var br: int = 0
 			for weight in weights:
-				weight.update_weight(gradient * learning_rate)
+				weight.update_weight(gradient[br] * learning_rate)
+				br +=1
+				if br == gradient.size():
+					br = 0
 			
 		forward_pass(-1)
 		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: "
@@ -129,10 +133,10 @@ func forward_pass(step: int):
 
 func gradient_calculation(loss, n: float, X):
 	var XmultLoss = multiply_matrixes(X, loss)
-	var sum: float = 0.0
+	var gradient = []
 	for v in XmultLoss:
-		sum += v
-	return (2/n) * sum
+		gradient.append((2/n) * v)
+	return gradient
 
 func multiply_matrixes(matrix, matrix2):
 	var arr = []
