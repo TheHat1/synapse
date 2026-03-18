@@ -61,6 +61,8 @@ func _process(delta):
 	
 	$HBoxContainer4/ProgressBar.value = buffer / threshold * 100
 	
+	var tau = discharge_resistor * capacitance
+	
 	if state == "CHARGING":
 		if exct_time > 0.0:
 			var I_total = (V_src - buffer) / charge_resistor
@@ -68,13 +70,12 @@ func _process(delta):
 			exct_time -= delta
 			exct_time  = clamp(exct_time, 0.0, 1000.0)
 		if inhib_time > 0.0:
-			var tau = discharge_resistor * capacitance
 			buffer *= exp(-inhib_time / tau)
 			inhib_time -= delta
 			inhib_time = clamp(inhib_time, 0.0, 1000.0)
+		buffer *= exp(-delta / tau)
 		
 	elif state == "DISCHARGING":
-		var tau = discharge_resistor * capacitance
 		buffer *= exp(-delta / tau)
 		
 		if buffer < discharge_percent:

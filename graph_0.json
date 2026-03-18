@@ -553,58 +553,6 @@
 
 
 
-"from_node": "_GraphNode_437",
-
-
-
-"from_port": 0,
-
-
-
-"keep_alive": false,
-
-
-
-"to_node": "_GraphNode_419",
-
-
-
-"to_port": 0
-
-
-},
-
-
-{
-
-
-
-"from_node": "_GraphNode_434",
-
-
-
-"from_port": 0,
-
-
-
-"keep_alive": false,
-
-
-
-"to_node": "_GraphNode_424",
-
-
-
-"to_port": 0
-
-
-},
-
-
-{
-
-
-
 "from_node": "_GraphNode_440",
 
 
@@ -1047,32 +995,6 @@
 
 
 
-"from_node": "_GraphNode_452",
-
-
-
-"from_port": 0,
-
-
-
-"keep_alive": false,
-
-
-
-"to_node": "_GraphNode_479",
-
-
-
-"to_port": 0
-
-
-},
-
-
-{
-
-
-
 "from_node": "_GraphNode_455",
 
 
@@ -1086,58 +1008,6 @@
 
 
 "to_node": "_GraphNode_482",
-
-
-
-"to_port": 0
-
-
-},
-
-
-{
-
-
-
-"from_node": "_GraphNode_449",
-
-
-
-"from_port": 0,
-
-
-
-"keep_alive": false,
-
-
-
-"to_node": "RateDetector",
-
-
-
-"to_port": 0
-
-
-},
-
-
-{
-
-
-
-"from_node": "Neuron",
-
-
-
-"from_port": 0,
-
-
-
-"keep_alive": false,
-
-
-
-"to_node": "_GraphNode_485",
 
 
 
@@ -1274,49 +1144,233 @@
 "to_port": 2
 
 
-}
-
-],
-
-"nodes": [
+},
 
 
 {
 
 
 
-"capacitance": 1.0,
+"from_node": "_GraphNode_437",
 
 
 
-"charge_resistor": 0.02,
+"from_port": 0,
 
 
 
-"discharge_resistor": 0.02,
+"keep_alive": false,
 
 
 
-"name": "InputNeuron",
+"to_node": "_GraphNode_424",
 
 
 
-"position": "(776.0, 328.0)",
-
-
-
-"threshold": 1.0,
-
-
-
-"title": "Input neuron 2",
-
-
-
-"type": "InputNeuron"
+"to_port": 0
 
 
 },
+
+
+{
+
+
+
+"from_node": "_GraphNode_434",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_419",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "Neuron",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "RateDetector",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_449",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_479",
+
+
+
+"to_port": 0
+
+
+},
+
+
+{
+
+
+
+"from_node": "_GraphNode_452",
+
+
+
+"from_port": 0,
+
+
+
+"keep_alive": false,
+
+
+
+"to_node": "_GraphNode_485",
+
+
+
+"to_port": 0
+
+
+}
+
+],
+
+"dataset_output_points": [
+
+
+{
+
+
+
+"color": "(0.1843, 0.349, 0.2487, 1.0)",
+
+
+
+"nodeName": "_GraphNode_482",
+
+
+
+"nodeTitle": "Rate detector 3",
+
+
+
+"text": "0:5, 2:7, 4:7, 5:6, 8:1, 10:10"
+
+
+},
+
+
+{
+
+
+
+"color": "(0.1843, 0.2564, 0.349, 1.0)",
+
+
+
+"nodeName": "_GraphNode_479",
+
+
+
+"nodeTitle": "Rate detector 2",
+
+
+
+"text": "0:5, 2:7, 4:7, 5:6, 9:1, 10:6"
+
+
+},
+
+
+{
+
+
+
+"color": "(0.349, 0.1843, 0.1843, 1.0)",
+
+
+
+"nodeName": "_GraphNode_485",
+
+
+
+"nodeTitle": "Rate detector 4",
+
+
+
+"text": "0:5, 1:5, 2:4, 10:4"
+
+
+},
+
+
+{
+
+
+
+"color": "(0.349, 0.1843, 0.3349, 1.0)",
+
+
+
+"nodeName": "RateDetector",
+
+
+
+"nodeTitle": "Rate detector 1",
+
+
+
+"text": "0:15, 6:1, 7:1, 8:20, 10:17"
+
+
+}
+
+],
+
+"nodes": [
 
 
 {
@@ -1763,7 +1817,7 @@
 
 
 
-"title": "Input neuron 5",
+"title": "Back",
 
 
 
@@ -1801,7 +1855,7 @@
 
 
 
-"title": "Input neuron 4",
+"title": "Right",
 
 
 
@@ -1839,7 +1893,7 @@
 
 
 
-"title": "Input neuron 3",
+"title": "Left",
 
 
 
@@ -1961,75 +2015,7 @@
 
 
 
-"maxV": 1.5,
-
-
-
-"minV": 0.0,
-
-
-
-"name": "_GraphNode_437",
-
-
-
-"position": "(-300.0, 820.0)",
-
-
-
-"title": "Input 3",
-
-
-
-"type": "Input"
-
-
-},
-
-
-{
-
-
-
-"isConstant": false,
-
-
-
-"maxV": 1.5,
-
-
-
-"minV": 0.0,
-
-
-
-"name": "_GraphNode_434",
-
-
-
-"position": "(-300.0, 1040.0)",
-
-
-
-"title": "Input 2",
-
-
-
-"type": "Input"
-
-
-},
-
-
-{
-
-
-
-"isConstant": false,
-
-
-
-"maxV": 1.5,
+"maxV": 3.0,
 
 
 
@@ -2046,40 +2032,6 @@
 
 
 "title": "Input 4",
-
-
-
-"type": "Input"
-
-
-},
-
-
-{
-
-
-
-"isConstant": false,
-
-
-
-"maxV": 1.5,
-
-
-
-"minV": 0.0,
-
-
-
-"name": "Input",
-
-
-
-"position": "(-300.0, 600.0)",
-
-
-
-"title": "Input 1",
 
 
 
@@ -2117,7 +2069,7 @@
 
 
 
-"title": "Neuron 8",
+"title": "Backward",
 
 
 
@@ -2155,7 +2107,7 @@
 
 
 
-"title": "Neuron 9",
+"title": "Go right",
 
 
 
@@ -2193,7 +2145,7 @@
 
 
 
-"title": "Neuron 7",
+"title": "Go left",
 
 
 
@@ -2231,7 +2183,7 @@
 
 
 
-"title": "Neuron 6",
+"title": "Forward",
 
 
 
@@ -2245,37 +2197,11 @@
 
 
 
-"name": "RateDetector",
-
-
-
-"position": "(2380.0, 840.0)",
-
-
-
-"target_hz": 1.0,
-
-
-
-"title": "Rate detector 1",
-
-
-
-"type": "RateDetector"
-
-
-},
-
-
-{
-
-
-
 "name": "_GraphNode_482",
 
 
 
-"position": "(2380.0, 1060.0)",
+"position": "(2380.0, 1040.0)",
 
 
 
@@ -2284,58 +2210,6 @@
 
 
 "title": "Rate detector 3",
-
-
-
-"type": "RateDetector"
-
-
-},
-
-
-{
-
-
-
-"name": "_GraphNode_479",
-
-
-
-"position": "(2380.0, 1280.0)",
-
-
-
-"target_hz": 1.0,
-
-
-
-"title": "Rate detector 2",
-
-
-
-"type": "RateDetector"
-
-
-},
-
-
-{
-
-
-
-"name": "_GraphNode_485",
-
-
-
-"position": "(2380.0, 620.0)",
-
-
-
-"target_hz": 1.0,
-
-
-
-"title": "Rate detector 4",
 
 
 
@@ -2391,11 +2265,229 @@
 
 
 
-"position": "(960.0, -40.0)",
+"position": "(880.0, -40.0)",
 
 
 
 "title": "Input 5",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"isConstant": false,
+
+
+
+"maxV": 3.0,
+
+
+
+"minV": 0.0,
+
+
+
+"name": "_GraphNode_434",
+
+
+
+"position": "(-300.0, 820.0)",
+
+
+
+"title": "Input 2",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"isConstant": false,
+
+
+
+"maxV": 3.0,
+
+
+
+"minV": 0.0,
+
+
+
+"name": "_GraphNode_437",
+
+
+
+"position": "(-300.0, 1040.0)",
+
+
+
+"title": "Input 3",
+
+
+
+"type": "Input"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_479",
+
+
+
+"position": "(2380.0, 820.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 2",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "_GraphNode_485",
+
+
+
+"position": "(2380.0, 1260.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 4",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"name": "RateDetector",
+
+
+
+"position": "(2380.0, 600.0)",
+
+
+
+"target_hz": 1.0,
+
+
+
+"title": "Rate detector 1",
+
+
+
+"type": "RateDetector"
+
+
+},
+
+
+{
+
+
+
+"capacitance": 1.0,
+
+
+
+"charge_resistor": 0.02,
+
+
+
+"discharge_resistor": 0.02,
+
+
+
+"name": "InputNeuron",
+
+
+
+"position": "(776.0, 328.0)",
+
+
+
+"threshold": 1.0,
+
+
+
+"title": "Front",
+
+
+
+"type": "InputNeuron"
+
+
+},
+
+
+{
+
+
+
+"isConstant": false,
+
+
+
+"maxV": 3.0,
+
+
+
+"minV": 0.0,
+
+
+
+"name": "Input",
+
+
+
+"position": "(-300.0, 600.0)",
+
+
+
+"title": "Input 1",
 
 
 

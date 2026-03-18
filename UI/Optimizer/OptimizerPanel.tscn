@@ -326,30 +326,60 @@ clear_button_enabled = true
 virtual_keyboard_type = 2
 caret_blink = true
 
-[node name="Reset" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1501557224]
+[node name="Reset Weights" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1501557224]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
 theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset" unique_id=1154712515]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights" unique_id=1154712515]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 586.0
 offset_bottom = 44.0
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=420729590]
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights/HBoxContainer" unique_id=420729590]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Reset weights"
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=1415858258]
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights/HBoxContainer" unique_id=1415858258]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer" unique_id=1330697641]
+[node name="ResetButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights/HBoxContainer" unique_id=1330697641]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_vva2m")
+text = "Reset"
+
+[node name="Reset Weights2" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=755508715]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
+theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights2" unique_id=1574156171]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 586.0
+offset_bottom = 44.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights2/HBoxContainer" unique_id=990923258]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Reset stats"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights2/HBoxContainer" unique_id=1967008523]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetStatsButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights2/HBoxContainer" unique_id=1474621083]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -473,7 +503,6 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
 theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss" unique_id=419229698]
@@ -493,7 +522,6 @@ text = "Loss: "
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
-tooltip_text = "When toggled, the input ranges will be mapped using values from (0;1)."
 theme_override_styles/panel = SubResource("StyleBoxFlat_frbuy")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient" unique_id=1942210500]
@@ -511,5 +539,6 @@ text = "Gradient: "
 
 [connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit" to="." method="_on_learning_rate_line_edit_text_submitted"]
 [connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit" to="." method="_on_wait_time_line_edit_text_submitted"]
-[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights2/HBoxContainer/ResetStatsButton" to="." method="_on_reset_stats_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Generate/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

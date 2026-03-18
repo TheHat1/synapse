@@ -8,6 +8,9 @@ var output_dataset = []
 var output_nodes_order = []
 var outputs = []
 
+var y = [] ##Wanted activation matrix
+var x = [] ##Input matrix
+
 var weights = []
 
 var learning_rate: = 0.01
@@ -52,36 +55,48 @@ func train_network():
 	if !in_progress:
 		in_progress = true
 		var s: int = 0
-		var rolled_percentage = 0.0
 		if $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer/OptionButton".get_selected_id() == -1:
 			in_progress = false
 			return
-		for i in range(epochs):
-			var y_predicted = []
-			
-			s = rng.randi_range(0, split_step - 1)
-			
-			if !steps_selected.has(s):
-				steps_selected.append(s)
-				rolled_percentage = (steps_selected.size() / float(split_step)) * 100
-			
-			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: " + str(i + 1)
-			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/ProgressBar.value = remap(i+1, 0, epochs, 0, 100)
-			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer/ProgressBar.value = rolled_percentage
-			
-			forward_pass(s)
-			
-			var y = []
+		
+		##Transpose the output matrix
+		for i in range(split_step):
+			var arr = []
 			for j in range(output_dataset.size()):
-				y.append(output_dataset[j][s])
-			
-			await get_tree().create_timer(wait_time).timeout
-			
-			for output in outputs:
-				y_predicted.append(output.rate)
-			
+				arr.append(output_dataset[j][i])
+			y.append(arr)
+	
+		for epoch in range(epochs):
+			var y_predicted = []
 			var loss
+			var rolled_percentage = 0.0
+			
+			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: " + str(epoch + 1)
+			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/ProgressBar.value = remap(epoch+1, 0, epochs, 0, 100)
+			
+			for i in range(split_step):
+				
+				s = rng.randi_range(0, split_step - 1)
+				
+				if !steps_selected.has(s):
+					steps_selected.append(s)
+					rolled_percentage = (steps_selected.size() / float(split_step)) * 100
+				
+				$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer/ProgressBar.value = rolled_percentage
+				
+				forward_pass(s)
+				
+				await get_tree().create_timer(wait_time).timeout
+				
+				var arr = []
+				for output in outputs:
+					arr.append(output.rate)
+				y_predicted.append(arr)
+			################################################
+			##End of forward pass
+			
 			var index = $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer/OptionButton".get_selected_id()
+			
 			match index:
 				1:
 					loss = mse_loss(y, y_predicted)
@@ -91,33 +106,27 @@ func train_network():
 					loss = cross_entropy_loss()
 				5:
 					loss = binary_cross_entropy_loss()
-			
-			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer/Label.text = "Loss: " + str(loss)
-			
-			var X = []
-			
-			for j in range(nodes_order.size()):
-				X.append(dataset[j][s])
+				
+			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer/Label.text = "Loss: " + str(loss).remove_chars('[]')
 			
 			var gradient
-			gradient = gradient_calculation(loss, y.size(), X)
+			gradient = gradient_calculation(loss, dataset)
+			################################################
+			##End of gradient calculation
 			
-			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: " + str(gradient)
+			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: " + str(gradient).remove_chars('[]')
 			
-			var br: int = 0
-			for weight in weights:
-				weight.update_weight(gradient[br] * learning_rate)
-				br +=1
-				if br == gradient.size():
-					br = 0
+			for connection in graph_edit.get_connection_list():
+				if connection.to_port == 0:
+					for output in outputs:
+						if connection.to_node == output.name:
+							print(connection)
+							for weight in weights:
+								if connection.from_node == weight.name:
+									print("gotta get that boom boom boom")
+									weights.update_weight(gradient[1] * learning_rate)
 			
 		forward_pass(-1)
-		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: "
-		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/ProgressBar.value = 0
-		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer/Label.text = "Loss: "
-		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: "
-		$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer/ProgressBar.value = 0
-		
 		in_progress = false
 
 func forward_pass(step: int):
@@ -131,36 +140,49 @@ func forward_pass(step: int):
 			if input.name == nodes_order[i]:
 				input.set_value_on_forward_pass(dataset[i][step])
 
-func gradient_calculation(loss, n: float, X):
-	var XmultLoss = multiply_matrixes(X, loss)
+func gradient_calculation(loss, X):
 	var gradient = []
-	for v in XmultLoss:
-		gradient.append((2/n) * v)
+	
+	for i in range(X.size()):
+		var sum: float = 0.0
+		for j in range(split_step):
+			sum += X[i][j] * loss[i]
+		gradient.append((2/float(split_step)) * sum)
+	
 	return gradient
 
-func multiply_matrixes(matrix, matrix2):
-	var arr = []
-	for i in range(0, matrix.size() - 1):
-		arr.append(matrix[i] * matrix2[i])
-	return arr
-
-func mse_loss(y, y_predicted):
+func mse_loss(y1, y_predicted):
 	var loss = []
 	
-	for i in range(0, y.size() - 1):
-		var diff = y[i] - y_predicted[i]
-		loss.append((diff**2)/y.size())
+	for j in range(outputs.size()):
+		var n = 0
+		var arr = []
+		var diff: = 0.0
+		
+		for i in range(y.size()):
+			diff = (y1[i][j] - y_predicted[i][j])**2
+			arr.append(diff)
+			n +=1
+		
+		loss.append(diff/n)
 	
 	return loss
 
-func mae_loss(y, y_predicted):
-	var sum = 0
+func mae_loss(y1, y_predicted):
+	var loss = []
 	
-	for i in range(y.size()):
-		var diff = y[i] - y_predicted[i]
-		sum += abs(diff)
+	for j in range(outputs.size()):
+		var n = 0
+		var arr = []
+		var diff: = 0.0
+		
+		for i in range(y.size()):
+			diff = abs(y1[i][j] - y_predicted[i][j])
+			arr.append(diff)
+			n +=1
+		
+		loss.append(diff/n)
 	
-	var loss = sum / y.size()
 	return loss
 
 func cross_entropy_loss():
@@ -182,3 +204,10 @@ func _on_learning_rate_line_edit_text_submitted(new_text: String) -> void:
 
 func _on_wait_time_line_edit_text_submitted(new_text: String) -> void:
 	wait_time = new_text.to_float()
+
+func _on_reset_stats_button_pressed() -> void:
+	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: "
+	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/ProgressBar.value = 0
+	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer/Label.text = "Loss: "
+	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: "
+	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer/ProgressBar.value = 0
