@@ -40,20 +40,23 @@ func _on_start_button_pressed() -> void:
 	train_network()
 
 func train_network():
-	var rng = RandomNumberGenerator.new()
-	
-	for node in graph_edit.get_children():
-		if node is GraphNode:
-			if node.type == "Input":
-				if !node.is_constant:
-					inputs.append(node)
-			if node.type == "RateDetector":
-				outputs.append(node)
-			if node.type == "SynapticWeight":
-				weights.append(node)
-	
 	if !in_progress:
 		in_progress = true
+		
+		ErrorMessage.show_error("Training started")
+		
+		var rng = RandomNumberGenerator.new()
+	
+		for node in graph_edit.get_children():
+			if node is GraphNode:
+				if node.type == "Input":
+					if !node.is_constant:
+						inputs.append(node)
+				if node.type == "RateDetector":
+					outputs.append(node)
+				if node.type == "SynapticWeight":
+					weights.append(node)
+		
 		var s: int = 0
 		if $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer/OptionButton".get_selected_id() == -1:
 			in_progress = false
@@ -128,6 +131,9 @@ func train_network():
 			
 		forward_pass(-1)
 		in_progress = false
+		ErrorMessage.show_error("Training finished")
+	else:
+		ErrorMessage.show_error("Training in progress")
 
 func forward_pass(step: int):
 	if step == -1:
@@ -197,7 +203,7 @@ func _on_reset_button_pressed() -> void:
 		if node is GraphNode:
 			if node.type == "SynapticWeight":
 				node.set_weight(0.001)
-	
+	ErrorMessage.show_error("Weights reset")
 
 func _on_learning_rate_line_edit_text_submitted(new_text: String) -> void:
 	learning_rate = new_text.to_float()

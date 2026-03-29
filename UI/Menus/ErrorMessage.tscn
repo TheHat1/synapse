@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cex0cxw1766a6"]
+
+[ext_resource type="Script" uid="uid://ds0825fpihkc3" path="res://UI/Menus/error_message.gd" id="1_vl718"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl718"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 0.5058824)
+border_width_right = 3
+border_color = Color(0.49354547, 0.4935456, 0.4935453, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.6)
+shadow_size = 3
+
+[node name="ErrorMessage" type="Panel" unique_id=990244707]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 617.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vl718")
+script = ExtResource("1_vl718")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1566341267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1091702339]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1880002911]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=879939591]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Incorrect value"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1832840435]
+layout_mode = 2
+show_percentage = false

@@ -325,6 +325,23 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
 shortcut = SubResource("Shortcut_sc1dx")
 text = "Telemetry"
 
+[node name="MarginContainer5" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1359458932]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TelemetryButton" type="Button" parent="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer5" unique_id=1951854730]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_20pc6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fpfj3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5vvyt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lgr22")
+shortcut = SubResource("Shortcut_sc1dx")
+text = "Debug"
+
 [node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer" unique_id=891734752]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -340,4 +357,5 @@ stretch_mode = 5
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/DatasetButton" to="." method="_on_dataset_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer3/OptimizerButton" to="." method="_on_optimizer_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer4/TelemetryButton" to="." method="_on_telemetry_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer5/TelemetryButton" to="." method="_on_debug_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

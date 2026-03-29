@@ -19,6 +19,10 @@ run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ErrorMessage="*uid://cex0cxw1766a6"
+
 [display]
 
 window/size/mode=3

@@ -5,9 +5,11 @@ var output_range_element = load("res://UI/OutputRange.tscn")
 var hypercubeIR:= []
 var hypercubeOR:= []
 @onready var N = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text.to_int()
+var old_text_N:String
 
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
+	old_text_N = $Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text
 
 func _on_generate_button_pressed() -> void:
 	hypercubeIR = []
@@ -68,7 +70,7 @@ func _on_generate_button_or_pressed() -> void:
 		var range_places = []
 		
 		if !regex.search(r.text):
-			print("inccorrect text")
+			ErrorMessage.show_error("Inavalid syntax for: " + r.node_title)
 			return
 		
 		var text = r.text.replace(" ", "")
@@ -83,7 +85,27 @@ func _on_generate_button_or_pressed() -> void:
 	get_parent().get_node("OptimizerPanel").pass_output_dataset(cube, nodes_names)
 
 func _on_split_step_text_submitted(new_text: String) -> void:
+	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.keep_editing_on_text_submit = true
+	if !new_text.is_valid_float():
+		ErrorMessage.show_error("Invalid value for N")
+		$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text = old_text_N
+		return
+	if !new_text.is_valid_int():
+		ErrorMessage.show_error("Value must be an integer for N")
+		$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text = old_text_N
+		return
+	if new_text.to_int() < 0.0:
+		ErrorMessage.show_error("Value must be a positive number for N")
+		$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text = old_text_N
+		return
+	if new_text.to_int() == 0.0: 
+		ErrorMessage.show_error("Value can not be 0 for N")
+		$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.text = old_text_N
+		return
+	
 	N = new_text.to_int()
+	old_text_N = new_text
+	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBox/SplitN/HBoxContainer/SplitStep.keep_editing_on_text_submit = false
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/GraphDisplay/MarginContainer/Control.pass_steps(N)
 	$Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GraphDisplay/MarginContainer/Control.pass_steps(N)
 
@@ -96,7 +118,6 @@ func get_inputs():
 			if node.type == "Input":
 				if !node.is_constant:
 					check_if_node_has_changed(current_input_nodes, node)
-
 
 func remove_input_node(node_name: String):
 	current_input_nodes.erase(node_name)

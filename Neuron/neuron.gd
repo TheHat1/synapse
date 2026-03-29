@@ -19,6 +19,7 @@ var discharge_percent = 0.01
 var state = "CHARGING"
 var elapsed = 0.0
 var is_led_on = false
+var old_text: String
 
 signal current_buffer_value(value: float)
 signal pass_activation_treshold(value: float)
@@ -28,8 +29,7 @@ func _ready():
 	set_slot(1, true, 0, Color.FOREST_GREEN, true, 2, Color.BLUE_VIOLET)
 	set_slot(2, true, 1, Color.DARK_CYAN, false, 0, Color.FIREBRICK)
 	
-	clamp(inhib_time, 0.0, 1000.0)
-	clamp(exct_time, 0.0, 1000.0)
+	old_text =  $Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.text
 	
 	name = name.replace("@", "_")
 
@@ -101,7 +101,24 @@ func _input(event: InputEvent) -> void:
 		queue_free()
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
+	$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.keep_editing_on_text_submit = true
+	if !new_text.is_valid_float():
+		ErrorMessage.show_error("Invalid value")
+		$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.text = old_text
+		return
+	if new_text.to_float() < 0.0:
+		ErrorMessage.show_error("Value must be a positive number")
+		$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.text = old_text
+		return
+	if new_text.to_float() == 0.0:
+		ErrorMessage.show_error("Value can not be 0")
+		$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.text = old_text
+		return
+	
 	discharge_resistor = new_text.to_float()
+	old_text = new_text
+	$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.text = str(discharge_resistor)
+	$Control/HBoxContainer/Panel2/HBoxContainer/LineEdit.keep_editing_on_text_submit = false
 
 func _on_texture_button_pressed() -> void:
 	if !isMenuOpen:
