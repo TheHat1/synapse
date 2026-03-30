@@ -4,12 +4,18 @@ var menu_open = true
 var tween: Tween
 var main_menu = load("res://UI/Menus/main_menu.tscn").instantiate()
 var error = load("res://UI/Menus/ErrorMessage.tscn").instantiate()
-@onready var panels := $GraphWrapper.get_children()
+var panels
 
 func _ready() -> void:
 	add_child.call_deferred(main_menu)
 	add_child.call_deferred(error)
+	panels = $GraphWrapper.get_children()
+	main_menu.network_loaded.connect(self._on_network_loaded)
 	show_panel($GraphWrapper/GraphEdit)
+
+func _on_network_loaded():
+	show_panel($GraphWrapper/GraphEdit)
+	$Panel/MarginContainer/HBoxContainer/TextureButton.emit_signal("pressed")
 
 func _on_texture_button_pressed() -> void:
 	menu_open = !menu_open
@@ -42,6 +48,3 @@ func _on_optimizer_button_pressed() -> void:
 func _on_telemetry_button_pressed() -> void:
 	show_panel($GraphWrapper/TelemetryPanel)
 	$GraphWrapper/TelemetryPanel.display_network()
-
-func _on_debug_button_pressed() -> void:
-	ErrorMessage.show_error("Testy test test")

@@ -244,17 +244,13 @@ text = "Epochs"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer" unique_id=1695908729]
+[node name="epochs" type="SpinBox" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer" unique_id=705548097]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "10"
-placeholder_text = "10"
+value = 10.0
+rounded = true
+allow_greater = true
 alignment = 1
-max_length = 3
-emoji_menu_enabled = false
-clear_button_enabled = true
-virtual_keyboard_type = 2
-caret_blink = true
 
 [node name="Learning rate" type="Panel" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=698989429]
 custom_minimum_size = Vector2(0, 55)
@@ -537,6 +533,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 22
 text = "Gradient: "
 
+[connection signal="value_changed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer/epochs" to="." method="_on_epochs_value_changed"]
 [connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit" to="." method="_on_learning_rate_line_edit_text_submitted"]
 [connection signal="text_submitted" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit" to="." method="_on_wait_time_line_edit_text_submitted"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/VBoxContainer/Reset Weights/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]

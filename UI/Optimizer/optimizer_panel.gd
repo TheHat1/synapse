@@ -15,16 +15,20 @@ var weights = []
 
 var learning_rate: = 0.01
 var wait_time := 0.5
+var old_text_lr: String
+var old_text_wt: String
 
 var split_step: int
 @onready var graph_edit = get_parent().get_child(0)
 var in_progress: bool = false
-@onready var epochs = $Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer/LineEdit.text.to_int()
+var epochs = 10
 
 var steps_selected = []
 
 func _ready() -> void:
 	size = get_viewport().get_visible_rect().size
+	old_text_lr = $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".text
+	old_text_wt = $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".text
 
 func pass_dataset(dtst, nds_ord, n):
 	dataset = dtst
@@ -36,7 +40,15 @@ func pass_output_dataset(outp_dtst, out_nds_ord):
 	output_nodes_order = out_nds_ord
 
 func _on_start_button_pressed() -> void:
-	epochs = $Panel/MarginContainer/HBoxContainer/VBoxContainer/Epochs/HBoxContainer/LineEdit.text.to_int()
+	if $"Panel/MarginContainer/HBoxContainer/VBoxContainer/Loss functions options/HBoxContainer/OptionButton".get_selected_id() == -1:
+		ErrorMessage.show_error("No loss function selected")
+		return
+	if dataset == []:
+		ErrorMessage.show_error("No input dataset")
+		return
+	if output_dataset == []:
+		ErrorMessage.show_error("No output dataset")
+		return
 	train_network()
 
 func train_network():
@@ -197,7 +209,6 @@ func cross_entropy_loss():
 func binary_cross_entropy_loss():
 	print("Nuh-uhh brother")
 
-
 func _on_reset_button_pressed() -> void:
 	for node in graph_edit.get_children():
 		if node is GraphNode:
@@ -206,10 +217,42 @@ func _on_reset_button_pressed() -> void:
 	ErrorMessage.show_error("Weights reset")
 
 func _on_learning_rate_line_edit_text_submitted(new_text: String) -> void:
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".keep_editing_on_text_submit = true
+	if !new_text.is_valid_float():
+		ErrorMessage.show_error("Invalid value")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".text = old_text_lr
+		return
+	if new_text.to_float() < 0.0:
+		ErrorMessage.show_error("Value must be a positive number")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".text = old_text_lr
+		return
+	if new_text.to_float() == 0.0:
+		ErrorMessage.show_error("Value can not be 0")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".text = old_text_lr
+		return
 	learning_rate = new_text.to_float()
+	old_text_lr = new_text
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".text = str(learning_rate)
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Learning rate/HBoxContainer/LearningRateLineEdit".keep_editing_on_text_submit = false
 
 func _on_wait_time_line_edit_text_submitted(new_text: String) -> void:
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".keep_editing_on_text_submit = true
+	if !new_text.is_valid_float():
+		ErrorMessage.show_error("Invalid value")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".text = old_text_wt
+		return
+	if new_text.to_float() < 0.0:
+		ErrorMessage.show_error("Value must be a positive number")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".text = old_text_wt
+		return
+	if new_text.to_float() == 0.0:
+		ErrorMessage.show_error("Value can not be 0")
+		$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".text = old_text_wt
+		return
 	wait_time = new_text.to_float()
+	old_text_wt = new_text
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".text = str(wait_time)
+	$"Panel/MarginContainer/HBoxContainer/VBoxContainer/Wait time/HBoxContainer/WaitTimeLineEdit".keep_editing_on_text_submit = false
 
 func _on_reset_stats_button_pressed() -> void:
 	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Epochs/MarginContainer/VBoxContainer/Label.text = "Epoch: "
@@ -217,3 +260,6 @@ func _on_reset_stats_button_pressed() -> void:
 	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Loss/HBoxContainer/Label.text = "Loss: "
 	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: "
 	$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Explored/MarginContainer/VBoxContainer/ProgressBar.value = 0
+
+func _on_epochs_value_changed(value: float) -> void:
+	epochs = int(value)

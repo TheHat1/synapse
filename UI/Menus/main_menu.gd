@@ -25,6 +25,8 @@ var resistor = preload("res://Resistor/Resistor.tscn")
 
 var config = ConfigFile.new()
 
+signal network_loaded()
+
 func _ready() -> void:
 	$VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer/OptionButton.set_item_text(0, "Current (" + str(round(DisplayServer.screen_get_refresh_rate())).remove_chars(".0") + " fps)")
 
@@ -157,7 +159,7 @@ func _on_load_button_pressed() -> void:
 func load_graph_from_file(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		push_error("Failed to open file")
+		ErrorMessage.show_error("Failed to open file")
 		return
 	
 	var json_text := file.get_as_text()
@@ -201,7 +203,7 @@ func load_graph_from_file(path: String):
 			"Resistor":
 				node = resistor.instantiate()
 				node.resistance = node_data["resistance"]
-			_: print("Opaaa   ", node_data)
+			_: ErrorMessage.show_error("Error loading element")
 		
 		node.name = node_data["name"]
 		node.title = node_data["title"]
@@ -226,6 +228,8 @@ func load_graph_from_file(path: String):
 			if r.node_name == range_data["nodeName"]:
 				r.set_text_on_load(range_data["text"])
 				r.set_color_on_load(range_data["color"])
+	ErrorMessage.show_error("Network loaded")
+	emit_signal("network_loaded")
 
 func _on_confirm_load_dialog_confirmed() -> void:
 	get_parent().get_node("GraphWrapper").get_child(0).clear_connections()
