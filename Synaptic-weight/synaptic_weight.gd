@@ -3,6 +3,7 @@ extends GraphNode
 @onready var weight = $HBoxContainer/LineEdit.text.to_float() / 1000.0
 var type: String = "SynapticWeight"
 var old_text: String
+var presynaptic_neuron_name: StringName
 
 signal emit_spike()
 

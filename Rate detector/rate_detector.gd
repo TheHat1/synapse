@@ -8,6 +8,7 @@ var rate = 0.0
 var target_hz = 1.0
 var output_on = false
 var old_text: String
+var post_synaptic_neuron: StringName
 
 signal current_rate(value: float, value2: bool)
 

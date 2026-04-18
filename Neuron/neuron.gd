@@ -11,15 +11,17 @@ var threshold = 1.0
 var discharge_resistor = 0.02
 var charge_resistor = 0.02
 var buffer = 0.0
-var inhib_time = 0.0
-var exct_time = 0.0
+var inhib_time:= 0.0
+var exct_time:= 0.0
 var V_src = 0.0
 var capacitance = 1.0
-var discharge_percent = 0.01
+var discharge_percent = 0.1
 var state = "CHARGING"
 var elapsed = 0.0
 var is_led_on = false
 var old_text: String
+
+var synaptic_weights = []
 
 signal current_buffer_value(value: float)
 signal pass_activation_treshold(value: float)
@@ -46,10 +48,12 @@ func execute_input(port: int, weight: float):
 			print("Unhandled port: ", port)
 
 func on_inhib_in(weight):
-	inhib_time = weight
+	if weight > inhib_time:
+		inhib_time = weight
 
 func on_exc_in(weight):
-	exct_time = weight
+	if weight > exct_time:
+		exct_time = weight
 
 func _process(delta):
 	if is_led_on:
@@ -64,7 +68,7 @@ func _process(delta):
 	var tau = discharge_resistor * capacitance
 	
 	if state == "CHARGING":
-		if exct_time > 0.0:
+		if exct_time  > 0.0:
 			var I_total = (V_src - buffer) / charge_resistor
 			buffer += (I_total / capacitance) * exct_time
 			exct_time -= delta

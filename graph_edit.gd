@@ -38,6 +38,15 @@ func _wire_connection(from_node: StringName, from_port: int, to_node: StringName
 			from.status_changed.connect(to._on_gate_status_change)
 		4:
 			from.v_src_changed.connect(to._on_v_src_changed)
+	
+	if (from.type == "InputNeuron" or from.type == "Neuron"):
+		if to.type == "RateDetector":
+			to.post_synaptic_neuron = from.name
+		else:
+			to.presynaptic_neuron_name = from.name
+		#Add if check for spike gates
+	if from.type == "SynapticWeight":
+		to.synaptic_weights.append(from.name)
 
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	_wire_connection(from_node, from_port, to_node, to_port)

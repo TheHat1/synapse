@@ -131,15 +131,12 @@ func train_network():
 			
 			$Panel/MarginContainer/HBoxContainer/VBoxContainer2/Gradient/HBoxContainer/Label.text = "Gradient: " + str(gradient).remove_chars('[]')
 			
-			for connection in graph_edit.get_connection_list():
-				if connection.to_port == 0:
-					for output in outputs:
-						if connection.to_node == output.name:
-							print(connection)
-							for weight in weights:
-								if connection.from_node == weight.name:
-									print("gotta get that boom boom boom")
-									weights.update_weight(gradient[1] * learning_rate)
+			for rate_detector in outputs:
+				for synaptic_weight in graph_edit.get_node(NodePath(rate_detector.post_synaptic_neuron)).synaptic_weights:
+					for i in range(0,nodes_order.size()):
+						var weight = graph_edit.get_node(NodePath(synaptic_weight))
+						if weight.presynaptic_neuron_name == nodes_order[i]:
+							weight.update_weight(gradient[i])
 			
 		forward_pass(-1)
 		in_progress = false
