@@ -1,13 +1,21 @@
 extends Panel
 
-var neuron_count = 1
-var input_count = 1
-var weight_count = 1
-var rate_detector_count = 1
-var neuron_deleted = 1
-var input_deleted = 1
-var weight_deleted = 1
-var rate_detector_deleted = 1
+var neurons = 1
+var neurons_deleted = 1
+var input_neurons = 1
+var input_neurons_deleted = 1
+var inputs = 1
+var inputs_deleted = 1
+var weights = 1
+var weights_deleted = 1
+var rate_detectors = 1
+var rate_detectors_deleted = 1
+var spike_gates = 1
+var spike_gates_deleted = 1
+var boosters = 1
+var boosters_deleted = 1
+var bucks = 1
+var bucks_deleted = 1
 
 var ref = null
 var ref_title: String
@@ -22,19 +30,28 @@ var input = preload("res://Input/Input.tscn")
 var synaptic_weight = preload("res://Synaptic-weight/synaptic-weight.tscn")
 var rate_detector = preload("res://Rate detector/rate_detector.tscn")
 var resistor = preload("res://Resistor/Resistor.tscn")
+var booster = preload("res://Gates/BoostConverter/BoostConverter.tscn")
+var spike_gate = preload("res://Gates/Spike gate/SpikeGate.tscn")
+var switch = preload("res://Gates/Switch/ToggleSwitch.tscn")
+var buck = preload("res://Gates/BuckConverter/BuckConverter.tscn")
 
 var config = ConfigFile.new()
 
 signal network_loaded()
 
 func _ready() -> void:
+	Engine.max_fps = (floor(DisplayServer.screen_get_refresh_rate()))
 	$VBoxContainer/ScrollContainer/VBoxContainer/Panel5/HBoxContainer/OptionButton.set_item_text(0, "Current (" + str(round(DisplayServer.screen_get_refresh_rate())).remove_chars(".0") + " fps)")
 
 func _process(_delta) -> void:
-	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neuron_count - neuron_deleted)
-	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_count - input_deleted)
-	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5/Label2.text = str(weight_count - weight_deleted)
-	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/Label2.text = str(rate_detector_count - rate_detector_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Label2.text = str(neurons - neurons_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3/Label2.text = str(input_neurons - input_neurons_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5/Label2.text = str(inputs - inputs_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/Label2.text = str(weights - weights_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4/Label2.text = str(rate_detectors - rate_detectors_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6/Label2.text = str(spike_gates - spike_gates_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer7/Label2.text = str(boosters - boosters_deleted)
+	$VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8/Label2.text = str(bucks- bucks_deleted)
 
 func _on_h_slider_value_changed(value: float) -> void:
 	var db = linear_to_db(value)
@@ -122,6 +139,36 @@ func serialize_and_export_graph(path: String):
 						"type": child.type,
 						"resistance": child.resistance
 					})
+				"BoostConverter":
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title,
+						"position": child.position_offset,
+						"type": child.type,
+						"gain": child.gain
+					})
+				"ToggleSwitch":
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title,
+						"position": child.position_offset,
+						"type": child.type,
+					})
+				"SpikeGate":
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title,
+						"position": child.position_offset,
+						"type": child.type,
+					})
+				"BuckConverter":
+					data.nodes.append({
+						"name": child.name,
+						"title": child.title,
+						"position": child.position_offset,
+						"type": child.type,
+						"drop": child.drop
+					})
 				_: print("Opaaa   ", child)
 	var ranges = get_parent().get_node("GraphWrapper").get_child(1).get_node("Panel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/OptionsBox/ScrollContainer/Ranges").get_children()
 	for r in ranges:
@@ -178,31 +225,44 @@ func load_graph_from_file(path: String):
 				node.threshold = node_data["threshold"]
 				node.discharge_resistor = node_data["discharge_resistor"]
 				node.charge_resistor = node_data["charge_resistor"]
-				neuron_count +=1
+				neurons +=1
 			"InputNeuron":
 				node = input_neuron.instantiate()
 				node.capacitance = node_data["capacitance"]
 				node.threshold = node_data["threshold"]
 				node.discharge_resistor = node_data["discharge_resistor"]
 				node.charge_resistor = node_data["charge_resistor"]
-				neuron_count +=1
+				input_neurons +=1
 			"SynapticWeight": 
 				node = synaptic_weight.instantiate()
 				node.set_weight(node_data["weight"])
-				weight_count += 1
+				weights += 1
 			"Input": 
 				node = input.instantiate()
 				node.minV = node_data["minV"]
 				node.maxV = node_data["maxV"]
 				node.is_constant = node_data["isConstant"]
-				input_count += 1
+				inputs += 1
 			"RateDetector": 
 				node = rate_detector.instantiate()
 				node.target_hz = node_data["target_hz"]
-				rate_detector_count += 1
+				rate_detectors += 1
 			"Resistor":
 				node = resistor.instantiate()
 				node.resistance = node_data["resistance"]
+			"BoostConverter":
+				node = booster.instantiate()
+				node.gain = node_data["gain"]
+				boosters += 1
+			"SpikeGate":
+				node = spike_gate.instantiate()
+				spike_gates += 1
+			"ToggleSwitch":
+				node = switch.instantiate()
+			"BuckConverter":
+				node = buck.instantiate()
+				node.drop = node_data["drop"]
+				bucks += 1
 			_: ErrorMessage.show_error("Error loading element")
 		
 		node.name = node_data["name"]
@@ -249,15 +309,22 @@ func _on_confirm_load_dialog_confirmed() -> void:
 	for i in iranges:
 		i.queue_free()
 	
-	neuron_count = 1
-	input_count = 1
-	rate_detector_count = 1
-	weight_count = 1
-	
-	neuron_deleted = 1
-	input_deleted = 1
-	rate_detector_deleted = 1
-	weight_deleted = 1
+	neurons = 1
+	neurons_deleted = 1
+	input_neurons = 1
+	input_neurons_deleted = 1
+	inputs = 1
+	inputs_deleted = 1
+	weights = 1
+	weights_deleted = 1
+	rate_detectors = 1
+	rate_detectors_deleted = 1
+	spike_gates = 1
+	spike_gates_deleted = 1
+	boosters = 1
+	boosters_deleted = 1
+	bucks = 1
+	bucks_deleted = 1
 	
 	$LoadFileDialog.filters = ["*.json"]
 	$LoadFileDialog.current_path = config.get_value("files", "last_saved_to_dir",  "user://")
@@ -281,15 +348,22 @@ func _on_clear_button_pressed() -> void:
 	for i in iranges:
 		i.queue_free()
 	
-	neuron_count = 1
-	input_count = 1
-	rate_detector_count = 1
-	weight_count = 1
-	
-	neuron_deleted = 1
-	input_deleted = 1
-	rate_detector_deleted = 1
-	weight_deleted = 1
+	neurons = 1
+	neurons_deleted = 1
+	input_neurons = 1
+	input_neurons_deleted = 1
+	inputs = 1
+	inputs_deleted = 1
+	weights = 1
+	weights_deleted = 1
+	rate_detectors = 1
+	rate_detectors_deleted = 1
+	spike_gates = 1
+	spike_gates_deleted = 1
+	boosters = 1
+	boosters_deleted = 1
+	bucks = 1
+	bucks_deleted = 1
 
 func _on_option_button_item_selected(index: int) -> void:
 	match index:
@@ -317,3 +391,10 @@ func _on_sound_option_button_item_selected(index: int) -> void:
 			path = "res://Assets/Sounds/pufferfish.mp3"
 	
 	get_parent().get_node("GraphWrapper").get_child(0).change_activation_sound(path)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed and get_parent().menu_open:
+			if !$".".get_global_rect().has_point(event.position):
+				get_parent().get_node("Panel/MarginContainer/HBoxContainer/TextureButton").emit_signal("pressed")
+				

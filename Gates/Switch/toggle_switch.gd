@@ -1,5 +1,7 @@
 extends GraphNode
 
+var type = "ToggleSwitch"
+
 signal status_changed(status: bool)
 
 func _ready() -> void:

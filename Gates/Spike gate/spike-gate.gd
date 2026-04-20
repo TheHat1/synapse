@@ -3,6 +3,9 @@ extends GraphNode
 var led_off = load("res://Assets/neuron_led.png")
 var led_on = load("res://Assets/neuron_led_lit.png")
 
+var type = "SpikeGate"
+var presynaptic_neuron_name = []
+
 var is_gate_open = false
 
 func _ready():
@@ -23,5 +26,5 @@ func _on_gate_status_change(status: bool):
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		#get_parent().get_parent().get_parent().get_node("MainMenu").neuron_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").spike_gates_deleted += 1
 		queue_free()

@@ -82,10 +82,10 @@ func _process(delta):
 	elif state == "DISCHARGING":
 		buffer *= exp(-delta / tau)
 		
-		if buffer < discharge_percent:
+		if buffer < (discharge_percent * capacitance):
 			state = "CHARGING"
 	
-	if buffer >= threshold:
+	if buffer >= threshold * capacitance:
 		state = "DISCHARGING"
 		fire_output(0, 0.0)
 		$HBoxContainer/Control/Sprite2D.texture = led_on
@@ -101,7 +101,7 @@ func _on_value_changed(value, value2):
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_parent().get_node("MainMenu").neuron_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").neurons_deleted += 1
 		queue_free()
 
 func _on_line_edit_text_submitted(new_text: String) -> void:

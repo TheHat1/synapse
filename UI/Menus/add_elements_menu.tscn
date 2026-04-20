@@ -181,9 +181,9 @@ alignment = 0
 visible = false
 layout_mode = 0
 offset_left = 254.0
-offset_top = 247.0
+offset_top = 217.0
 offset_right = 505.0
-offset_bottom = 412.0
+offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_polyq")
 
 [node name="MarginContainer" type="MarginContainer" parent="Gates" unique_id=1716551305]
@@ -226,7 +226,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
 text = "Toggle switch"
 alignment = 0
 
-[node name="Button3" type="Button" parent="Gates/MarginContainer/VBoxContainer" unique_id=644699231]
+[node name="BoostConverterButton" type="Button" parent="Gates/MarginContainer/VBoxContainer" unique_id=644699231]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
@@ -235,8 +235,19 @@ theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
-text = "Button
-"
+text = "Boost converter"
+alignment = 0
+
+[node name="BuckConverterButton" type="Button" parent="Gates/MarginContainer/VBoxContainer" unique_id=1530423853]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_colors/font_hover_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_a42p7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ebqmt")
+text = "Buck converter"
 alignment = 0
 
 [node name="Neurons" type="Panel" parent="." unique_id=711239657]
@@ -297,5 +308,7 @@ alignment = 0
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="Gates/MarginContainer/VBoxContainer/SpikeGateButton" to="." method="_on_spike_gate_button_pressed"]
 [connection signal="pressed" from="Gates/MarginContainer/VBoxContainer/ToggleSwitchButton" to="." method="_on_toggle_switch_button_pressed"]
+[connection signal="pressed" from="Gates/MarginContainer/VBoxContainer/BoostConverterButton" to="." method="_on_boost_converter_button_pressed"]
+[connection signal="pressed" from="Gates/MarginContainer/VBoxContainer/BuckConverterButton" to="." method="_on_buck_converter_button_pressed"]
 [connection signal="pressed" from="Neurons/MarginContainer/VBoxContainer/NeuronButton" to="." method="_on_neuron_button_pressed"]
 [connection signal="pressed" from="Neurons/MarginContainer/VBoxContainer/InputNeuronButton" to="." method="_on_input_neuron_button_pressed"]

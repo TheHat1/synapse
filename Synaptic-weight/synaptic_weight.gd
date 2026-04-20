@@ -41,7 +41,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_parent().get_node("MainMenu").weight_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").weights_deleted += 1
 		queue_free()
 
 func update_weight(val: float):

@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://bajxifi40jfl5"]
+
+[ext_resource type="Script" uid="uid://rpeeqamjlky8" path="res://Gates/BuckConverter/buck_converter.gd" id="1_tbxnq"]
+[ext_resource type="Texture2D" uid="uid://mjxymut2dhp" path="res://Assets/neuron_led.png" id="2_kri18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lrug"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.9764706)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhd2a"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.2, 0.2, 0.9764706)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg70w"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12156863, 0.3254902, 0.36862746, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e72hd"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.17921272, 0.4428417, 0.4988112, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[node name="BuckConverter" type="GraphNode" unique_id=2037802207]
+offset_right = 343.0
+offset_bottom = 151.0
+tooltip_text = "Boost voltage with the given V gain. Lets VCC pass unaffected when not toggled."
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_1lrug")
+theme_override_styles/panel_selected = SubResource("StyleBoxFlat_jhd2a")
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_mg70w")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_e72hd")
+title = "Buck converter gate"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_tbxnq")
+
+[node name="Control2" type="HBoxContainer" parent="." unique_id=466055136]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 11
+
+[node name="Label2" type="Label" parent="Control2" unique_id=1578182525]
+layout_mode = 2
+text = "V in"
+
+[node name="Control" type="Control" parent="Control2" unique_id=1896189887]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control2/Control" unique_id=1255802025]
+position = Vector2(216, 43.655598)
+scale = Vector2(0.79772735, 0.7937382)
+texture = ExtResource("2_kri18")
+
+[node name="LineEdit" type="LineEdit" parent="Control2/Control" unique_id=736762685]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 0
+offset_left = 29.0
+offset_top = 18.655594
+offset_right = 97.5
+offset_bottom = 73.655594
+size_flags_vertical = 3
+text = "1.0"
+placeholder_text = "1.0"
+alignment = 1
+emoji_menu_enabled = false
+virtual_keyboard_type = 3
+
+[node name="Label" type="Label" parent="Control2/Control" unique_id=1729237099]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 36.655594
+offset_right = 427.0
+offset_bottom = 59.655594
+text = "V drop"
+
+[node name="Control3" type="HBoxContainer" parent="." unique_id=1335292075]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control3" unique_id=2081259088]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="Control4" type="HBoxContainer" parent="." unique_id=1650050635]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control4" unique_id=1659192483]
+layout_mode = 2
+text = "Bool in"
+
+[connection signal="text_submitted" from="Control2/Control/LineEdit" to="." method="_on_line_edit_text_submitted"]

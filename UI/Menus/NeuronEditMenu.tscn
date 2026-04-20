@@ -54,7 +54,7 @@ script = ExtResource("1_mkpsp")
 layout_mode = 0
 offset_top = 24.0
 offset_right = 471.0
-offset_bottom = 380.0
+offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_veor4")
 
 [node name="Panel" type="Panel" parent="Panel" unique_id=1234905416]
@@ -184,6 +184,37 @@ theme_override_font_sizes/font_size = 22
 text = "V"
 horizontal_alignment = 1
 
+[node name="DischargePrstg" type="Panel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1282668524]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_345cf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/DischargePrstg" unique_id=735874031]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 441.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/DischargePrstg/HBoxContainer" unique_id=1667712161]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Discharge V"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/DischargePrstg/HBoxContainer" unique_id=1363008639]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditDischargePrstg" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/DischargePrstg/HBoxContainer" unique_id=1568771020]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/DischargePrstg/HBoxContainer" unique_id=1404519856]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "V"
+horizontal_alignment = 1
+
 [node name="Vsrc" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=283064766]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -283,3 +314,4 @@ text = "Ohms"
 [connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Title/HBoxContainer/LineEditTitle" to="." method="_on_line_edit_title_text_submitted"]
 [connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Capacitance/HBoxContainer/LineEditCap" to="." method="_on_line_edit_cap_text_submitted"]
 [connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/Threshold/HBoxContainer/LineEditThreshold" to="." method="_on_line_edit_threshold_text_submitted"]
+[connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/DischargePrstg/HBoxContainer/LineEditDischargePrstg" to="." method="_on_line_edit_discharge_prstg_text_submitted"]

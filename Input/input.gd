@@ -64,7 +64,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_parent().get_node("MainMenu").input_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").inputs_deleted += 1
 		get_parent().on_input_delete(name)
 		queue_free()
 

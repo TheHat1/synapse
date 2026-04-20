@@ -13,7 +13,7 @@ var charge_resistor = 0.02
 var buffer = 0.0
 var V_src = 0.0
 var capacitance = 1.0
-var discharge_percent = 0.01
+var discharge_percent = 0.1
 var state = "CHARGING"
 var elapsed = 0.0
 var is_led_on = false
@@ -32,7 +32,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey and event.keycode == KEY_DELETE and event.pressed and is_selected():
-		get_parent().get_parent().get_parent().get_node("MainMenu").neuron_deleted += 1
+		get_parent().get_parent().get_parent().get_node("MainMenu").input_neurons_deleted += 1
 		queue_free()
 
 func _on_value_changed(value, value2):
@@ -67,10 +67,10 @@ func _process(delta):
 	elif state == "DISCHARGING":
 		buffer *= exp(-delta / tau)
 		
-		if buffer < discharge_percent:
+		if buffer < (discharge_percent * capacitance):
 			state = "CHARGING"
 	
-	if buffer >= threshold:
+	if buffer >= threshold * capacitance:
 		state = "DISCHARGING"
 		fire_output(0, 0.0)
 		$HBoxContainer4/Control/Sprite2D.texture = led_on

@@ -53,10 +53,13 @@ func _on_connection_request(from_node: StringName, from_port: int, to_node: Stri
 	connect_node(from_node, from_port, to_node, to_port)
 
 func _on_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
-	if $".".get_node(NodePath(from_node)).get_output_port_type(from_port) == 1:
-		$".".get_node(NodePath(from_node)).disconnect("value_changed", get_node(NodePath(to_node))._on_value_changed)
+	var from = $".".get_node(NodePath(from_node))
+	var to = $".".get_node(NodePath(to_node))
+	
+	if from.get_output_port_type(from_port) == 1:
+		from.disconnect("value_changed_resistor", to._on_value_changed)
 	if $".".get_node(NodePath(from_node)).get_output_port_type(from_port) == 3:
-		$".".get_node(NodePath(from_node)).disconnect("status_changed", get_node(NodePath(to_node))._on_gate_status_change)
+		from.disconnect("status_changed", to._on_gate_status_change)
 	disconnect_node(from_node, from_port, to_node, to_port)
 
 func trigger_from(from_node: StringName, from_port: int, weight: float):

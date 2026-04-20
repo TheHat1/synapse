@@ -461,7 +461,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=711328924]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Inputs"
+text = "Input neurons"
 
 [node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=658869971]
 layout_mode = 2
@@ -478,7 +478,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1043206911]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Weights"
+text = "Inputs"
 
 [node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1243937821]
 layout_mode = 2
@@ -495,13 +495,81 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1891487326]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Rate detectors"
+text = "Weights"
 
 [node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1456814883]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1459433359]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1539932454]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=199238066]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Rate detectors"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1025652751]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1692121192]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=805552855]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=2029049109]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Spike gates"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=1820649594]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=820438121]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=849951400]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=406052591]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Boost converter gates"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=947771810]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=2020654154]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=765211424]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=1552760312]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Buck converter gates"
+
+[node name="Control" type="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=25895161]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=959536954]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "0"
